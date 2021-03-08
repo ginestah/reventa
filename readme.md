@@ -32,6 +32,8 @@ module.exports = mongoose.model("users", User);
 
 ### Whimsical Diagrams
 
+[Component Heirarchy](https://res.cloudinary.com/dpbzq29kr/image/upload/v1615234934/Screen_Shot_2021-03-08_at_3.20.05_PM_dgf3pw.png)
+
 ### Team Expectations
 
 [expectations](https://docs.google.com/document/d/1N40wucCU4Yystfjp813wbzgSCg4I6vNr7_FVhVyI2ic/edit?usp=sharing)
@@ -44,4 +46,9 @@ The homepage will have the most recent listings as well as helpful links to rele
 
 ### MVP:
 
+[Github Project Page](https://github.com/ginestah/reventa/projects/1)
+
 ### Post MVPs:
+
+Build Wishlist post MVP
+Post MVP edit/delete restrictions for users that don’t “own” that listing
