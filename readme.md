@@ -1,5 +1,5 @@
 ## Reventa
-![team GLO](https://res.cloudinary.com/dpbzq29kr/image/upload/c_scale,h_2128/v1615237662/Image_from_iOS_qib6xu.jpg)
+![team GLO](https://res.cloudinary.com/dpbzq29kr/image/upload/c_scale,h_1128/v1615237662/Image_from_iOS_qib6xu.jpg)
 ### Schemas
 
 ```javascript
