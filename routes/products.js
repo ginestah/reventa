@@ -1,4 +1,4 @@
-const {Router} = require('express')
+const { Router } = require('express')
 const controllers = require('../controllers/products')
 const restrict = require('../helpers/restrict')
 
@@ -10,4 +10,4 @@ router.post('/', restrict, controllers.createProduct)
 router.put('/:id', restrict, controllers.updateProduct)
 router.delete('/:id', restrict, controllers.deleteProduct)
 
-module.exports=router
+module.exports = router

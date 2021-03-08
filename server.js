@@ -1,7 +1,7 @@
 const express = require('express')
-const db = require("")
+const db = require('./db/connection')
 const cors = require('cors')
-const bodyParser = require("body-parser")
+const bodyParser = require('body-parser')
 const logger = require('morgan')
 const routes = require('./routes')
 
@@ -12,8 +12,8 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(logger('dev'))
 
-app.use('./api', routes)
+app.use('/api', routes)
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-app.listen(PORT,()=>console.log('Listening on port:${PORT}'))
+app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
