@@ -5,7 +5,7 @@ import Home from "./screens/Home/Home";
 import Products from "./screens/Products/Products";
 import ProductCreate from "./screens/ProductCreate/ProductCreate";
 import ProductEdit from "./screens/ProductEdit/ProductEdit";
-import ProductDetails from "./screens/ProductDetail/ProductDetails";
+import ProductDetails from "./screens/ProductDetails/ProductDetails";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { verifyUser } from "./services/users";
 import SignUp from "./screens/SignUp/SignUp";
