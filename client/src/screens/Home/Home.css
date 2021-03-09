@@ -1,0 +1,8 @@
+.recently-added {
+  display: flex;
+  flex-direction: row;
+}
+
+.recently-added-items img {
+  max-width: 100px;
+}
