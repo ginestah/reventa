@@ -28,13 +28,13 @@ const Products = (props) => {
   const handleSubmit = e => e.preventDefault();
 
   const productsJSX = queriedProducts.map((product, index)=> 
-    <Product _id={product.id} key={ index}name={product.name}
+    <Product _id={product.id} key={ index} name={product.name}
       photos={product.photos.imgURL[0]} price={product.price} />
   )
 
   return (
     <Layout user={props.user}>
-      <Search onSubmit={handleSubmit} onChange={handleSearh} />
+      <Search onSubmit={handleSubmit} onChange={handleSearch} />
       <div className="products">
         {productsJSX}
       </div>
