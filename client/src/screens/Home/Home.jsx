@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getProducts } from "../../services/products";
 import { Link } from "react-router-dom";
-function Home() {
+function Home(props) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -25,8 +25,10 @@ function Home() {
     ) : null
   );
   return (
-    <Layout>
+    <Layout user={props.user}>
       <div className="home">
+        <div className="link-welcome">Welcome Home {props.user.username}</div>
+
         <div className="recently-added">{PRODUCTS}</div>
         <div className="design-resources">
           <a

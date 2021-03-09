@@ -36,7 +36,7 @@ const SignUp = (props) => {
           email: "",
           password: "",
           passwordConfirmation: "",
-          isError: "",
+          isError: true,
           errorMsg: "Sign Up Details Invalid",
         });
       });

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 const SignIn = (props) => {
-  const history = useHistory;
+  const history = useHistory();
 
   const [form, setForm] = useState({
     username: "",
@@ -35,7 +35,7 @@ const SignIn = (props) => {
         console.error(error);
         setForm({
           isError: true,
-          errorMsg: "Invalid User Credentails",
+          errorMsg: "Invalid User Credentials",
           username: "",
           password: "",
         });
