@@ -33,7 +33,7 @@ function App() {
         <Route path="/sign-up">
           <SignUp setUser={setUser} />
         </Route>
-        <Route path="sign-in">
+        <Route path="/sign-in">
           <SignIn setUser={setUser} />
         </Route>
         <Route path="/sign-out">
