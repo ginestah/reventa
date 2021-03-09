@@ -29,14 +29,14 @@ const SignUp = (props) => {
     signUp(form)
       .then(() => signIn(form))
       .then((user) => setUser(user))
-      .then(() => history.push("/"))
+      .then(() => history.push("/products"))
       .catch((error) => {
         console.error(error);
         setForm({
           email: "",
           password: "",
           passwordConfirmation: "",
-          isError: "",
+          isError: true,
           errorMsg: "Sign Up Details Invalid",
         });
       });
@@ -47,7 +47,7 @@ const SignUp = (props) => {
     if (form.isError) {
       return (
         <button type="submit" className={toggleForm}>
-          {form.errorMsg}
+          { form.errorMsg }
         </button>
       );
     } else {
