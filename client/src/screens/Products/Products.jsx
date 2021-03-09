@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 import './Products.css'
 import Product from "../../components/Product/Product"
@@ -6,19 +7,27 @@ import Layout from "../../components/shared/Layout/Layout"
 import { getProducts } from "../../services/products"
 import Checkbox from "../../components/Checkbox/Checkbox"
 
-
 const Products = (props) => {
-  const [allProducts, setAllProducts] = useState([])
-  const [queriedProducts, setQueriedProducts] = useState([])
-  // const [checked, setChecked] = useState(false)
-
-
+  const [allProducts, setAllProducts] = useState([]);
+  const [queriedProducts, setQueriedProducts] = useState([]);
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const products = await getProducts()
-      setAllProducts(products)
-      setQueriedProducts(products)
+      const products = await getProducts();
+      setAllProducts(products);
+      setQueriedProducts(products);
+    };
+    fetchProducts();
+  }, []);
+
+  const handleClick = (e) => {
+    setChecked(!checked);
+    if (checked) {
+      const newQueriesProducts = allProducts.filter(
+        (product) => product.type === e.target.value
+      );
+      setQueriedProducts(newQueriesProducts);
     }
     fetchProducts()
   }, [])
@@ -54,9 +63,9 @@ const Products = (props) => {
       {/* <Checkbox onClick={handleClick} setChecked={ }/> */}
       <div className="products">
         {productsJSX}
+
       </div>
     </Layout>
-  )
-
-}
+  );
+};
 export default Products;

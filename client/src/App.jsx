@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./screens/Home/Home";
@@ -10,7 +9,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { verifyUser } from "./services/users";
 import SignUp from "./screens/SignUp/SignUp";
 import SignIn from "./screens/SignIn/SignIn";
-import SignOut from './screens/SignOut/SignOut'
+import SignOut from "./screens/SignOut/SignOut";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,7 +26,6 @@ function App() {
 
   return (
     <div className="App">
-
       <Switch>
         <Route exact path="/">
           <Home user={user} />
