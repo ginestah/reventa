@@ -8,9 +8,6 @@ function Nav({ user }) {
         Reventa
       </NavLink>
       <div className="links">
-        {user && (
-          <div className="link-welcome">Welcome Home {user.username}</div>
-        )}
         <NavLink to="/products">All Listings</NavLink>
         {user ? (
           <>
