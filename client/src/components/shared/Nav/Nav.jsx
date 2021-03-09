@@ -35,3 +35,4 @@ function Nav({ user }) {
     </nav>
   );
 }
+export default Nav;
