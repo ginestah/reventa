@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import './App.css';
-import { Route, Switch, Redirect } from 'react-router-dom'
 
-import Products from "../src/screens/Products/Products"
-=======
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./screens/Home/Home";
@@ -16,7 +11,6 @@ import { verifyUser } from "./services/users";
 import SignUp from "./screens/SignUp/SignUp";
 import SignIn from "./screens/SignIn/SignIn";
 import SignOut from './screens/SignOut/SignOut'
->>>>>>> f7b180def8fbf9aa26134ce2431375160139b12e
 
 function App() {
   const [user, setUser] = useState(null);
@@ -33,11 +27,7 @@ function App() {
 
   return (
     <div className="App">
-<<<<<<< HEAD
-              <Route exact path="/products">
-          <Products  />
-        </Route>
-=======
+
       <Switch>
         <Route exact path="/">
           <Home user={user} />
@@ -64,7 +54,6 @@ function App() {
           <ProductDetail user={user} />
         </Route>
       </Switch>
->>>>>>> f7b180def8fbf9aa26134ce2431375160139b12e
     </div>
   );
 }
