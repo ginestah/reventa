@@ -64,11 +64,9 @@ const verify =  async (req, res) => {
     }
 }
 
-const changePassword = async (req, res) => { }
 
 module.exports = {
     signUp,
     signIn,
-    verify,
-    changePassword
+    verify
 }
