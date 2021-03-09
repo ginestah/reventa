@@ -21,16 +21,8 @@ const Products = (props) => {
     fetchProducts();
   }, []);
 
-  const handleClick = (e) => {
-    setChecked(!checked);
-    if (checked) {
-      const newQueriesProducts = allProducts.filter(
-        (product) => product.type === e.target.value
-      );
-      setQueriedProducts(newQueriesProducts);
-    }
-    fetchProducts()
-  }, [])
+  
+
 
   // const handleClick = (e) => {
   //   setChecked(!checked)
