@@ -11,8 +11,8 @@ const Products = (props) => {
   const [allProducts, setAllProducts] = useState([])
   const [queriedProducts, setQueriedProducts] = useState([])
   const [checked, setChecked] = useState(false)
-  
-  
+
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -22,18 +22,18 @@ const Products = (props) => {
     }
     fetchProducts()
   }, [])
-  
+
   const handleClick = (e) => {
     setChecked(!checked)
-     if (checked) {
-       const newQueriesProducts = allProducts.filter(product =>
-      product.type === e.target.value)
-    setQueriedProducts(newQueriesProducts)
-  }
+    if (checked) {
+      const newQueriesProducts = allProducts.filter(product =>
+        product.type === e.target.value)
+      setQueriedProducts(newQueriesProducts)
+    }
   }
 
- 
- 
+
+
 
   const handleSearch = e => {
     const newQueriesProducts = allProducts.filter(product =>
@@ -43,22 +43,22 @@ const Products = (props) => {
   const handleSubmit = e => e.preventDefault();
 
 
-  const productsJSX = queriedProducts.map((product, index)=> 
-    <Product _id={product.id} key={ index} name={product.name}
+  const productsJSX = queriedProducts.map((product, index) =>
+    <Product _id={product.id} key={index} name={product.name}
       photos={product.photos.imgURL[0]} price={product.price} />
   )
 
   return (
     <Layout user={props.user}>
-    <div>
+      <div>
         <Search onSubmit={handleSubmit} onChange={handleSearch} />
-      <Checkbox onSubmit={handleSubmit} onClick={ handleClick}/>
-      <div className="products">
-        {productsJSX}
+        <Checkbox onSubmit={handleSubmit} onClick={handleClick} />
+        <div className="products">
+          {productsJSX}
+        </div>
       </div>
-    </div>
-    
-</Layout>
+
+    </Layout>
   )
 
 }
