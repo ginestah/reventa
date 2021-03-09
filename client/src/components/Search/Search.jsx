@@ -1,7 +1,8 @@
 import React from "react"
 import "./Search.css"
 
-export const Search = (props) => {
+
+const Search = (props) => {
   return (
     <form className="search-form" onSubmit={(e) =>props.onSubmit(e)}>
       <input
@@ -17,3 +18,5 @@ export const Search = (props) => {
     </form>
   )
 }
+
+export default Search;

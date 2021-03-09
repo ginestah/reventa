@@ -4,11 +4,14 @@ import Product from "../../components/Product/Product"
 import Search from "../../components/Search/Search"
 import Layout from "../../components/shared/Layout/Layout"
 import { getProducts } from "../../services/products"
-import { search } from '../../../../routes'
+import Checkbox from "../../components/Checkbox/Checkbox"
+
 
 const Products = (props) => {
   const [allProducts, setAllProducts] = useState([])
-  const [queriedProducts, setQueriedProducts] = use([])
+  const [queriedProducts, setQueriedProducts] = useState([])
+  const [checked, setChecked] = useState(false)
+  
   
 
   useEffect(() => {
@@ -18,7 +21,18 @@ const Products = (props) => {
       setQueriedProducts(products)
     }
     fetchProducts()
-  },[])
+  }, [])
+  
+  const handleClick = (e) => {
+    setChecked(!checked)
+  }
+
+  if (checked) {
+       const newQueriesProducts = allProducts.filter(product =>
+      product.type === e.target.value)
+    setQueriedProducts(newQueriesProducts)
+  }
+ 
 
   const handleSearch = e => {
     const newQueriesProducts = allProducts.filter(product =>
@@ -27,6 +41,7 @@ const Products = (props) => {
   }
   const handleSubmit = e => e.preventDefault();
 
+
   const productsJSX = queriedProducts.map((product, index)=> 
     <Product _id={product.id} key={ index} name={product.name}
       photos={product.photos.imgURL[0]} price={product.price} />
@@ -34,10 +49,14 @@ const Products = (props) => {
 
   return (
     <Layout user={props.user}>
-      <Search onSubmit={handleSubmit} onChange={handleSearch} />
+    <div>
+        <Search onSubmit={handleSubmit} onChange={handleSearch} />
+      <Checkbox onSubmit={handleSubmit} onClick={ handleClick}/>
       <div className="products">
         {productsJSX}
       </div>
+    </div>
+    
 </Layout>
   )
 
