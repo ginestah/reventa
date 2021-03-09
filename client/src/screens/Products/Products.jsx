@@ -4,7 +4,7 @@ import Product from "../../components/Product/Product"
 import Search from "../../components/Search/Search"
 import Layout from "../../components/shared/Layout/Layout"
 import { getProducts } from "../../services/products"
-// import Checkbox from "../../components/Checkbox/Checkbox"
+import Checkbox from "../../components/Checkbox/Checkbox"
 
 
 const Products = (props) => {
@@ -25,9 +25,9 @@ const Products = (props) => {
 
   // const handleClick = (e) => {
   //   setChecked(!checked)
-  //   if (checked) {
+  //   if (checked===true) {
   //     const newQueriesProducts = allProducts.filter(product =>
-  //       product.type === e.target.value)
+  //       product.name.toLowerCase().includes(e.target.value.toLowerCase()) )
   //     setQueriedProducts(newQueriesProducts)
   //   }
   // }
@@ -51,7 +51,7 @@ const Products = (props) => {
   return (
     <Layout user={props.user}>
       <Search onSubmit={handleSubmit} onChange={handleSearch} />
-      {/* <Checkbox onClick={handleClick} /> */}
+      {/* <Checkbox onClick={handleClick} setChecked={ }/> */}
       <div className="products">
         {productsJSX}
       </div>
