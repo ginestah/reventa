@@ -1,82 +1,86 @@
-import React from 'react';
-import './SignIn.css'
-import { signIn } from '../../services/users'
-import {useHistory} from 'react-router-dom'
+import React from "react";
+import "./SignIn.css";
+import { signIn } from "../../services/users";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 const SignIn = (props) => {
-
-  const history = useHistory 
+  const history = useHistory;
 
   const [form, setForm] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
     isError: false,
-    errorMsg: ''
-  })
+    errorMsg: "",
+  });
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value
-    })
-  }
+      [event.target.name]: event.target.value,
+    });
+  };
 
-  const onSignIn = event => {
-    event.preventDefault()
+  const onSignIn = (event) => {
+    event.preventDefault();
 
-    const { setUser } = props
-    
+    const { setUser } = props;
+
     signIn(form)
-      .then(user => {
-        setUser(user)
+      .then((user) => {
+        setUser(user);
       })
-      .then(() => history.push('/'))
-      .catch(error => {
-        console.error(error)
+      .then(() => history.push("/"))
+      .catch((error) => {
+        console.error(error);
         setForm({
           isError: true,
-          errorMsg: 'Invalid User Credentails',
-          username: '',
-          password: ''
-        })
-      })
-  }
+          errorMsg: "Invalid User Credentails",
+          username: "",
+          password: "",
+        });
+      });
+  };
 
   const renderError = () => {
-    const toggleForm = form.isError ? 'danger' : ''
+    const toggleForm = form.isError ? "danger" : "";
     if (form.isError) {
       return (
         <button type="submit" className={toggleForm}>
           {form.errorMsg}
         </button>
-      )
+      );
     } else {
-      return <button type="submit">Sign In</button>
+      return <button type="submit">Sign In</button>;
     }
-  }
+  };
 
-  const { username, password } = form
+  const { username, password } = form;
 
   return (
     <div className="form-container">
       <h3>Sign In</h3>
-      <label>Username</label>
-      <input
-        required
-        type="text"
-        name="username"
-        value={username}
-        placeholder="Enter Username"
-        onChange={handleChange} />
-      <label>Password</label>
-      <input
-        required
-        type="password"
-        name="password"
-        value={password}
-        placeholder="Password"
-        onChange={handleChange} />
-      {renderError()}
+      <form onSubmit={onSignIn}>
+        <label>Username</label>
+        <input
+          required
+          type="text"
+          name="username"
+          value={username}
+          placeholder="Enter Username"
+          onChange={handleChange}
+        />
+        <label>Password</label>
+        <input
+          required
+          type="password"
+          name="password"
+          value={password}
+          placeholder="Password"
+          onChange={handleChange}
+        />
+        {renderError()}
+      </form>
     </div>
   );
 };
