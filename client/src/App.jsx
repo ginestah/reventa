@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./screens/Home/Home";
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <div className="App">
+
       <Switch>
         <Route exact path="/">
           <Home user={user} />
