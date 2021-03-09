@@ -2,13 +2,13 @@ import React from 'react';
 import './Product.css';
 import { Link } from 'react-router-dom'
 
-const Product = ({_id,name,imgURL,price}) => {
+const Product = (props) => {
     return (
         <>
-            <Link className="product" to={`/products/${_id}`}>
-                <img className="product-image" src={imgURL} alt={name} />
-                <div className="product-name">{name}</div>
-                <div className="price">{`$${price}`}</div>
+            <Link className="product" to={`/products/${props._id}`}>
+          <img className="product-image"  src={props.photo} alt={props.name} />
+                <div className="product-name">{props.name}</div>
+                <div className="price">{`$${props.price}`}</div>
             </Link>
         </>
     )
