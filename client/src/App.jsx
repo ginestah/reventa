@@ -1,10 +1,11 @@
+
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./screens/Home/Home";
 import Products from "./screens/Products/Products";
 import ProductCreate from "./screens/ProductCreate/ProductCreate";
 import ProductEdit from "./screens/ProductEdit/ProductEdit";
-import ProductDetail from "./screens/ProductDetail/ProductDetail";
+import ProductDetails from "./screens/ProductDetails/ProductDetails";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { verifyUser } from "./services/users";
 import SignUp from "./screens/SignUp/SignUp";
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <div className="App">
+
       <Switch>
         <Route exact path="/">
           <Home user={user} />
@@ -49,7 +51,7 @@ function App() {
           {user ? <ProductEdit user={user} /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/products/:id">
-          <ProductDetail user={user} />
+          <ProductDetails user={user} />
         </Route>
       </Switch>
     </div>
