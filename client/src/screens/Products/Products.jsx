@@ -25,13 +25,14 @@ const Products = (props) => {
   
   const handleClick = (e) => {
     setChecked(!checked)
-  }
-
-  if (checked) {
+     if (checked) {
        const newQueriesProducts = allProducts.filter(product =>
       product.type === e.target.value)
     setQueriedProducts(newQueriesProducts)
   }
+  }
+
+ 
  
 
   const handleSearch = e => {
