@@ -11,7 +11,7 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 const Products = (props) => {
   const [allProducts, setAllProducts] = useState([]);
   const [queriedProducts, setQueriedProducts] = useState([]);
-  const [isChecked, setChecked] = useState(false);
+  // const [isChecked, setChecked] = useState(false);
   const [options, setOptions] = useState([])
   const [selectedProduct, setSelectedProduct] = useState([])
 
@@ -26,7 +26,9 @@ const Products = (props) => {
 
 
 
-
+  const uncheck = () => {
+  
+}
   const handleChange = (e) => {
     console.log(e.action)
     // setChecked(!isChecked)
@@ -34,7 +36,7 @@ const Products = (props) => {
     // console.log(checked)
     // console.log(e.target.value)
     const value = e.target.type === 'checkbox' && e.target.checked
-    // console.log(value)
+    console.log(value)
     if (value) {
 
       setOptions([...options, e.target.value])
@@ -54,6 +56,7 @@ const Products = (props) => {
       setQueriedProducts(newQueriesProducts)
 
     } else {
+
       let findNum = options.findIndex(option => option === e.target.value)
       const removeOne = (options[findNum])
 
@@ -93,7 +96,7 @@ const Products = (props) => {
   return (
     <Layout user={props.user}>
       <Search onSubmit={handleSubmit} onChange={handleSearch} />
-      <Checkbox onChange={handleChange} onSubmit={handleSubmit} setChecked={setChecked} isChecked={!isChecked} />
+      <Checkbox onChange={handleChange} onSubmit={handleSubmit} setQueriedProducts={setQueriedProducts} allProducts={ allProducts}/>
       <div className="products">
         {productsJSX}
 
