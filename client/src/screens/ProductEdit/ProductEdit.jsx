@@ -1,73 +1,86 @@
-import React, { useState, useEffect } from 'react'
-import './ProductEdit.css'
-import { useParams, Redirect } from 'react-router-dom'
-import Layout from '../../components/shared/Layout/Layout'
-import { getProduct, updateProduct } from '../../services/products'
+import React, { useState, useEffect } from "react";
+import "./ProductEdit.css";
+import { useParams, Redirect } from "react-router-dom";
+import Layout from "../../components/shared/Layout/Layout";
+import { getProduct, updateProduct } from "../../services/products";
 
 const ProductEdit = (props) => {
-  const [num, setNum] = useState(0)
-  const [show, setIsShow] = useState(true)
-  const [isClicked, setIsClicked] = useState(false)
-  const [imgList, setImgList] = useState([{ imgURL: "" }])
+  const [num, setNum] = useState(0);
+  const [show, setIsShow] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
+  const [imgList, setImgList] = useState([{ imgURL: "" }]);
   const [product, setProduct] = useState({
-    name: '',
+    name: "",
     photos: [],
     description: "",
     price: "",
-    shipping: '',
-    contactInfo: '',
-  })
+    shipping: "",
+    contactInfo: "",
+  });
 
-  const [isUpdated, setUpdated] = useState(false)
-  let { id } = useParams()
+  const [isUpdated, setUpdated] = useState(false);
+  let { id } = useParams();
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const product = await getProduct(id)
-      setProduct(product)
-    }
-    fetchProduct()
-  }, [id])
+      const product = await getProduct(id);
+      setProduct(product);
+    };
+    fetchProduct();
+  }, [id]);
 
   const handleChange = (event) => {
-    const { name, value } = event.target
+    const { name, value } = event.target;
     setProduct({
       ...product,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
+
+  const handleRemoveClick = (index) => {
+    const image = [...imgList];
+    image.splice(index, 1);
+    setImgList(image);
+  };
+
+  const handleAddClick = () => {
+    setImgList([...imgList, { imageURL: "" }]);
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     // let { id } = props.match.params
-    const updated = await updateProduct(id, product)
-    setUpdated(updated)
-  }
+    const updated = await updateProduct(id, product);
+    setUpdated(updated);
+  };
 
   if (isUpdated) {
-    return <Redirect to={`/products`} />
+    return <Redirect to={`/products`} />;
   }
   const increment = () => {
-    setNum(num + 1)
-    setIsClicked(true)
-    console.log(num)
+    setNum(num + 1);
+    setIsClicked(true);
+    console.log(num);
     if (num < 5) {
-      setIsShow(true)
-      console.log(show)
-
-    } else { setIsShow(false) }
-  }
+      setIsShow(true);
+      console.log(show);
+    } else {
+      setIsShow(false);
+    }
+  };
 
   const addPhoto = () => {
-    return (<input
-      className="input-photo"
-      placeholder='Photo'
-      value={product.photos.imgURL}
-      name='imgURL'
-      required
-      onChange={handleChange}
-    />)
-  }
+    return (
+      <input
+        className="input-photo"
+        placeholder="Photo"
+        value={product.photos.imgURL}
+        name="imgURL"
+        required
+        onChange={handleChange}
+      />
+    );
+  };
 
   return (
     <Layout user={props.user}>
@@ -76,9 +89,9 @@ const ProductEdit = (props) => {
           <label htmlFor="name">Name of Product</label>
           <input
             className="input-name"
-            placeholder='Name'
+            placeholder="Name"
             value={product.name}
-            name='name'
+            name="name"
             required
             autoFocus
             onChange={handleChange}
@@ -87,45 +100,65 @@ const ProductEdit = (props) => {
 
           <input
             className="input-price"
-            placeholder='Price'
+            placeholder="Price"
             value={product.price}
-            name='price'
+            name="price"
             required
             onChange={handleChange}
           />
           <label htmlFor="imgURL">Photos of Product</label>
 
-          <input
-            className="input-photo"
-            placeholder='Photo'
-            value={product.photos.imgURL}
-            name='imgURL'
-            required
-            onChange={handleChange}
+          {imgList.map((x, i) => {
+            return (
+              <div>
+                <input
+                  className="input-photo"
+                  placeholder="Photo"
+                  value={product.photos.imgURL}
+                  name="imgURL"
+                  required
+                  onChange={handleChange}
+                />
+                {/* <input
+            type="button"
+            value="addAnotherPic"
+            onClick={increment}
+            disabled={!show}
+            placeholder="add another pic"
           />
-          <input type="button" value="addAnotherPic" onClick={increment} disabled={!show} placeholder='add another pic' />
-          {isClicked && (<input
-            className="input-photo"
-            placeholder='Photo'
-            value={product.photos.imgURL}
-            name='imgURL'
-            required
-            onChange={handleChange}
-          />)}
+          {isClicked && (
+            <input
+              className="input-photo"
+              placeholder="Photo"
+              value={product.photos.imgURL}
+              name="imgURL"
+              required
+              onChange={handleChange}
+            />
+          )} */}
 
+                <div className="button-box">
+                  {imgList.length !== 1 && (
+                    <button onClick={() => handleRemoveClick(i)}>Remove</button>
+                  )}
+                  {imgList.length < 5 && imgList.length - 1 === i && (
+                    <button onClick={handleAddClick}>Add</button>
+                  )}
+                </div>
+              </div>
+            );
+          })}
 
           <label htmlFor="contactInfo">Your Contact Info:</label>
 
           <input
             className="input-contact-info"
-            placeholder='contact-info'
+            placeholder="contact-info"
             value={product.contactInfo}
-            name='contactInfo'
+            name="contactInfo"
             required
             onChange={handleChange}
           />
-
-
 
           <label htmlFor="shipping"> offer of Shipping</label>
 
@@ -139,18 +172,20 @@ const ProductEdit = (props) => {
             className="textarea-description"
             rows={10}
             cols={78}
-            placeholder='Description'
+            placeholder="Description"
             value={product.description}
-            name='description'
+            name="description"
             required
             onChange={handleChange}
           />
 
-          <button type='submit' className="save-button">Save</button>
+          <button type="submit" className="save-button">
+            Save
+          </button>
         </form>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default ProductEdit
+export default ProductEdit;
