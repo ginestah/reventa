@@ -30,7 +30,7 @@ const SignIn = (props) => {
       .then((user) => {
         setUser(user);
       })
-      .then(() => history.push("/products"))
+      .then(() => history.push("/"))
       .catch((error) => {
         console.error(error);
         setForm({

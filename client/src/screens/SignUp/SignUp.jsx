@@ -29,7 +29,7 @@ const SignUp = (props) => {
     signUp(form)
       .then(() => signIn(form))
       .then((user) => setUser(user))
-      .then(() => history.push("/products"))
+      .then(() => history.push("/"))
       .catch((error) => {
         console.error(error);
         setForm({
@@ -47,7 +47,7 @@ const SignUp = (props) => {
     if (form.isError) {
       return (
         <button type="submit" className={toggleForm}>
-          { form.errorMsg }
+          {form.errorMsg}
         </button>
       );
     } else {

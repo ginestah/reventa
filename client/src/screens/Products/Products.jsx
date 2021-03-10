@@ -1,12 +1,12 @@
 
-import { useState, useEffect } from 'react'
-import './Products.css'
-import Product from "../../components/Product/Product"
-import Search from "../../components/Search/Search"
-import Layout from "../../components/shared/Layout/Layout"
-import { getProducts } from "../../services/products"
-import Checkbox from "../../components/Checkbox/Checkbox"
-import { set } from 'mongoose'
+import { useState, useEffect } from "react";
+import "./Products.css";
+import Product from "../../components/Product/Product";
+import Search from "../../components/Search/Search";
+import Layout from "../../components/shared/Layout/Layout";
+import { getProducts } from "../../services/products";
+import Checkbox from "../../components/Checkbox/Checkbox";
+
 
 const Products = (props) => {
   const [allProducts, setAllProducts] = useState([]);
@@ -86,10 +86,10 @@ const Products = (props) => {
 
 
   const productsJSX = queriedProducts.map((product, index) =>
-    <Product _id={product.id} key={index} name={product.name.length > 25 && product.name.slice(0, 25)}
-      photo={product.photos[0].imgURL} price={product.price} />
+    <Product _id={product._id} key={index} name={product.name.length > 25 && product.name.slice(0, 25)}
+      photo={product.photos ? product.photos[0] ? product.photos[0].imgURL : null : null} price={product.price} />
   )
-
+  
   return (
     <Layout user={props.user}>
       <Search onSubmit={handleSubmit} onChange={handleSearch} />
