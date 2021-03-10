@@ -17,7 +17,7 @@ const ProductCreate = (props) => {
 
   const [isCreated, setCreated] = useState(false);
 
-  const handleChange = (event, index) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setProduct({
       ...product,
@@ -44,9 +44,6 @@ const ProductCreate = (props) => {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let photoArr = product.photos
-    photoArr = imageAdd
-    console.log(photoArr)
 
     const created = await createProduct(product);
     setCreated({ created });
