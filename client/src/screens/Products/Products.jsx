@@ -36,7 +36,7 @@ const Products = (props) => {
     const value = e.target.type === 'checkbox' && e.target.checked
     // console.log(value)
     if (value) {
-     
+
       setOptions([...options, e.target.value])
       console.log(options)
       //   console.log(options)
@@ -57,7 +57,7 @@ const Products = (props) => {
       let findNum = options.findIndex(option => option === e.target.value)
       const removeOne = (options[findNum])
 
-      options.splice(findNum,1,removeOne)
+      options.splice(findNum, 1, removeOne)
 
       setQueriedProducts(allProducts)
     }
@@ -65,40 +65,40 @@ const Products = (props) => {
 
 
 
-      // setSelectedProduct([...selectedProduct,newQueriesProducts])
-    }
+    // setSelectedProduct([...selectedProduct,newQueriesProducts])
+  }
 
 
-//   const checkSubmit = (e) => {
-//     let checkedArray = [];
-//     if (e.target.checked === true) {
-//       checkedArray.push()
-//     }
+  //   const checkSubmit = (e) => {
+  //     let checkedArray = [];
+  //     if (e.target.checked === true) {
+  //       checkedArray.push()
+  //     }
 
-// }
-const handleSearch = e => {
-  const newQueriesProducts = allProducts.filter(product =>
-    product.name.toLowerCase().includes(e.target.value.toLowerCase()))
-  setQueriedProducts(newQueriesProducts)
-}
+  // }
+  const handleSearch = e => {
+    const newQueriesProducts = allProducts.filter(product =>
+      product.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    setQueriedProducts(newQueriesProducts)
+  }
 
-const handleSubmit = e => e.preventDefault();
+  const handleSubmit = e => e.preventDefault();
 
 
-const productsJSX = queriedProducts.map((product, index) =>
-  <Product _id={product.id} key={index} name={product.name.length>25&&product.name.slice(0,25)}
-    photo={product.photos[0].imgURL} price={product.price} />
-)
+  const productsJSX = queriedProducts.map((product, index) =>
+    <Product _id={product.id} key={index} name={product.name.length > 25 && product.name.slice(0, 25)}
+      photo={product.photos[0].imgURL} price={product.price} />
+  )
 
-return (
-  <Layout user={props.user}>
-    <Search onSubmit={handleSubmit} onChange={handleSearch} />
-    <Checkbox onChange={handleChange} onSubmit={handleSubmit} setChecked={setChecked} isChecked={!isChecked} />
-    <div className="products">
-      {productsJSX}
+  return (
+    <Layout user={props.user}>
+      <Search onSubmit={handleSubmit} onChange={handleSearch} />
+      <Checkbox onChange={handleChange} onSubmit={handleSubmit} setChecked={setChecked} isChecked={!isChecked} />
+      <div className="products">
+        {productsJSX}
 
-    </div>
-  </Layout>
-);
+      </div>
+    </Layout>
+  );
 };
 export default Products;
