@@ -31,16 +31,19 @@ function Home(props) {
         {props.user ? (
           <div className="link-welcome">Welcome Home {props.user.username}</div>
         ) : null}
-
         <div className="recently-added">{PRODUCTS}</div>
         <div className="design-resources">
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://www.apartmenttherapy.com/white-walls-and-plants-trend-36885767"
           >
             What is it about white walls and plants that we can't quit?
           </a>
-          <a href="https://www.cocokelley.com/2021/02/try-the-trend-checkerboard/">
+          <a
+            rel="noreferrer"
+            href="https://www.cocokelley.com/2021/02/try-the-trend-checkerboard/"
+          >
             Try the checkerboard trend
           </a>
         </div>
