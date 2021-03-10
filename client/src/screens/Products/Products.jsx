@@ -28,19 +28,17 @@ const Products = (props) => {
 
 
   const handleChange = (e) => {
-    setChecked(!isChecked)
+    console.log(e.action)
+    // setChecked(!isChecked)
     // console.log(isChecked)
     // console.log(checked)
     // console.log(e.target.value)
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    console.log(e.target.value)
-    let checkArray = [];
-
-    console.log(value)
+    const value = e.target.type === 'checkbox' && e.target.checked
+    // console.log(value)
     if (value) {
-      checkArray.push(e.target.value)
-      console.log(checkArray)
-      //   setOptions([...options, value])
+     
+      setOptions([...options, e.target.value])
+      console.log(options)
       //   console.log(options)
       // }
       // else {
@@ -50,14 +48,17 @@ const Products = (props) => {
       //   options.splice(indexofRemove,1,remove)
       //   setOptions([...options])
       const newQueriesProducts = allProducts.filter(product =>
-      (
-        product.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        product.name.toLowerCase().includes(e.target.value.toLowerCase())
 
       )
       setQueriedProducts(newQueriesProducts)
 
     } else {
-     
+      let findNum = options.findIndex(option => option === e.target.value)
+      const removeOne = (options[findNum])
+
+      options.splice(findNum,1,removeOne)
+
       setQueriedProducts(allProducts)
     }
 
@@ -85,7 +86,7 @@ const handleSubmit = e => e.preventDefault();
 
 
 const productsJSX = queriedProducts.map((product, index) =>
-  <Product _id={product.id} key={index} name={product.name.length>20&&product.name.slice(0,20)}
+  <Product _id={product.id} key={index} name={product.name.length>25&&product.name.slice(0,25)}
     photo={product.photos[0].imgURL} price={product.price} />
 )
 

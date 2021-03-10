@@ -22,15 +22,15 @@ const Checkbox = (props) => {
   // }
 
   return (
-    <form onSubmit={(e) => props.onSubmit(e)}>
+    <form onSubmit={(e) => props.onSubmit(e)} onChange={e => (props.onChange(e))} >
       <div>
-        <input type="checkbox" id="rug" name="rug" value="rug" onChange={e => (props.onChange(e))} />
+        <input type="checkbox" id="rug" name="rug" value="rug" />
         <label htmlFor="rug"> Rug</label>
-        <input type="checkbox" id="chair" name="chair" value="chair" onChange={e => (props.onChange(e))} />
+        <input type="checkbox" id="chair" name="chair" value="chair"  />
         <label htmlFor="chair"> Chair</label>
-        <input type="checkbox" id="desk" name="desk" value="desk" onChange={e => (props.onChange(e))} />
+        <input type="checkbox" id="desk" name="desk" value="desk"  />
         <label htmlFor="desk"> Desk</label>
-        <input type="checkbox" id="table" name="table" value="table" onChange={e => (props.onChange(e))} />
+        <input type="checkbox" id="table" name="table" value="table" />
         <label htmlFor="table"> Table</label>
 
       </div>
