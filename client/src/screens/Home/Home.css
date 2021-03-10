@@ -1,20 +1,14 @@
 .home {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .slider-div {
   position: relative;
-  height: 80vh;
+  top: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .recently-added-items img {
   max-width: 100px;
-}
-.design-resources {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }

@@ -2,7 +2,6 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getProducts } from "../../services/products";
-import { Link } from "react-router-dom";
 import Slider from "./Slider";
 
 function Home(props) {
@@ -15,17 +14,7 @@ function Home(props) {
     };
     fetch();
   }, []);
-  const PRODUCTS = products.map((product, index) =>
-    index < 3 ? (
-      <div key={index} className="recently-added-items">
-        <Link to={`products/${product._id}`}>
-          {" "}
-          <div>{product.name}</div>
-          <img src={product.photos[0].imgURL} alt={product.name} />
-        </Link>
-      </div>
-    ) : null
-  );
+
   return (
     <Layout user={props.user}>
       <div className="home">
@@ -44,6 +33,7 @@ function Home(props) {
           >
             What is it about white walls and plants that we can't quit?
           </a>
+          <br />
           <a
             rel="noreferrer"
             href="https://www.cocokelley.com/2021/02/try-the-trend-checkerboard/"

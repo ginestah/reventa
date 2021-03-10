@@ -26,9 +26,12 @@ const Slider = (props) => {
               onClick={nextSlide}
             />
             {index === current && (
-              <Link to={`/products/${product._id}`}>
+              <>
                 <img className="image" src={product.photos[0].imgURL} alt="" />
-              </Link>
+                <Link to={`/products/${product._id}`}>
+                  <p>View Listing</p>
+                </Link>
+              </>
             )}
           </div>
         );
