@@ -33,8 +33,9 @@ function Home(props) {
           <div className="link-welcome">Welcome Home {props.user.username}</div>
         ) : null}
         <div>Recent Listings:</div>
-        <Slider products={products} />
-
+        <div className="slider-div">
+          <Slider products={products} />
+        </div>
         <div className="design-resources">
           <a
             target="_blank"

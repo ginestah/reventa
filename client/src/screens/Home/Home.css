@@ -3,7 +3,13 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
+.slider-div {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .recently-added-items img {
   max-width: 100px;
 }

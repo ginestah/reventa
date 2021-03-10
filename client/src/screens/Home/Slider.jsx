@@ -19,24 +19,18 @@ const Slider = (props) => {
     <section className="slider">
       {props.products.map((product, index) => {
         return (
-          <>
+          <div className={index === current ? "slide active" : "slide"}>
             <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-            <div className={index === current ? "slide active" : "slide"}>
-              {index === current && (
-                <Link to={`/products/${product._id}`}>
-                  <img
-                    className="slider-image"
-                    src={product.photos[0].imgURL}
-                    alt=""
-                  />
-                </Link>
-              )}
-            </div>
             <FaArrowAltCircleRight
               className="right-arrow"
               onClick={nextSlide}
             />
-          </>
+            {index === current && (
+              <Link to={`/products/${product._id}`}>
+                <img className="image" src={product.photos[0].imgURL} alt="" />
+              </Link>
+            )}
+          </div>
         );
       })}
     </section>
