@@ -1,8 +1,14 @@
-.recently-added {
+.home {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .recently-added-items img {
   max-width: 100px;
+}
+.design-resources {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getProducts } from "../../services/products";
 import { Link } from "react-router-dom";
+import Slider from "./Slider";
 
 function Home(props) {
   const [products, setProducts] = useState([]);
@@ -31,7 +32,9 @@ function Home(props) {
         {props.user ? (
           <div className="link-welcome">Welcome Home {props.user.username}</div>
         ) : null}
-        <div className="recently-added">{PRODUCTS}</div>
+        <div>Recent Listings:</div>
+        <Slider products={products} />
+
         <div className="design-resources">
           <a
             target="_blank"
