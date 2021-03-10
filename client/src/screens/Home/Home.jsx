@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getProducts } from "../../services/products";
 import { Link } from "react-router-dom";
+
 function Home(props) {
   const [products, setProducts] = useState([]);
 
