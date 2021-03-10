@@ -12,6 +12,7 @@ const ProductCreate = (props) => {
     name: "",
     description: "",
     photos: [...imageAdd],
+    photos: [],
     price: "",
     shipping: "",
     contactInfo: "", 
