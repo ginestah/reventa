@@ -27,7 +27,9 @@ function Home(props) {
   return (
     <Layout user={props.user}>
       <div className="home">
-        <div className="link-welcome">Welcome Home {props.user.username}</div>
+        {props.user ? (
+          <div className="link-welcome">Welcome Home {props.user.username}</div>
+        ) : null}
 
         <div className="recently-added">{PRODUCTS}</div>
         <div className="design-resources">
