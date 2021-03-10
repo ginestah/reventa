@@ -1,8 +1,14 @@
-.recently-added {
+.home {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
-
+.slider-div {
+  position: relative;
+  top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .recently-added-items img {
   max-width: 100px;
 }
