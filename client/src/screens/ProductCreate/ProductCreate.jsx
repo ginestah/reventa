@@ -9,9 +9,11 @@ const ProductCreate = (props) => {
   const [product, setProduct] = useState({
     name: "",
     description: "",
-    imgURL: "",
+    photos: [],
     price: "",
   });
+
+  const [imageAdd, setImageAdd] = useState([{ imgURL: "" }]);
 
   const [isCreated, setCreated] = useState(false);
 
@@ -29,12 +31,26 @@ const ProductCreate = (props) => {
     setCreated({ created });
   };
 
+  const handleInputChange = (event, index) => {
+    const { name, value } = event.target;
+    const image = [...imageAdd];
+    image[index][name] = value;
+    setImageAdd(image);
+  };
+
+  const handleRemoveClick = (index) => {
+    const image = [...imageAdd];
+    image.splice(index, 1);
+    setImageAdd(image);
+  };
+
+  const handleAddClick = () => {
+    setImageAdd([...imageAdd, { imageURL: "" }]);
+  };
+
   if (isCreated) {
     return <Redirect to="/products" />;
-  }
-
-  const handleClick = event => {
-    
+    // can we redirect to the detail page of the product we just created?
   }
 
   return (
@@ -50,16 +66,32 @@ const ProductCreate = (props) => {
           autoFocus
           onChange={handleChange}
         />
+
+        {/* https://www.cluemediator.com/add-or-remove-input-fields-dynamically-with-reactjs */}
         <label>Product Photos:</label>
-        <input
-          className="input-image-link"
-          placeholder="Image Link"
-          value={product.imgURL}
-          name="imgURL"
-          required
-          onChange={handleChange}
-        />
-        <button onClick={handleClick}>Add More Images</button>
+        {imageAdd.map((x, i) => {
+          return (
+            <div>
+              <input
+                required
+                className="input-image-link"
+                name="imgURL"
+                placeholder="Image Link"
+                value={x.imgURL}
+                onChange={(event) => handleInputChange(event, i)}
+              />
+              <div className="button-box">
+                {imageAdd.length !== 1 && (
+                  <button onClick={() => handleRemoveClick(i)}>Remove</button>
+                )}
+                {imageAdd.length - 1 === i && (
+                  <button onClick={handleAddClick}>Add</button>
+                )}
+              </div>
+            </div>
+          );
+        })}
+
         <label>Product Description:</label>
         <textarea
           className="textarea-description"
@@ -70,7 +102,7 @@ const ProductCreate = (props) => {
           required
           onChange={handleChange}
         />
-        <label>Price: </label>
+        <label>Price: $</label>
         <input
           className="input-price"
           placeholder="Price"
