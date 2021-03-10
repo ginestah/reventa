@@ -17,35 +17,39 @@ const ProductCreate = (props) => {
 
   const [isCreated, setCreated] = useState(false);
 
-  const handleChange = (event) => {
+  const handleChange = (event, index) => {
     const { name, value } = event.target;
     setProduct({
       ...product,
       [name]: value,
     });
   };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const created = await createProduct(product);
-    setCreated({ created });
-  };
-
+  
   const handleInputChange = (event, index) => {
     const { name, value } = event.target;
     const image = [...imageAdd];
     image[index][name] = value;
     setImageAdd(image);
   };
-
+  
   const handleRemoveClick = (index) => {
     const image = [...imageAdd];
     image.splice(index, 1);
     setImageAdd(image);
   };
-
+  
   const handleAddClick = () => {
     setImageAdd([...imageAdd, { imageURL: "" }]);
+  };
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let photoArr = product.photos
+    photoArr = imageAdd
+    console.log(photoArr)
+
+    const created = await createProduct(product);
+    setCreated({ created });
   };
 
   if (isCreated) {
@@ -77,14 +81,14 @@ const ProductCreate = (props) => {
                 className="input-image-link"
                 name="imgURL"
                 placeholder="Image Link"
-                value={x.imgURL}
+                value={product.photos.imgURL}
                 onChange={(event) => handleInputChange(event, i)}
               />
               <div className="button-box">
                 {imageAdd.length !== 1 && (
                   <button onClick={() => handleRemoveClick(i)}>Remove</button>
                 )}
-                {imageAdd.length - 1 === i && (
+                {imageAdd.length < 5 && imageAdd.length - 1 === i && (
                   <button onClick={handleAddClick}>Add</button>
                 )}
               </div>
@@ -119,7 +123,8 @@ const ProductCreate = (props) => {
           required
           onChange={handleChange}
         >
-          <option value="true">Available, not included in item price</option>
+          <option value="selected">Please select one</option>
+          <option value="true">Available, not included in listing price</option>
           <option value="false">Pick up only</option>
         </select>
         <label>Seller's Contact Info:</label>
