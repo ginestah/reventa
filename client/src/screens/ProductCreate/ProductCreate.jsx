@@ -33,6 +33,10 @@ const ProductCreate = (props) => {
     return <Redirect to="/products" />;
   }
 
+  const handleClick = event => {
+    
+  }
+
   return (
     <Layout user={props.user}>
       <form className="create-form" onSubmit={handleSubmit}>
@@ -55,6 +59,7 @@ const ProductCreate = (props) => {
           required
           onChange={handleChange}
         />
+        <button onClick={handleClick}>Add More Images</button>
         <label>Product Description:</label>
         <textarea
           className="textarea-description"
