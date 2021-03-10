@@ -11,7 +11,7 @@ const ProductCreate = (props) => {
   const [product, setProduct] = useState({
     name: "",
     description: "",
-    photos: imageAdd,
+    photos: [...imageAdd],
     price: "",
     shipping: "",
     contactInfo: "", 
