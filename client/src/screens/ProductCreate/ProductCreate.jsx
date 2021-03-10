@@ -3,7 +3,7 @@ import "./ProductCreate.css";
 import Layout from "../../components/shared/Layout/Layout";
 import { Redirect } from "react-router-dom";
 import { createProduct } from "../../services/products";
-import {useState} from "react"
+import { useState } from "react";
 
 const ProductCreate = (props) => {
   const [product, setProduct] = useState({
@@ -30,7 +30,7 @@ const ProductCreate = (props) => {
   };
 
   if (isCreated) {
-    return <Redirect to={`/products`} />;
+    return <Redirect to="/products" />;
   }
 
   return (
@@ -75,19 +75,24 @@ const ProductCreate = (props) => {
           onChange={handleChange}
         />
         <label>Shipping:</label>
-        <input className="input-shipping"
-          placeholder="True/False"
+        <select
+          className="input-shipping"
           value={product.shipping}
           name="shipping"
           required
           onChange={handleChange}
-        />
+        >
+          <option value="true">Available, not included in item price</option>
+          <option value="false">Pick up only</option>
+        </select>
         <label>Seller's Contact Info:</label>
-        <input required
+        <input
+          required
           placeholder="Phone number or email address"
           value={product.contactInfo}
           name="contactInfo"
           className="input-contact-info"
+          onChange={handleChange}
         />
         <button type="submit" className="submit-button">
           Submit
