@@ -11,6 +11,8 @@ const ProductCreate = (props) => {
     description: "",
     photos: [],
     price: "",
+    shipping: "",
+    contactInfo: "", 
   });
 
   const [imageAdd, setImageAdd] = useState([{ imgURL: "" }]);
