@@ -20,8 +20,8 @@ function Home(props) {
         <Link to={`products/${product._id}`}>
           {" "}
           <div>{product.name}</div>
+          <img src={product.photos[0].imgURL} alt={product.name} />
         </Link>
-        <img src={product.photos[0].imgURL} alt={product.name} />
       </div>
     ) : null
   );
@@ -35,11 +35,15 @@ function Home(props) {
         <div className="design-resources">
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://www.apartmenttherapy.com/white-walls-and-plants-trend-36885767"
           >
             What is it about white walls and plants that we can't quit?
           </a>
-          <a href="https://www.cocokelley.com/2021/02/try-the-trend-checkerboard/">
+          <a
+            rel="noreferrer"
+            href="https://www.cocokelley.com/2021/02/try-the-trend-checkerboard/"
+          >
             Try the checkerboard trend
           </a>
         </div>
