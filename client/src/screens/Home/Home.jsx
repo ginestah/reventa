@@ -31,7 +31,6 @@ function Home(props) {
         {props.user ? (
           <div className="link-welcome">Welcome Home {props.user.username}</div>
         ) : null}
-
         <div className="recently-added">{PRODUCTS}</div>
         <div className="design-resources">
           <a
