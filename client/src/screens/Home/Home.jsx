@@ -20,8 +20,8 @@ function Home(props) {
         <Link to={`products/${product._id}`}>
           {" "}
           <div>{product.name}</div>
+          <img src={product.photos[0].imgURL} alt={product.name} />
         </Link>
-        <img src={product.photos[0].imgURL} alt={product.name} />
       </div>
     ) : null
   );
