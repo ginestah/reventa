@@ -63,9 +63,42 @@ const verify = async (req, res) => {
     res.status(401).send("Not Authorized");
   }
 };
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find().populate("products");
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+const getUser = async (req, res) => {
+  try {
+    const users = await User.findById(req.params.id).populate("products");
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+const usersProducts = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const product = new Product(req.body);
+    product.userId = user;
+    await product.save();
+    user.products.push(product);
+    await user.save();
+    res.status(201).json(product);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
 
 module.exports = {
   signUp,
   signIn,
   verify,
+  getUsers,
+  getUser,
+  usersProducts,
 };

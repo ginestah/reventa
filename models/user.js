@@ -6,6 +6,8 @@ const User = new Schema(
     username: { type: String, required: true },
     email: { type: String, required: true },
     password_digest: { type: String, required: true },
+    products: [{ type: Schema.Types.ObjectId, ref: "products" }],
+    wishlist: [{ type: Schema.Types.ObjectId }],
   },
   { timestamps: true }
 );
