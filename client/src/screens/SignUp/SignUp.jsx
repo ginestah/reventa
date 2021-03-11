@@ -1,5 +1,4 @@
 import React from "react";
-import "./SignUp.css";
 import { signUp, signIn } from "../../services/users";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";

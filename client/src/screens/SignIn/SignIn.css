@@ -1,12 +1,11 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  height: 30vh;
-  min-width: 30vh;
+  height: 40vh;
+  min-width: 50vh;
   border: black 1px solid;
   font-size: 15px;
   font-weight: normal;
-  /* margin-top: -300px; */
 }
 
 .form-container h3 {
@@ -15,21 +14,16 @@
   font-family: 'Raleway', sans-serif;
 }
 
-.signin-username label {
+.form-container form {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+label {
   font-size: 15px;
   font-weight: normal;
-  padding-right: 15px;
 }
-
-.signin-password {
-  padding: 20px 0px;
-}
-
-.signin-password label {
-  padding: 20px 0px;
-  font-size: 15px;
-  font-weight: normal;
-  padding-right: 15px;
-}
-
-
