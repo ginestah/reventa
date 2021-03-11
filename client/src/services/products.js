@@ -53,3 +53,4 @@ export const getUser = async id => {
       throw error
   }
 }
+

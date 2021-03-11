@@ -13,10 +13,13 @@ const Shop = () => {
 
   useEffect(() => {
     const user = async () => {
-      const product = await getUser(id);
-      setCart([...product.wishlist]);
-      console.log(cart)
-      setIsLoaded(true);
+      const user = await getUser(id);
+      if (user.wishlist) {
+        setCart([...user.wishlist]);
+        console.log(cart)
+        setIsLoaded(true);
+      }
+
     };
     user();
   }, [id]);
@@ -26,19 +29,19 @@ const Shop = () => {
   }
 
   const removeFromCart = (product) => {
-   let newCart = cart.filter((cartItem) => cartItem.id !== product.id);
+    let newCart = cart.filter((cartItem) => cartItem.id !== product.id);
     setCart(newCart);
   };
- 
+
   const cartItems = cart.map((product) => (
     <div key={product._id}>
       {`${product.name}: $${product.price}`}
-      <input type="submit" value="remove"  onClick={() => removeFromCart(product._id)} />
+      <input type="submit" value="remove" onClick={() => removeFromCart(product._id)} />
     </div>
   ));
   return (
     <Layout>
-    <ProductDetails />
+
       <div>My WishList</div>
       <div>{cartItems}</div>
     </Layout>
