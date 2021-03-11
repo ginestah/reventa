@@ -14,9 +14,8 @@ const ProductCreate = (props) => {
     photos: [...imageAdd],
     price: "",
     shipping: "",
-    contactInfo: "", 
+    contactInfo: "",
   });
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -25,24 +24,24 @@ const ProductCreate = (props) => {
       [name]: value,
     });
   };
-  
+
   const handleInputChange = (event, index) => {
     const { name, value } = event.target;
     const image = [...imageAdd];
     image[index][name] = value;
     setImageAdd(image);
   };
-  
+
   const handleRemoveClick = (index) => {
     const image = [...imageAdd];
     image.splice(index, 1);
     setImageAdd(image);
   };
-  
+
   const handleAddClick = () => {
     setImageAdd([...imageAdd, { imgURL: "" }]);
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
