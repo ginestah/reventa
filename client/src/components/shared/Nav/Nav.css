@@ -33,9 +33,14 @@ nav a.active {
   text-decoration: underline;
 }
 
+nav a:hover {
+  color: #0077B6;
+}
+
 nav a.logo.active {
   text-decoration: none;
 }
+
 
 .links a {
   font-size: 18px;
