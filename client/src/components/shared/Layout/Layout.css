@@ -5,8 +5,11 @@
 }
 
 .layout-children {
-  flex: 2;
-  padding: 100px;
+  /* flex: 2;
+  padding: 100px; */
+  margin-top: 80px;
+  display: flex; 
+  flex-flow: column wrap; 
 }
 
 @media (max-width: 500px) {
