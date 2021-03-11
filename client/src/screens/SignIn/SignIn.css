@@ -1,0 +1,29 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  min-width: 50vh;
+  border: black 1px solid;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.form-container h3 {
+  font-size: 30px;
+  color: #03045e;
+  font-family: 'Raleway', sans-serif;
+}
+
+.form-container form {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+label {
+  font-size: 15px;
+  font-weight: normal;
+}

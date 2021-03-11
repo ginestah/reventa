@@ -3,6 +3,7 @@ import "./SignIn.css";
 import { signIn } from "../../services/users";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import Layout from "../../components/shared/Layout/Layout"
 
 const SignIn = (props) => {
   const history = useHistory();
@@ -58,30 +59,36 @@ const SignIn = (props) => {
   const { username, password } = form;
 
   return (
-    <div className="form-container">
-      <h3>Sign In</h3>
-      <form onSubmit={onSignIn}>
-        <label>Username</label>
-        <input
-          required
-          type="text"
-          name="username"
-          value={username}
-          placeholder="Enter Username"
-          onChange={handleChange}
-        />
-        <label>Password</label>
-        <input
-          required
-          type="password"
-          name="password"
-          value={password}
-          placeholder="Password"
-          onChange={handleChange}
-        />
-        {renderError()}
-      </form>
-    </div>
+    <Layout>
+      <div className="form-container">
+        <h3>Sign In</h3>
+        <form onSubmit={onSignIn}>
+          <div className="signin-username">
+          <label>Username</label>
+          <input
+            required
+            type="text"
+            name="username"
+            value={username}
+            placeholder="Enter Username"
+            onChange={handleChange}
+            />
+          </div>
+          <div className="signin-password">
+          <label>Password</label>
+          <input
+            required
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Password"
+            onChange={handleChange}
+            />
+            </div>
+          {renderError()}
+        </form>
+      </div>
+    </Layout>
   );
 };
 

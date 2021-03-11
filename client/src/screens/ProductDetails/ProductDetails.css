@@ -1,0 +1,17 @@
+.edit-button a:-webkit-any-link {
+  text-decoration: none; 
+  color: #CAF0F8;
+}
+
+.edit-button a:hover {
+  color:  #03045E;
+}
+
+.edit-button:hover {
+  color: #03045E;
+}
+
+
+.product-details button {
+  margin: 10px;
+}

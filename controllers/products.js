@@ -1,5 +1,6 @@
 const Product = require("../models/product");
 const db = require("../db/connection");
+const User = require("../models/user");
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
@@ -25,16 +26,21 @@ const getProduct = async (req, res) => {
   }
 };
 
-const createProduct = async (req, res) => {
-  try {
-    const product = await new Product(req.body);
-    await product.save();
-    res.status(201).json(product);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error.message });
-  }
-};
+// const createProduct = async (req, res) => {
+//   try {
+//     const user = await User.findOne({ email });
+//     const payload = { ...req.body, userId: user };
+//     console.log(req.body);
+//     console.log(payload);
+//     const product = new Product(payload);
+
+//     await product.save();
+//     res.status(201).json(product);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: error.message });
+//   }
+// };
 
 const updateProduct = async (req, res) => {
   const { id } = req.params;
@@ -68,7 +74,7 @@ const deleteProduct = async (req, res) => {
 };
 
 module.exports = {
-  createProduct,
+  // createProduct,
   getProducts,
   getProduct,
   updateProduct,

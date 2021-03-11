@@ -14,6 +14,7 @@ import WishList from "./screens/WishList/WishList"
 
 function App() {
   const [user, setUser] = useState(null);
+  const [notloaded, setNotLoaded] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,6 +22,11 @@ function App() {
       user ? setUser(user) : setUser(null);
     };
     fetchUser();
+  }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setNotLoaded(false);
+    }, 10);
   }, []);
 
   const clearUser = () => setUser(null);

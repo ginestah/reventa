@@ -1,15 +1,15 @@
 .layout {
-  height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
+  margin-top: 100px;
+  justify-content: center; 
 }
 
 .layout-children {
-  /* flex: 2;
-  padding: 100px; */
-  margin-top: 80px;
+  height: 100vh;
   display: flex; 
-  flex-flow: column wrap; 
+  flex-flow: column nowrap; 
+  margin: 0 auto; 
 }
 
 @media (max-width: 500px) {

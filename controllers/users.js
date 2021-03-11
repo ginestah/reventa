@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const db = require("../db/connection");
+const Product = require("../models/product");
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
@@ -23,10 +24,11 @@ const signUp = async (req, res) => {
     const payload = {
       username: user.username,
       email: user.email,
+      _id: user._id,
     };
 
     const token = jwt.sign(payload, TOKEN_KEY);
-    res.status(201).json({ token });
+    res.status(201).json({ token, payload });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -38,12 +40,13 @@ const signIn = async (req, res) => {
     const user = await User.findOne({ username: username });
     if (await bcrypt.compare(password, user.password_digest)) {
       const payload = {
+        _id: user._id,
         username: user.username,
         email: user.email,
       };
 
       const token = jwt.sign(payload, TOKEN_KEY);
-      res.status(201).json({ token });
+      res.status(201).json({ token, payload });
     } else {
       res.status(401).send("Invalid Credentials");
     }
@@ -79,6 +82,7 @@ const getUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 const usersProducts = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -94,6 +98,22 @@ const usersProducts = async (req, res) => {
   }
 };
 
+const createProduct = async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    const payload = { ...req.body, userId: user };
+    console.log(req.body);
+    console.log(payload);
+    const product = new Product(payload);
+
+    await product.save();
+    res.status(201).json(product);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   signUp,
   signIn,
@@ -101,4 +121,5 @@ module.exports = {
   getUsers,
   getUser,
   usersProducts,
+  createProduct,
 };

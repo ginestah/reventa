@@ -1,7 +1,28 @@
 .App {
   text-align: center;
+  height: 100%;
 }
 
 img {
   max-width: 50vw;
+}
+
+button {
+  color: #CAF0F8;
+  background-color: #03045e;
+  padding: 5px 10px;
+  font-size: 15px;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+}
+
+button a:visited {
+  text-decoration: none;
+  color: #03045e;
+}
+
+button:hover {
+  background-color:#90E0EF;
+  color: #03045e;
 }

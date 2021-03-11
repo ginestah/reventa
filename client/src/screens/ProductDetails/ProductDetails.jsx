@@ -4,6 +4,7 @@ import { getProduct, deleteProduct } from "../../services/products";
 import Layout from "../../components/shared/Layout/Layout";
 import { getUser } from "../../services/products";
 
+import "./ProductDetails.css"
 
 function ProductDetails(props) {
   const [product, setProduct] = useState(null);
@@ -17,8 +18,10 @@ function ProductDetails(props) {
     deleteProduct(id);
     setIsDeleted(true);
   };
+
+  
   if(props.user){
-    console.log(user._id)
+    console.log(props.user._id)
   } else {
   return null;
   }
@@ -37,20 +40,20 @@ function ProductDetails(props) {
   }, [id]);
 
   // console.log(product.userId)
-  useEffect(() => {
-    const users = async () => {
-      const user = await getUser(username);
-      console.log(user)
-      if (user.wishlist.length > 0) {
-        setWish([...wish, user.wishlist]);
-        setIsLoaded(true);
-      } else {
-        setWish([...wish])
-      }
+  // useEffect(() => {
+  //   const users = async () => {
+  //     const user = await getUser(username);
+  //     console.log(user)
+  //     if (user.wishlist.length > 0) {
+  //       setWish([...wish, user.wishlist]);
+  //       setIsLoaded(true);
+  //     } else {
+  //       setWish([...wish])
+  //     }
 
-    };
-    users();
-  }, [username]);
+  //   };
+  //   users();
+  // }, [username]);
 
 
   // function setToken(userToken) {
@@ -119,6 +122,7 @@ function ProductDetails(props) {
           <details open>{product.description}</details>
           {/* <input type="submit" value="Add to Wish List" onClick={props.user && props.user.wishlist.push(product)} /> */}
 
+          <details closed>{product.description}</details>
           <button className="edit-button">
             <Link to={`/products/${product._id}/edit`}>Edit</Link>
           </button>

@@ -6,16 +6,17 @@ import { getProduct, updateProduct } from "../../services/products";
 
 const ProductEdit = (props) => {
   const [num, setNum] = useState(0);
-  const [show, setIsShow] = useState(true);
-  const [isClicked, setIsClicked] = useState(false);
-  const [imgList, setImgList] = useState([{ imgURL: "" }]);
+  // const [show, setIsShow] = useState(true);
+  // const [isClicked, setIsClicked] = useState(false);
+  const [imageAdd, setImageAdd] = useState([""]);
   const [product, setProduct] = useState({
     name: "",
-    photos: [],
     description: "",
+    photos: [...imageAdd],
     price: "",
     shipping: "",
     contactInfo: "",
+    location: "",
   });
 
   const [isUpdated, setUpdated] = useState(false);
@@ -37,49 +38,59 @@ const ProductEdit = (props) => {
     });
   };
 
-  const handleRemoveClick = (index) => {
-    const image = [...imgList];
-    image.splice(index, 1);
-    setImgList(image);
-  };
+  // const handleRemoveClick = (index) => {
+  //   const image = [...imgList];
+  //   image.splice(index, 1);
+  //   setImgList(image);
+  // };
 
-  const handleAddClick = () => {
-    setImgList([...imgList, { imageURL: "" }]);
-  };
+  // const handleAddClick = () => {
+  //   setImgList([...imgList, { imageURL: "" }]);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // let { id } = props.match.params
     const updated = await updateProduct(id, product);
     setUpdated(updated);
   };
+  const deleteImage = (e) => {
+    product.photos.splice(e.target.value, 1);
+    setProduct({ ...product });
+  };
+  const imageJSX = product.photos.map((photo, index) => (
+    <div className="photo-container" key={index}>
+      {photo ? (
+        <>
+          <img className="preview-image" src={photo} alt={`product ${index}`} />
+          <button value={index} onClick={deleteImage} type="button">
+            Delete
+          </button>
+        </>
+      ) : null}
+    </div>
+  ));
 
   if (isUpdated) {
     return <Redirect to={`/products`} />;
   }
-  const increment = () => {
-    setNum(num + 1);
-    setIsClicked(true);
-    console.log(num);
-    if (num < 5) {
-      setIsShow(true);
-      console.log(show);
-    } else {
-      setIsShow(false);
-    }
-  };
+  // const increment = () => {
+  //   setNum(num + 1);
+  //   setIsClicked(true);
+  //   console.log(num);
+  //   if (num < 5) {
+  //     setIsShow(true);
+  //     console.log(show);
+  //   } else {
+  //     setIsShow(false);
+  //   }
+  // };
 
-  const addPhoto = () => {
-    return (
-      <input
-        className="input-photo"
-        placeholder="Photo"
-        value={product.photos.imgURL}
-        name="imgURL"
-        required
-        onChange={handleChange}
-      />
-    );
+  const handleImage = (event) => {
+    setProduct({
+      ...product,
+      ["photos"]: [...product.photos, imageAdd],
+    });
+    setImageAdd("");
   };
 
   return (
@@ -106,7 +117,7 @@ const ProductEdit = (props) => {
             required
             onChange={handleChange}
           />
-          <label htmlFor="imgURL">Photos of Product</label>
+          <label htmlFor="location">Location:</label>
 
           {imgList.map((x, i) => {
             return (
@@ -166,6 +177,7 @@ const ProductEdit = (props) => {
             Save
           </button>
         </form>
+        <div className="preview-images">{imageJSX}</div>
       </div>
     </Layout>
   );

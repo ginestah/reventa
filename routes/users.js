@@ -9,4 +9,6 @@ router.get("/verify", controllers.verify);
 router.get("/users", controllers.getUsers);
 router.get("/users/:id", controllers.getUser);
 router.put("/users/:userId/products", controllers.usersProducts);
+router.post("/users/:email/products", controllers.createProduct);
+
 module.exports = router;
