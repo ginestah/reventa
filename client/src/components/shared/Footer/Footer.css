@@ -1,7 +1,7 @@
 footer {
-  /* position: block;  */
-  /* bottom: 0; 
-  left: 0; */
+  /* position: fixed;  */
+  /* bottom: 0;  */
+  /* left: 0; */
   width: 100%; 
   border-top: solid 1px black;
   background-color: #CAF0F8;
@@ -10,7 +10,6 @@ footer {
   align-items: center; 
   justify-content: space-around;
   color: #03045E;
-
 }
 
 footer a:visited {

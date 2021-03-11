@@ -7,7 +7,7 @@ function Nav({ user }) {
       <div className="nav">
       <NavLink to="/" className="logo">
         {" "}
-        REVENTA
+        R E V E N T A
       </NavLink>
       <div className="links">
         <NavLink className="all-link" to="/products">All Listings</NavLink>
