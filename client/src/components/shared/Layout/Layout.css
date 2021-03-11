@@ -3,15 +3,12 @@
   flex-flow: column nowrap;
   margin-top: 100px;
   justify-content: center; 
-
-  height: 100%;
 }
 
 .layout-children {
   height: 100vh;
   display: flex; 
   flex-flow: column nowrap; 
-  justify-content: center; 
   margin: 0 auto; 
 }
 
