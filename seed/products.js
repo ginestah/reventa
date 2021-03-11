@@ -26,9 +26,7 @@ const main = async () => {
       name: "1980's Vintage Post Modern Chair",
       photos: [
         "https://chairish-prod.freetls.fastly.net/image/product/sized/17b86431-1c71-4766-8b73-ce841db543aa/1980s-vintage-post-modern-curvy-accent-chair-0587?aspect=fit&width=1600&height=1600",
-        ,
         "https://chairish-prod.freetls.fastly.net/image/product/master/c3fbbc29-4cd6-4c40-baa5-4685fccdf63e/1980s-vintage-post-modern-curvy-accent-chair-8689",
-        ,
         "https://chairish-prod.freetls.fastly.net/image/product/master/8100bbbc-c33e-4584-bcf0-2c5e87081062/1980s-vintage-post-modern-curvy-accent-chair-6092",
       ],
       description: "super comfortable chairs",
