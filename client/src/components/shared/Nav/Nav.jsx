@@ -1,34 +1,37 @@
 import { NavLink } from "react-router-dom";
+import "./Nav.css"
 
 function Nav({ user }) {
   return (
-    <nav className="nav">
+    <nav>
+      <div className="nav">
       <NavLink to="/" className="logo">
         {" "}
-        Reventa
+        REVENTA
       </NavLink>
       <div className="links">
-        <NavLink to="/products">All Listings</NavLink>
+        <NavLink className="all-link" to="/products">All Listings</NavLink>
         {user ? (
           <>
-            <NavLink className="link" to="/add-product">
+            <NavLink className="add-product-link" to="/add-product">
               Add Product
             </NavLink>
-            <NavLink className="link" to="/sign-out">
+            <NavLink className="sign-out-link" to="/sign-out">
               Sign Out
             </NavLink>
           </>
         ) : (
           <>
-            <NavLink className="link" to="/sign-up">
+            <NavLink className="sign-up-link" to="/sign-up">
               Sign Up
             </NavLink>
-            <NavLink className="link" to="/sign-in">
+            <NavLink className="sign-in-link" to="/sign-in">
               Sign In
             </NavLink>
           </>
         )}
-      </div>
+        </div>
+        </div>
     </nav>
   );
 }
