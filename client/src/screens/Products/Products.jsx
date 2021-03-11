@@ -62,13 +62,7 @@ const Products = (props) => {
       _id={product._id}
       key={index}
       name={product.name.length > 25 && product.name.slice(0, 25)}
-      photo={
-        product.photos
-          ? product.photos[0]
-            ? product.photos[0].imgURL
-            : null
-          : null
-      }
+      photos={product.photos ? product.photos : null}
       price={product.price}
     />
   ));

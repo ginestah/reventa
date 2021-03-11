@@ -27,7 +27,7 @@ const Slider = (props) => {
             />
             {index === current && (
               <>
-                <img className="image" src={product.photos[0].imgURL} alt="" />
+                <img className="image" src={product.photos[0]} alt="" />
                 <Link to={`/products/${product._id}`}>
                   <p>View Listing</p>
                 </Link>
