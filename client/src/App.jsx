@@ -13,6 +13,7 @@ import SignOut from "./screens/SignOut/SignOut";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [notloaded, setNotLoaded] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,37 +22,46 @@ function App() {
     };
     fetchUser();
   }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setNotLoaded(false);
+    }, 10);
+  }, []);
 
   const clearUser = () => setUser(null);
 
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <Home user={user} />
-        </Route>
-        <Route path="/sign-up">
-          <SignUp setUser={setUser} />
-        </Route>
-        <Route path="/sign-in">
-          <SignIn setUser={setUser} />
-        </Route>
-        <Route path="/sign-out">
-          <SignOut setUser={setUser} clearUser={clearUser} />
-        </Route>
-        <Route exact path="/products">
-          <Products user={user} />
-        </Route>
-        <Route path="/add-product">
-          {user ? <ProductCreate user={user} /> : <Redirect to="/sign-up" />}
-        </Route>
-        <Route exact path="/products/:id/edit">
-          {user ? <ProductEdit user={user} /> : <Redirect to="/" />}
-        </Route>
-        <Route exact path="/products/:id">
-          <ProductDetails user={user} />
-        </Route>
-      </Switch>
+      {notloaded ? (
+        <div></div>
+      ) : (
+        <Switch>
+          <Route exact path="/">
+            <Home user={user} />
+          </Route>
+          <Route path="/sign-up">
+            <SignUp setUser={setUser} />
+          </Route>
+          <Route path="/sign-in">
+            <SignIn setUser={setUser} />
+          </Route>
+          <Route path="/sign-out">
+            <SignOut setUser={setUser} clearUser={clearUser} />
+          </Route>
+          <Route exact path="/products">
+            <Products user={user} />
+          </Route>
+          <Route path="/add-product">
+            {user ? <ProductCreate user={user} /> : <Redirect to="/sign-up" />}
+          </Route>
+          <Route exact path="/products/:id/edit">
+            {user ? <ProductEdit user={user} /> : <Redirect to="/" />}
+          </Route>
+          <Route exact path="/products/:id">
+            <ProductDetails user={user} />
+          </Route>
+        </Switch>
+      )}
     </div>
   );
 }
