@@ -76,9 +76,9 @@ const ProductCreate = (props) => {
               <input
                 required
                 className="input-image-link"
-                name="imgURL"
+                name="photos"
                 placeholder="Image Link"
-                value={product.photos.imgURL}
+                value={product.photos}
                 onChange={(event) => handleInputChange(event, i)}
               />
               <div className="button-box">

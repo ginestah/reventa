@@ -34,13 +34,7 @@ function ProductDetails(props) {
           <img
             alt={product.name}
             className="product-detail-image"
-            src={
-              product.photos
-                ? product.photos[0]
-                  ? product.photos[0].imgURL
-                  : null
-                : null
-            }
+            src={product.photos ? product.photos[0] : null}
           />
           <p>${product.price}</p>
           {props.user ? (
