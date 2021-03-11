@@ -12,7 +12,7 @@ const ProductCreate = (props) => {
     photos: [],
     price: "",
     shipping: "",
-    contactInfo: "", 
+    contactInfo: "",
   });
 
   const [imageAdd, setImageAdd] = useState([{ imgURL: "" }]);
@@ -26,24 +26,24 @@ const ProductCreate = (props) => {
       [name]: value,
     });
   };
-  
+
   const handleInputChange = (event, index) => {
     const { name, value } = event.target;
     const image = [...imageAdd];
     image[index][name] = value;
     setImageAdd(image);
   };
-  
+
   const handleRemoveClick = (index) => {
     const image = [...imageAdd];
     image.splice(index, 1);
     setImageAdd(image);
   };
-  
+
   const handleAddClick = () => {
-    setImageAdd([...imageAdd, { imageURL: "" }]);
+    setImageAdd([...imageAdd, { imgURL: "" }]);
   };
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
