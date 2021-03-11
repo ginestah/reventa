@@ -1,0 +1,43 @@
+nav {
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  border-bottom: solid 1px #00B4D8;
+  background-color: white;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.nav a {
+  font-size: max(1vw, 18px);
+  text-align: left;
+  text-decoration: none;
+  color: #03045E;
+}
+
+.nav a.logo{ 
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: max(3vw, 30px);
+}
+
+nav a.active {
+  color: #03045E;
+  /* font-weight: bold; */
+  text-decoration: underline;
+}
+
+nav a.logo.active {
+  text-decoration: none;
+}
+
+.links a {
+  font-size: 18px;
+  margin-left: 20px; 
+}
