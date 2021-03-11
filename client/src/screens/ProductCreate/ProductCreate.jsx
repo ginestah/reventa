@@ -6,18 +6,17 @@ import { createProduct } from "../../services/products";
 import { useState } from "react";
 
 const ProductCreate = (props) => {
+  const [imageAdd, setImageAdd] = useState([{ imgURL: "" }]);
+  const [isCreated, setCreated] = useState(false);
   const [product, setProduct] = useState({
     name: "",
     description: "",
-    photos: [],
+    photos: [...imageAdd],
     price: "",
     shipping: "",
     contactInfo: "", 
   });
 
-  const [imageAdd, setImageAdd] = useState([{ imgURL: "" }]);
-
-  const [isCreated, setCreated] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -41,7 +40,7 @@ const ProductCreate = (props) => {
   };
   
   const handleAddClick = () => {
-    setImageAdd([...imageAdd, { imageURL: "" }]);
+    setImageAdd([...imageAdd, { imgURL: "" }]);
   };
   
   const handleSubmit = async (event) => {
