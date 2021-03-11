@@ -14,6 +14,10 @@ nav {
   margin: 20px;
 }
 
+.logo {
+  display: block; 
+}
+
 .nav a {
   font-size: max(1vw, 18px);
   text-align: left;
