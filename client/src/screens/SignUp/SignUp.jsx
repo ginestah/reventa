@@ -63,6 +63,8 @@ const SignUp = (props) => {
       <div className="form-container">
         <h3>Sign Up</h3>
         <form onSubmit={onSignUp}>
+          <div className="signup-username">
+
           <label>Username</label>
           <input
             required
@@ -71,7 +73,10 @@ const SignUp = (props) => {
             value={username}
             placeholder="Enter Username"
             onChange={handleChange}
-          />
+            />
+            </div>
+          <div className="signup-email">
+
           <label>Email Address</label>
           <input
             required
@@ -80,7 +85,10 @@ const SignUp = (props) => {
             value={email}
             placeholder="Enter email"
             onChange={handleChange}
-          />
+            />
+            </div>
+          <div className="signup-password">
+
           <label>Password</label>
           <input
             required
@@ -89,7 +97,10 @@ const SignUp = (props) => {
             value={password}
             placeholder="Password"
             onChange={handleChange}
-          />
+            />
+            </div>
+          <div className="signup-confirm">
+
           <label>Confirm Password</label>
           <input
             required
@@ -98,7 +109,8 @@ const SignUp = (props) => {
             value={passwordConfirmation}
             placeholder="Confirm Password"
             onChange={handleChange}
-          />
+            />
+            </div>
           {renderError()}
         </form>
       </div>
