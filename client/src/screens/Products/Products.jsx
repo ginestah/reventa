@@ -55,22 +55,27 @@ const Products = (props) => {
     setQueriedProducts(newQueriesProducts);
   };
 
+
+
   const handleSubmit = (e) => e.preventDefault();
 
   const productsJSX = queriedProducts.map((product, index) => (
-    <Product
-      _id={product._id}
-      key={index}
-      name={product.name.length > 25 && product.name.slice(0, 25)}
-      photo={
-        product.photos
-          ? product.photos[0]
-            ? product.photos[0].imgURL
+    <div>
+      <Product
+        _id={product._id}
+        key={index}
+        name={product.name.length > 25 && product.name.slice(0, 25)}
+        photo={
+          product.photos
+            ? product.photos[0]
+              ? product.photos[0].imgURL
+              : null
             : null
-          : null
-      }
-      price={product.price}
-    />
+        }
+        price={product.price}
+      />
+    </div>
+
   ));
 
   return (

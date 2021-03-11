@@ -119,24 +119,7 @@ const ProductEdit = (props) => {
                   required
                   onChange={handleChange}
                 />
-                {/* <input
-            type="button"
-            value="addAnotherPic"
-            onClick={increment}
-            disabled={!show}
-            placeholder="add another pic"
-          />
-          {isClicked && (
-            <input
-              className="input-photo"
-              placeholder="Photo"
-              value={product.photos.imgURL}
-              name="imgURL"
-              required
-              onChange={handleChange}
-            />
-          )} */}
-
+              
                 <div className="button-box">
                   {imgList.length !== 1 && (
                     <button onClick={() => handleRemoveClick(i)}>Remove</button>
