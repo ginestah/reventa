@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getProduct, deleteProduct } from "../../services/products";
 import Layout from "../../components/shared/Layout/Layout";
+import "./ProductDetails.css"
 
 function ProductDetails(props) {
   const [product, setProduct] = useState(null);
@@ -53,7 +54,7 @@ function ProductDetails(props) {
           ) : (
             <p>You must login to see sellers contact info</p>
           )}
-          <details open>{product.description}</details>
+          <details closed>{product.description}</details>
           <button className="edit-button">
             <Link to={`/products/${product._id}/edit`}>Edit</Link>
           </button>
