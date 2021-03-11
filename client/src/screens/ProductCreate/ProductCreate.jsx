@@ -6,7 +6,7 @@ import { createProduct } from "../../services/products";
 import { useState } from "react";
 
 const ProductCreate = (props) => {
-  const [imageAdd, setImageAdd] = useState([{ imgURL: "" }]);
+  const [imageAdd, setImageAdd] = useState([""]);
   const [isCreated, setCreated] = useState(false);
   const [product, setProduct] = useState({
     name: "",
@@ -15,6 +15,7 @@ const ProductCreate = (props) => {
     price: "",
     shipping: "",
     contactInfo: "",
+    location: "",
   });
 
   const handleChange = (event) => {
@@ -24,28 +25,44 @@ const ProductCreate = (props) => {
       [name]: value,
     });
   };
-
-  const handleInputChange = (event, index) => {
-    const { name, value } = event.target;
-    const image = [...imageAdd];
-    image[index][name] = value;
-    setImageAdd(image);
+  const handleImage = (event) => {
+    setProduct({
+      ...product,
+      ["photos"]: [...product.photos, imageAdd],
+    });
+    setImageAdd("");
   };
 
-  const handleRemoveClick = (index) => {
-    const image = [...imageAdd];
-    image.splice(index, 1);
-    setImageAdd(image);
+  const deleteImage = (e) => {
+    product.photos.splice(e.target.value, 1);
+    setProduct({ ...product });
   };
+  const imageJSX = product.photos.map((photo, index) => (
+    <div className="photo-container" key={index}>
+      {photo ? (
+        <>
+          <img className="preview-image" src={photo} alt={`product ${index}`} />
+          <button value={index} onClick={deleteImage} type="button">
+            Delete
+          </button>
+        </>
+      ) : null}
+    </div>
+  ));
 
-  const handleAddClick = () => {
-    setImageAdd([...imageAdd, { imgURL: "" }]);
-  };
+  // const handleRemoveClick = (index) => {
+  //   const image = [...imageAdd];
+  //   image.splice(index, 1);
+  //   setImageAdd(image);
+  // };
+
+  // const handleAddClick = () => {
+  //   setImageAdd([...imageAdd, imageAdd[0]]);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const created = await createProduct(product);
+    const created = await createProduct(product, props.user.email);
     setCreated({ created });
   };
 
@@ -68,8 +85,29 @@ const ProductCreate = (props) => {
           onChange={handleChange}
         />
 
+        {product.photos.length > 4 ? null : (
+          <>
+            <input
+              type="url"
+              name="photos"
+              id="images"
+              value={imageAdd}
+              onChange={(e) => setImageAdd(e.target.value)}
+            />
+            <button
+              className="photo-button"
+              type="button"
+              onClick={handleImage}
+            >
+              Add Image
+            </button>
+          </>
+        )}
+
+        <div className="preview-images">{imageJSX}</div>
+
         {/* https://www.cluemediator.com/add-or-remove-input-fields-dynamically-with-reactjs */}
-        <label>Product Photos:</label>
+        {/* <label>Product Photos:</label>
         {imageAdd.map((x, i) => {
           return (
             <div>
@@ -79,7 +117,7 @@ const ProductCreate = (props) => {
                 name="photos"
                 placeholder="Image Link"
                 value={product.photos}
-                onChange={(event) => handleInputChange(event, i)}
+                onChange={handleImage}
               />
               <div className="button-box">
                 {imageAdd.length !== 1 && (
@@ -91,7 +129,7 @@ const ProductCreate = (props) => {
               </div>
             </div>
           );
-        })}
+        })} */}
 
         <label>Product Description:</label>
         <textarea
@@ -109,6 +147,15 @@ const ProductCreate = (props) => {
           placeholder="Price"
           value={product.price}
           name="price"
+          required
+          onChange={handleChange}
+        />
+        <label>Location: </label>
+        <input
+          className="input-location"
+          placeholder="Location"
+          value={product.location}
+          name="location"
           required
           onChange={handleChange}
         />
