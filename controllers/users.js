@@ -37,7 +37,7 @@ const signUp = async (req, res) => {
 const signIn = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const user = await User.findOne({ username: username });
+    const user = await await User.findOne({ username: username });
     if (await bcrypt.compare(password, user.password_digest)) {
       const payload = {
         _id: user._id,
@@ -74,6 +74,7 @@ const getUsers = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 const getUser = async (req, res) => {
   try {
     const users = await User.findById(req.params.id).populate("products");
