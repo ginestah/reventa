@@ -2,21 +2,17 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getWishlist, } from "../../services/users";
 import {deleteWish} from "../../services/users"
-import { Link, useParams } from "react-router-dom";
-import {  Redirect } from "react-router-dom";
+import {useParams } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import {Wishlist} from "../../components/WishList/Wishlist"
 
 
 const Shop = (props) => {
   const [cart, setCart] = useState([]);
   const { id } = useParams()
   const [isLoaded, setIsLoaded] = useState(false);
-  const[isDeleted,setIsDeleted]=useState(false)
-
-  // const history=useHistory()
-
-  // console.log(id)
-
-// console.log(props.user._id)
+  const [isDeleted, setIsDeleted] = useState(false)
+  
   useEffect(() => {
     const fetchWishlist = async () => {
       const wishlist = await getWishlist(id);
@@ -39,19 +35,18 @@ const Shop = (props) => {
   }
 
   const handleRemoveFromWishList = async (e) => {
-    // console.log(e.target.value)
-// console.log(`product,${e.target.value} `)
     const response = await deleteWish(id,e.target.name)
-    // console.log(response)
 setIsDeleted(!isDeleted)
   };
 
-
+ 
+  
   const cartItems = cart.map((product) => (
-    <div key={product._id}>
-      {`${product.name}: $${product.price}`}
-      <input type="submit" value="remove" name={product._id} onClick={(e) => handleRemoveFromWishList(e)} />
-    </div>
+    <Wishlist key={product._id} name={product.name} photos={product.photos[0]}
+      price={product.price} onClick={(e)=>handleRemoveFromWishList(e)}
+      index={product._id}
+    />
+
   ));
   return (
     <Layout user={props.user}>
