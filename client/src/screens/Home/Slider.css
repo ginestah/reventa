@@ -1,37 +1,35 @@
 .slider {
-  position: relative;
-  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .image {
-  width: 500px;
-  height: 500px;
+  max-height: 30vw;
   border-radius: 10px;
 }
 
 .right-arrow {
   position: absolute;
-  top: 50%;
-  right: 32px;
-  font-size: 3rem;
-  color: #000;
-  z-index: 10;
+  top: 45%;
+  right: -40px;
+  font-size: 2rem;
+  z-index: 0;
   cursor: pointer;
   user-select: none;
+  color: #00B4D8;
 }
 
 .left-arrow {
   position: absolute;
-  top: 50%;
-  left: 32px;
-  font-size: 3rem;
-  color: #000;
-  z-index: 10;
+  top: 45%;
+  left: -40px;
+  font-size: 2rem;
+  z-index: 0;
   cursor: pointer;
   user-select: none;
+  color: #00B4D8;
+
 }
 
 .slide {
@@ -43,4 +41,23 @@
   opacity: 1;
   transition-duration: 1s;
   transform: scale(1.08);
+}
+
+p {
+  margin: 0; 
+}
+
+.slide a {
+  color: #03045e;
+  text-decoration: none;
+}
+
+.slide a:visited {
+  color: #03045e;
+  text-decoration: none; 
+}
+
+.slide a:hover {
+  color: #00B4D8;
+  font-weight: bold;
 }
