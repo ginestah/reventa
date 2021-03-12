@@ -5,7 +5,8 @@ import "./Slider.css";
 
 const Slider = (props) => {
   const [current, setCurrent] = useState(0);
-  const length = props.products.length;
+  const slideArray = props.products.slice(0, 3);
+  const length = slideArray.length;
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
@@ -17,9 +18,12 @@ const Slider = (props) => {
   }
   return (
     <section className="slider">
-      {props.products.map((product, index) => {
+      {slideArray.map((product, index) => {
         return (
-          <div className={index === current ? "slide active" : "slide"}>
+          <div
+            key={index}
+            className={index === current ? "slide active" : "slide"}
+          >
             <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
             <FaArrowAltCircleRight
               className="right-arrow"

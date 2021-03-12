@@ -5,14 +5,11 @@ import Layout from "../../components/shared/Layout/Layout";
 import { getProduct, updateProduct } from "../../services/products";
 
 const ProductEdit = (props) => {
-  const [num, setNum] = useState(0);
-  // const [show, setIsShow] = useState(true);
-  // const [isClicked, setIsClicked] = useState(false);
   const [imageAdd, setImageAdd] = useState([""]);
   const [product, setProduct] = useState({
     name: "",
     description: "",
-    photos: [...imageAdd],
+    photos: [],
     price: "",
     shipping: "",
     contactInfo: "",
@@ -37,16 +34,6 @@ const ProductEdit = (props) => {
       [name]: value,
     });
   };
-
-  // const handleRemoveClick = (index) => {
-  //   const image = [...imgList];
-  //   image.splice(index, 1);
-  //   setImgList(image);
-  // };
-
-  // const handleAddClick = () => {
-  //   setImgList([...imgList, { imageURL: "" }]);
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,17 +60,6 @@ const ProductEdit = (props) => {
   if (isUpdated) {
     return <Redirect to={`/products`} />;
   }
-  // const increment = () => {
-  //   setNum(num + 1);
-  //   setIsClicked(true);
-  //   console.log(num);
-  //   if (num < 5) {
-  //     setIsShow(true);
-  //     console.log(show);
-  //   } else {
-  //     setIsShow(false);
-  //   }
-  // };
 
   const handleImage = (event) => {
     setProduct({
@@ -146,23 +122,6 @@ const ProductEdit = (props) => {
               </button>
             </>
           )}
-          {/* <input
-            type="button"
-            value="addAnotherPic"
-            onClick={increment}
-            disabled={!show}
-            placeholder="add another pic"
-          />
-          {isClicked && (
-            <input
-              className="input-photo"
-              placeholder="Photo"
-              value={product.photos.imgURL}
-              name="imgURL"
-              required
-              onChange={handleChange}
-            />
-          )} */}
 
           <label htmlFor="contactInfo">Your Contact Info:</label>
 
