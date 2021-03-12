@@ -10,6 +10,7 @@ import { verifyUser } from "./services/users";
 import SignUp from "./screens/SignUp/SignUp";
 import SignIn from "./screens/SignIn/SignIn";
 import SignOut from "./screens/SignOut/SignOut";
+import UsersListings from "./screens/UsersListings/UsersListings";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -59,6 +60,9 @@ function App() {
           </Route>
           <Route exact path="/products/:id">
             <ProductDetails user={user} />
+          </Route>
+          <Route exact path="/my-listings">
+            <UsersListings user={user} />
           </Route>
         </Switch>
       )}
