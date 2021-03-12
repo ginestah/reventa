@@ -95,6 +95,29 @@ const ProductEdit = (props) => {
           />
           <label htmlFor="location">Location:</label>
 
+          {/* {imgList.map((x, i) => {
+            return (
+              <div>
+                <input
+                  className="input-photo"
+                  placeholder="Photo"
+                  value={product.photos.imgURL}
+                  name="imgURL"
+                  required
+                  onChange={handleChange}
+                />
+              
+                <div className="button-box">
+                  {imgList.length !== 1 && (
+                    <button onClick={() => handleRemoveClick(i)}>Remove</button>
+                  )}
+                  {imgList.length < 5 && imgList.length - 1 === i && (
+                    <button onClick={handleAddClick}>Add</button>
+                  )}
+                </div>
+              </div>
+            );
+          })} */}
           <input
             className="input-price"
             placeholder="Price"
