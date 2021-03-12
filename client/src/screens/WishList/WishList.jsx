@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
-import { getWishlist,deleteWish } from "../../services/users";
+import { getWishlist, } from "../../services/users";
+import {deleteWish} from "../../services/users"
 import { Link, useParams } from "react-router-dom";
 
 
 const Shop = (props) => {
   const [cart, setCart] = useState([]);
   const { id } = useParams()
-  // const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(id)
+  // console.log(id)
 
 // console.log(props.user._id)
   useEffect(() => {
@@ -19,26 +20,29 @@ const Shop = (props) => {
       if (wishlist) {
         setCart([...wishlist]);
         console.log(cart)
-        // setIsLoaded(true);
+        setIsLoaded(true);
       }
 
     };
     fetchWishlist();
   }, [id]);
 
-  // if (!isLoaded) {
-  //   return <div>Loading...</div>;
-  // }
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
 
-  const removeFromCart = (product) => {
-    let newCart = cart.filter((cartItem) => cartItem.id !== product.id);
-    setCart(newCart);
+  const handleRemoveFromWishList = async (product) => {
+console.log(product._id)
+    const response = await deleteWish(id,product._id)
+    console.log(response)
+
+
   };
 
   const cartItems = cart.map((product) => (
     <div key={product._id}>
       {`${product.name}: $${product.price}`}
-      <input type="submit" value="remove" onClick={() => removeFromCart(product._id)} />
+      <input type="submit" value="remove" onClick={(product) => handleRemoveFromWishList(product)} />
     </div>
   ));
   return (

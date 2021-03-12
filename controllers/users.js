@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const db = require("../db/connection");
 const Product = require("../models/product");
+const product = require("../models/product");
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
@@ -82,6 +83,14 @@ const getUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const getWishlist = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).populate("wishlist");
+    res.json(user.wishlist);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 const usersProducts = async (req, res) => {
   try {
@@ -114,6 +123,61 @@ const createProduct = async (req, res) => {
   }
 };
 
+const addToWishList = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).populate("wishlist")
+    const product = await Product.findById(req.params.productId)
+    console.log(product._id)
+    for (let i = 0; i < user.wishlist.length; i++){
+       console.log(user.wishlist[i]._id)
+      if (user.wishlist[i]._id === (product._id)) {
+        console.log(true)
+        user.wishlist.push(product)
+         await user.save()
+      } else {
+        console.log("already added")
+    }
+    }
+     
+    
+    
+
+    res.status(201).json(user.wishlist)
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message })
+  }
+}
+
+const removeFromWishList = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).populate("wishlist")
+    console.log(user.wishlist)
+    const indexofWish=user.wishlist.findIndex((item)=>item.id===req.params.id)
+    console.log(product)
+  
+        user.wishlist.splice(indexofWish,0,product)
+    await user.save()
+    res.status(201).json(user.wishlist)
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message })
+  }
+}
+const deleteWish = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await User.wishlist.findByIdAndDelete(User.wishlist.productId);
+    if (deleted) {
+      return res.status(200).send("Product deleted");
+    }
+    throw new Error("Product not found");
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 module.exports = {
   signUp,
   signIn,
@@ -122,4 +186,6 @@ module.exports = {
   getUser,
   usersProducts,
   createProduct,
+  addToWishList,
+  getWishlist
 };

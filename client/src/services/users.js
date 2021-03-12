@@ -60,3 +60,13 @@ export const getWishlist = async (id) => {
     throw error;
   }
 };
+
+
+export const deleteWish = async (userId,productId) => {
+  try {
+    const response = await api.delete(`/users/${userId}/products/${productId}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

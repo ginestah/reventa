@@ -11,17 +11,24 @@ function ProductDetails(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const { id } = useParams();
   const [isDeleted, setIsDeleted] = useState(false);
- 
+  // const { username } = useParams();
+
+
+// console.log(props.user.wishlist)
 
   const handleClick = () => {
     deleteProduct(id);
     setIsDeleted(true);
   };
 
+  
+
+  
+  
   useEffect(() => {
     const decorate = async () => {
       const product = await getProduct(id);
-
+   
       setProduct(product);
       setIsLoaded(true);
 
@@ -30,23 +37,14 @@ function ProductDetails(props) {
   }, [id]);
 
 
-  // if(props.user){
-  //   console.log(props.user._id)
-  // } else {
-  // return null;
-  // }
-
-
-
-
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
   const handleAddToWishList = async () => {
 
-
-    const response = await addToWishList(props.user._id, id)
+    const response = await addToWishList(props.user._id,id)
     console.log(response)
+
 
   };
   return (
@@ -73,9 +71,8 @@ function ProductDetails(props) {
 
           {props.user ? (
             <div>
-              <p>Contact Info: {product.contactInfo}</p>
-
-              <input type="submit" value="Add to Wish List" onClick={handleAddToWishList} />
+                        <input type="submit" value="Add to Wish List" onClick={ handleAddToWishList}/>
+                        <p>Contact Info: {product.contactInfo}</p>
 
             </div>
           ) : (
