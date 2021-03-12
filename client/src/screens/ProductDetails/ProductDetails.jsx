@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getProduct, deleteProduct } from "../../services/products";
 import Layout from "../../components/shared/Layout/Layout";
 import "./ProductDetails.css";
+import DetailSlider from "../../components/DetailSlider/DetailSlider";
 
 function ProductDetails(props) {
   const [product, setProduct] = useState(null);
@@ -34,12 +35,7 @@ function ProductDetails(props) {
         <main className="product-details">
           <h3>{product.name}</h3>
           <div className="details2">
-            <img
-              alt={product.name}
-              className="product-detail-image"
-              src={product.photos ? product.photos[0] : null}
-            />
-
+            <DetailSlider photos={product.photos} />
             <div className="details3">
               <div className="details4">
                 <p>Price: ${product.price}</p>
