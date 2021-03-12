@@ -6,11 +6,7 @@ const Product = (props) => {
   return (
     <>
       <Link className="product" to={`/products/${props._id}`}>
-        <img
-          className="product-image"
-          src={props.photos[0]}
-          alt="furniture listing"
-        />
+        <img className="product-image" src={props.photos[0]} alt={props.name} />
         <div className="price">{`$${props.price}`}</div>
         <div className="product-name">{props.name}</div>
       </Link>
