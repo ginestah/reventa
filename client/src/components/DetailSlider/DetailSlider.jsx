@@ -24,11 +24,20 @@ const DetailSlider = (props) => {
             key={index}
             className={index === current ? "slide active" : "slide"}
           >
-            <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
-            <FaArrowAltCircleRight
-              className="right-arrow"
-              onClick={nextSlide}
-            />
+            {length === 1 ? null : (
+              <>
+                {" "}
+                <FaArrowAltCircleLeft
+                  className="left-arrow"
+                  onClick={prevSlide}
+                />
+                <FaArrowAltCircleRight
+                  className="right-arrow"
+                  onClick={nextSlide}
+                />
+              </>
+            )}
+
             {index === current && <img className="image" src={photo} alt="" />}
           </div>
         );
