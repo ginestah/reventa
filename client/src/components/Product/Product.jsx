@@ -11,8 +11,10 @@ const Product = (props) => {
           src={props.photos[0]}
           alt="furniture listing"
         />
+        <div>
         <div className="price">{`$${props.price}`}</div>
         <div className="product-name">{props.name}</div>
+        </div>
       </Link>
     </>
   );
