@@ -1,0 +1,14 @@
+.search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 70vw;
+  font-size: 18px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin: 40px 40px 10px 40px;
+}

@@ -1,0 +1,25 @@
+footer {
+  position: fixed; 
+  bottom: 0; 
+  left: 0;
+  width: 100vw; 
+  border-top: solid 1px black;
+  background-color: #CAF0F8;
+  height: 5vh; 
+  display: flex;
+  align-items: center; 
+  justify-content: space-around;
+  color: #03045E;
+
+}
+
+footer a:visited {
+  color: #03045E;
+}
+footer a:hover{
+  color: #0077B6;
+}
+
+.team-members a{
+  font-weight:bold; 
+}
