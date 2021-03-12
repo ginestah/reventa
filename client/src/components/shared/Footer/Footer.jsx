@@ -1,10 +1,10 @@
-import './Footer.css'
+import "./Footer.css";
 
 const Footer = () => {
   return (
     <footer>
       <div className="team-members">
-        Designed and developed by:{" "}
+        &copy; 2021 Designed and developed by:{" "}
         <a
           target="_blank"
           rel="noreferrer"
@@ -27,6 +27,16 @@ const Footer = () => {
           href="https://www.linkedin.com/in/bnowen/"
         >
           Brittany Owen
+        </a>
+      </div>
+      <div className="icon">
+        Icons made by{" "}
+        <a href="https://www.freepik.com" title="Freepik">
+          Freepik
+        </a>{" "}
+        from{" "}
+        <a href="https://www.flaticon.com/" title="Flaticon">
+          www.flaticon.com
         </a>
       </div>
     </footer>

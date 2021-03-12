@@ -10,7 +10,10 @@ footer {
   align-items: center; 
   justify-content: space-around;
   color: #03045E;
+}
 
+footer a {
+  color: #03045E;
 }
 
 footer a:visited {
@@ -23,3 +26,9 @@ footer a:hover{
 .team-members a{
   font-weight:bold; 
 }
+
+.icon {
+  /* font-size: max(1vh, 10px); */
+  font-size: 10px;
+}
+

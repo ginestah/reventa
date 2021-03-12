@@ -11,10 +11,15 @@
   color: #03045E;
 }
 
+.product-details {
+  width: 90vw;
+}
+
 .details2 {
   padding-top: 20px; 
   display: flex; 
   flex-direction: row;
+  justify-content: center;
 }
 
 .details3 {
@@ -37,6 +42,29 @@
 
 .product-details img {
   max-height: 40vh; 
-  margin-right: 20px;
+  margin: 0 40px;
   border-radius: 10px;
+}
+
+.product-details .right-arrow {
+  position: absolute;
+  top:105%;
+  right: 40%;
+  font-size: 2rem;
+  z-index: 0;
+  cursor: pointer;
+  user-select: none;
+  color: #00B4D8;
+}
+
+.product-details .left-arrow {
+  position: absolute;
+  top: 105%;
+  left: 40%;
+  font-size: 2rem;
+  z-index: 0;
+  cursor: pointer;
+  user-select: none;
+  color: #00B4D8;
+
 }
