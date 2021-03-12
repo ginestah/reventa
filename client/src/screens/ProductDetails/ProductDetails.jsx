@@ -27,6 +27,7 @@ function ProductDetails(props) {
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
+
   return (
     <Layout user={props.user}>
       {!isDeleted ? (
@@ -63,12 +64,20 @@ function ProductDetails(props) {
                 <details closed="true">{product.description}</details>
               </div>
               <div className="details-buttons">
-                <button className="edit-button">
-                  <Link to={`/products/${product._id}/edit`}>Edit</Link>
-                </button>
-                <button className="delete-button" onClick={() => handleClick()}>
-                  Delete
-                </button>
+                {props.user._id === product.userId ? (
+                  <>
+                    {" "}
+                    <button className="edit-button">
+                      <Link to={`/products/${product._id}/edit`}>Edit</Link>
+                    </button>
+                    <button
+                      className="delete-button"
+                      onClick={() => handleClick()}
+                    >
+                      Delete
+                    </button>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>
