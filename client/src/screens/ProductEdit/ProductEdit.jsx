@@ -119,7 +119,7 @@ const ProductEdit = (props) => {
           />
           <label htmlFor="location">Location:</label>
 
-          {imgList.map((x, i) => {
+          {/* {imgList.map((x, i) => {
             return (
               <div>
                 <input
@@ -141,7 +141,7 @@ const ProductEdit = (props) => {
                 </div>
               </div>
             );
-          })}
+          })} */}
 
           <label htmlFor="contactInfo">Your Contact Info:</label>
 

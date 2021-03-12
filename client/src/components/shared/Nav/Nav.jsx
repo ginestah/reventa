@@ -2,6 +2,10 @@ import { NavLink } from "react-router-dom";
 import "./Nav.css"
 
 function Nav({ user }) {
+  if (!user) {
+    return <div>loading!!!</div>
+  }
+  console.log(user._id)
   return (
     <nav>
       <div className="nav">
@@ -17,7 +21,10 @@ function Nav({ user }) {
               Add Product
             </NavLink>
             <NavLink className="sign-out-link" to="/sign-out">
-              Sign Out
+                Sign Out
+            </NavLink>
+            <NavLink className="wishlist-link" to={`/wishlist/${user._id}`}>
+                Wish Lists
             </NavLink>
           </>
         ) : (

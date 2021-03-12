@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
-import ProductDetails from "../../screens/ProductDetails/ProductDetails"
+import { getWishlist } from "../../services/users";
 import { Link, useParams } from "react-router-dom";
-import { getUser } from "../../services/products";
 
 
-const Shop = () => {
+const Shop = (props) => {
   const [cart, setCart] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const { id } = useParams()
+  console.log(id)
 
-  const { id } = useParams();
-
+// console.log(props.user._id)
   useEffect(() => {
-    const user = async () => {
-      const user = await getUser(id);
-      if (user.wishlist) {
-        setCart([...user.wishlist]);
+    const fetchWishlist = async () => {
+      const wishlist = await getWishlist(id);
+      console.log(wishlist)
+      if (wishlist) {
+        setCart([...wishlist]);
         console.log(cart)
-        setIsLoaded(true);
+        // setIsLoaded(true);
       }
 
     };
-    user();
+    fetchWishlist();
   }, [id]);
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
+  // if (!isLoaded) {
+  //   return <div>Loading...</div>;
+  // }
 
   const removeFromCart = (product) => {
     let newCart = cart.filter((cartItem) => cartItem.id !== product.id);
@@ -40,10 +40,16 @@ const Shop = () => {
     </div>
   ));
   return (
-    <Layout>
-
+    <Layout user={props.user}>
+      
       <div>My WishList</div>
-      <div>{cartItems}</div>
+      
+      {props.user ?
+        <div>{cartItems}</div>
+        :
+        <div>You did not log in!</div>}
+   
+      
     </Layout>
   );
 };

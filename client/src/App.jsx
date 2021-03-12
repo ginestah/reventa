@@ -58,7 +58,7 @@ function App() {
         <Route exact path="/products/:id">
           <ProductDetails user={user} />
         </Route>
-        <Route exact path="/wishlist">
+        <Route exact path="/wishlist/:id">
           <WishList user={user} />
         </Route>
       </Switch>
