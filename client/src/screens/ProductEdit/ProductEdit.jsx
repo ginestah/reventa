@@ -5,14 +5,11 @@ import Layout from "../../components/shared/Layout/Layout";
 import { getProduct, updateProduct } from "../../services/products";
 
 const ProductEdit = (props) => {
-  const [num, setNum] = useState(0);
-  // const [show, setIsShow] = useState(true);
-  // const [isClicked, setIsClicked] = useState(false);
   const [imageAdd, setImageAdd] = useState([""]);
   const [product, setProduct] = useState({
     name: "",
     description: "",
-    photos: [...imageAdd],
+    photos: [],
     price: "",
     shipping: "",
     contactInfo: "",
@@ -37,16 +34,6 @@ const ProductEdit = (props) => {
       [name]: value,
     });
   };
-
-  // const handleRemoveClick = (index) => {
-  //   const image = [...imgList];
-  //   image.splice(index, 1);
-  //   setImgList(image);
-  // };
-
-  // const handleAddClick = () => {
-  //   setImgList([...imgList, { imageURL: "" }]);
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,17 +60,6 @@ const ProductEdit = (props) => {
   if (isUpdated) {
     return <Redirect to={`/products`} />;
   }
-  // const increment = () => {
-  //   setNum(num + 1);
-  //   setIsClicked(true);
-  //   console.log(num);
-  //   if (num < 5) {
-  //     setIsShow(true);
-  //     console.log(show);
-  //   } else {
-  //     setIsShow(false);
-  //   }
-  // };
 
   const handleImage = (event) => {
     setProduct({
@@ -142,6 +118,33 @@ const ProductEdit = (props) => {
               </div>
             );
           })} */}
+          <input
+            className="input-price"
+            placeholder="Price"
+            value={product.location}
+            name="location"
+            required
+            onChange={handleChange}
+          />
+          <label htmlFor="imgURL">Photos of Product</label>
+          {product.photos.length - 1 > 4 ? null : (
+            <>
+              <input
+                type="url"
+                name="photos"
+                id="images"
+                value={imageAdd}
+                onChange={(e) => setImageAdd(e.target.value)}
+              />
+              <button
+                className="photo-button"
+                type="button"
+                onClick={handleImage}
+              >
+                Add Image
+              </button>
+            </>
+          )}
 
           <label htmlFor="contactInfo">Your Contact Info:</label>
 

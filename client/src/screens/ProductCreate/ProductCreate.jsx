@@ -11,13 +11,14 @@ const ProductCreate = (props) => {
   const [product, setProduct] = useState({
     name: "",
     description: "",
-    photos: [...imageAdd],
+    photos: [],
     price: "",
     shipping: "",
     contactInfo: "",
     location: "",
+    email: props.user.email,
   });
-
+  // console.log(props.user.email)
   const handleChange = (event) => {
     const { name, value } = event.target;
     setProduct({

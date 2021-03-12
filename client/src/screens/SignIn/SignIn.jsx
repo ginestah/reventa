@@ -3,7 +3,7 @@ import "./SignIn.css";
 import { signIn } from "../../services/users";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import Layout from "../../components/shared/Layout/Layout"
+import Layout from "../../components/shared/Layout/Layout";
 
 const SignIn = (props) => {
   const history = useHistory();
@@ -46,13 +46,7 @@ const SignIn = (props) => {
   const renderError = () => {
     const toggleForm = form.isError ? "danger" : "";
     if (form.isError) {
-      return (
-        <button type="submit" className={toggleForm}>
-          {form.errorMsg}
-        </button>
-      );
-    } else {
-      return <button type="submit">Sign In</button>;
+      return <p className="error-message">{form.errorMsg}</p>;
     }
   };
 
@@ -64,28 +58,29 @@ const SignIn = (props) => {
         <h3>Sign In</h3>
         <form onSubmit={onSignIn}>
           <div className="signin-username">
-          <label>Username</label>
-          <input
-            required
-            type="text"
-            name="username"
-            value={username}
-            placeholder="Enter Username"
-            onChange={handleChange}
+            <label>Username</label>
+            <input
+              required
+              type="text"
+              name="username"
+              value={username}
+              placeholder="Enter Username"
+              onChange={handleChange}
             />
           </div>
           <div className="signin-password">
-          <label>Password</label>
-          <input
-            required
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={handleChange}
+            <label>Password</label>
+            <input
+              required
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={handleChange}
             />
-            </div>
+          </div>
           {renderError()}
+          <button type="submit">Sign In</button>
         </form>
       </div>
     </Layout>

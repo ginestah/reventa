@@ -38,7 +38,7 @@ const signUp = async (req, res) => {
 const signIn = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const user = await User.findOne({ username: username });
+    const user = await await User.findOne({ username: username });
     if (await bcrypt.compare(password, user.password_digest)) {
       const payload = {
         _id: user._id,
@@ -75,6 +75,7 @@ const getUsers = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 const getUser = async (req, res) => {
   try {
     const users = await User.findById(req.params.id).populate("products");
@@ -109,13 +110,35 @@ const usersProducts = async (req, res) => {
 
 const createProduct = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.params.email });
-    const payload = { ...req.body, userId: user };
-    console.log(req.body);
-    console.log(payload);
+    const user = await User.findOne({ email: req.body.email });
+    const {
+      name,
+      description,
+      // photos: [...imageAdd],
+      price,
+      shipping,
+      contactInfo,
+      location,
+    } = req.body;
+    const payload = {
+      photos: [...req.body.photos],
+      name,
+      description,
+      // photos: [...imageAdd],
+      price,
+      shipping,
+      contactInfo,
+      location,
+      userId: user,
+    };
+
+    // console.log(req.body);
+    // console.log(payload);
     const product = new Product(payload);
 
     await product.save();
+    user.products.push(product);
+    await user.save();
     res.status(201).json(product);
   } catch (error) {
     console.log(error);
@@ -127,23 +150,16 @@ const addToWishList = async (req, res) => {
   try {
     const user = await User.findById(req.params.id).populate("wishlist")
     const product = await Product.findById(req.params.productId)
-    console.log(product._id)
-    for (let i = 0; i < user.wishlist.length; i++){
-       console.log(user.wishlist[i]._id)
-      if (user.wishlist[i]._id === (product._id)) {
-        console.log(true)
-        user.wishlist.push(product)
-         await user.save()
-      } else {
-        console.log("already added")
-    }
-    }
-     
-    
-    
 
-    res.status(201).json(user.wishlist)
+    const duplicate = user.wishlist.some(item => item._id.equals(product._id))
 
+    if (!duplicate) {
+      user.wishlist.push(product)
+      await user.save()
+      res.status(201).json(user.wishlist)
+    } else {
+      res.json({ message: "product already existed" })
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message })
@@ -152,28 +168,13 @@ const addToWishList = async (req, res) => {
 
 const removeFromWishList = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate("wishlist")
-    console.log(user.wishlist)
-    const indexofWish=user.wishlist.findIndex((item)=>item.id===req.params.id)
-    console.log(product)
-  
-        user.wishlist.splice(indexofWish,0,product)
-    await user.save()
-    res.status(201).json(user.wishlist)
-
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error.message })
-  }
-}
-const deleteWish = async (req, res) => {
-  try {
     const { id } = req.params;
-    const deleted = await User.wishlist.findByIdAndDelete(User.wishlist.productId);
-    if (deleted) {
-      return res.status(200).send("Product deleted");
-    }
-    throw new Error("Product not found");
+    const user = await User.findById(id)
+    user.wishlist = user.wishlist.filter(item => item._id.toString() !== req.params.productId)
+    await user.save()
+
+    return res.status(200).send("Product deleted");
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -187,5 +188,6 @@ module.exports = {
   usersProducts,
   createProduct,
   addToWishList,
-  getWishlist
+  getWishlist,
+  removeFromWishList
 };

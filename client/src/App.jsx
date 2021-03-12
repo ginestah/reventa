@@ -11,6 +11,7 @@ import SignUp from "./screens/SignUp/SignUp";
 import SignIn from "./screens/SignIn/SignIn";
 import SignOut from "./screens/SignOut/SignOut";
 import WishList from "./screens/WishList/WishList"
+import UsersListings from "./screens/UsersListings/UsersListings";
 
 function App() {
   const [user, setUser] = useState(null);

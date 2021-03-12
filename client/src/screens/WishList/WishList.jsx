@@ -31,10 +31,11 @@ const Shop = (props) => {
     return <div>Loading...</div>;
   }
 
-  const handleRemoveFromWishList = async (product) => {
-console.log(product._id)
-    const response = await deleteWish(id,product._id)
-    console.log(response)
+  const handleRemoveFromWishList = async (e) => {
+    // console.log(e.target.value)
+// console.log(`product,${e.target.value} `)
+    const response = await deleteWish(id,e.target.name)
+    // console.log(response)
 
 
   };
@@ -42,7 +43,7 @@ console.log(product._id)
   const cartItems = cart.map((product) => (
     <div key={product._id}>
       {`${product.name}: $${product.price}`}
-      <input type="submit" value="remove" onClick={(product) => handleRemoveFromWishList(product)} />
+      <input type="submit" value="remove" name={product._id} onClick={(e) => handleRemoveFromWishList(e)} />
     </div>
   ));
   return (
