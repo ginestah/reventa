@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getProduct, deleteProduct } from "../../services/products";
 import Layout from "../../components/shared/Layout/Layout";
 import "./ProductDetails.css";
+import DetailSlider from "../../components/DetailSlider/DetailSlider";
 
 function ProductDetails(props) {
   const [product, setProduct] = useState(null);
@@ -27,18 +28,14 @@ function ProductDetails(props) {
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
+
   return (
     <Layout user={props.user}>
       {!isDeleted ? (
         <main className="product-details">
           <h3>{product.name}</h3>
           <div className="details2">
-            <img
-              alt={product.name}
-              className="product-detail-image"
-              src={product.photos ? product.photos[0] : null}
-            />
-
+            <DetailSlider photos={product.photos} />
             <div className="details3">
               <div className="details4">
                 <p>Price: ${product.price}</p>
@@ -63,12 +60,20 @@ function ProductDetails(props) {
                 <details closed="true">{product.description}</details>
               </div>
               <div className="details-buttons">
-                <button className="edit-button">
-                  <Link to={`/products/${product._id}/edit`}>Edit</Link>
-                </button>
-                <button className="delete-button" onClick={() => handleClick()}>
-                  Delete
-                </button>
+                {props.user._id === product.userId ? (
+                  <>
+                    {" "}
+                    <button className="edit-button">
+                      <Link to={`/products/${product._id}/edit`}>Edit</Link>
+                    </button>
+                    <button
+                      className="delete-button"
+                      onClick={() => handleClick()}
+                    >
+                      Delete
+                    </button>
+                  </>
+                ) : null}
               </div>
             </div>
           </div>

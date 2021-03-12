@@ -45,13 +45,7 @@ const SignUp = (props) => {
   const renderError = () => {
     const toggleForm = form.isError ? "danger" : "";
     if (form.isError) {
-      return (
-        <button type="submit" className={toggleForm}>
-          {form.errorMsg}
-        </button>
-      );
-    } else {
-      return <button type="submit">Sign Up</button>;
+      return <p className="error-message">{form.errorMsg}</p>;
     }
   };
 
@@ -63,54 +57,54 @@ const SignUp = (props) => {
         <h3>Sign Up</h3>
         <form onSubmit={onSignUp}>
           <div className="signup-username">
-
-          <label>Username</label>
-          <input
-            required
-            type="text"
-            name="username"
-            value={username}
-            placeholder="Enter Username"
-            onChange={handleChange}
+            <label>Username</label>
+            <input
+              required
+              type="text"
+              name="username"
+              value={username}
+              placeholder="Enter Username"
+              onChange={handleChange}
             />
-            </div>
+          </div>
           <div className="signup-email">
-
-          <label>Email Address</label>
-          <input
-            required
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Enter email"
-            onChange={handleChange}
+            <label>Email Address</label>
+            <input
+              required
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter email"
+              onChange={handleChange}
             />
-            </div>
+          </div>
           <div className="signup-password">
-
-          <label>Password</label>
-          <input
-            required
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={handleChange}
+            <label>Password</label>
+            <input
+              required
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={handleChange}
             />
-            </div>
+          </div>
           <div className="signup-confirm">
-
-          <label>Confirm Password</label>
-          <input
-            required
-            type="password"
-            name="passwordConfirmation"
-            value={passwordConfirmation}
-            placeholder="Confirm Password"
-            onChange={handleChange}
+            <label>Confirm Password</label>
+            <input
+              required
+              type="password"
+              name="passwordConfirmation"
+              value={passwordConfirmation}
+              placeholder="Confirm Password"
+              onChange={handleChange}
             />
-            </div>
+          </div>
+          {password !== passwordConfirmation ? (
+            <p className="error-message">Passwords Do Not Match</p>
+          ) : null}
           {renderError()}
+          <button type="submit">Sign Up</button>
         </form>
       </div>
     </Layout>
