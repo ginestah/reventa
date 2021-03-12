@@ -100,13 +100,35 @@ const usersProducts = async (req, res) => {
 
 const createProduct = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.params.email });
-    const payload = { ...req.body, userId: user };
-    console.log(req.body);
-    console.log(payload);
+    const user = await User.findOne({ email: req.body.email });
+    const {
+      name,
+      description,
+      // photos: [...imageAdd],
+      price,
+      shipping,
+      contactInfo,
+      location,
+    } = req.body;
+    const payload = {
+      photos: [...req.body.photos],
+      name,
+      description,
+      // photos: [...imageAdd],
+      price,
+      shipping,
+      contactInfo,
+      location,
+      userId: user,
+    };
+
+    // console.log(req.body);
+    // console.log(payload);
     const product = new Product(payload);
 
     await product.save();
+    user.products.push(product);
+    await user.save();
     res.status(201).json(product);
   } catch (error) {
     console.log(error);
