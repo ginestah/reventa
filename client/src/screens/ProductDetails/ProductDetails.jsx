@@ -48,85 +48,70 @@ function ProductDetails(props) {
 
   };
 
+
   return (
     <Layout user={props.user}>
-      {!isDeleted ? (
-        <main className="product-details">
-          <h3>{product.name}</h3>
-          <div className="details2">
-            <DetailSlider photos={product.photos} />
-            <div className="details3">
-              <div className="details4">
-                <p>Price: ${product.price}</p>
-                {props.user ? (
-                  product.shipping ? (
-                    <p>
-                      Seller offers shipping, please contact to arrange details
-                    </p>
-                  ) : (
-                    <p>
-                      Seller does not offer shipping on this product, please
-                      contact to arrange pickup
-                    </p>
-                  )
-                ) : null}
-
-          {props.user ? (
-            <div>
-                        <input type="submit" value="Add to Wish List" onClick={ handleAddToWishList}/>
-                        <p>Contact Info: {product.contactInfo}</p>
-
-            </div>
-          ) : (
-            <p>You must login to see sellers contact info</p>
-          )}
-          <details open>{product.description}</details>
-
-          <details closed>{product.description}</details>
-          <button className="edit-button">
-            <Link to={`/products/${product._id}/edit`}>Edit</Link>
-          </button>
-          <button className="delete-button" onClick={() => handleClick()}>
-            Delete
-          </button>
-                {props.user ? (
-                  <p>Contact Info: {product.contactInfo}</p>
+    {!isDeleted ? (
+      <main className="product-details">
+        <h3>{product.name}</h3>
+        <div className="details2">
+          <DetailSlider photos={product.photos} />
+          <div className="details3">
+            <div className="details4">
+              <p>Price: ${product.price}</p>
+              {props.user ? (
+                product.shipping ? (
+                  <p>
+                    Seller offers shipping, please contact to arrange details
+                  </p>
                 ) : (
-                  <p>You must login to see sellers contact info</p>
-                )}
-                <details closed="true">{product.description}</details>
-              </div>
-              <div className="details-buttons">
-                {props.user ? (
-                  props.user._id === product.userId ? (
-                    <>
-                      {" "}
-                      <button className="edit-button">
-                        <Link to={`/products/${product._id}/edit`}>Edit</Link>
-                      </button>
-                      <button
-                        className="delete-button"
-                        onClick={() => handleClick()}
-                      >
-                        Delete
-                      </button>
-                    </>
-                  ) : null
-                ) : null}
-              </div>
+                  <p>
+                    Seller does not offer shipping on this product, please
+                    contact to arrange pickup
+                  </p>
+                )
+              ) : null}
+
+              {props.user ? (
+                <p>Contact Info: {product.contactInfo}</p>
+              ) : (
+                <p>You must login to see sellers contact info</p>
+              )}
+              <details closed="true">{product.description}</details>
+            </div>
+            <input type="submit" value="Add to Wish List" onClick={ handleAddToWishList}/>
+
+            <div className="details-buttons">
+              {props.user ? (
+                props.user._id === product.userId ? (
+                  <>
+                    {" "}
+                    <button className="edit-button">
+                      <Link to={`/products/${product._id}/edit`}>Edit</Link>
+                    </button>
+                    <button
+                      className="delete-button"
+                      onClick={() => handleClick()}
+                    >
+                      Delete
+                    </button>
+                  </>
+                ) : null
+              ) : null}
             </div>
           </div>
-        </main>
-      ) : (
-        <div>
-          <h2>Your post has been deleted!</h2>
-          <button className="take-me-home">
-            <Link to="/">Take me home</Link>
-          </button>
         </div>
-      )}
-    </Layout>
-  );
+      </main>
+    ) : (
+      <div>
+        <h2>Your post has been deleted!</h2>
+        <button className="take-me-home">
+          <Link to="/">Take me home</Link>
+        </button>
+      </div>
+    )}
+  </Layout>
+);
 }
 
 export default ProductDetails;

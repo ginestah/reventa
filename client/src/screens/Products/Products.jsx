@@ -80,15 +80,15 @@ const Products = (props) => {
 
   return (
     <Layout user={props.user}>
-      <Search onSubmit={handleSubmit} onChange={handleSearch} />
-      <Checkbox
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        setQueriedProducts={setQueriedProducts}
-        allProducts={allProducts}
-      />
-      <div className="products">{productsJSX}</div>
-    </Layout>
-  );
+    <Search onSubmit={handleSubmit} onChange={handleSearch} />
+    <Checkbox
+      onChange={handleChange}
+      onSubmit={handleSubmit}
+      setQueriedProducts={setQueriedProducts}
+      allProducts={allProducts}
+    />
+    <div className="products">{productsJSX}</div>
+  </Layout>
+);
 };
 export default Products;
