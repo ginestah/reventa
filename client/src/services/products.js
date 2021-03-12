@@ -43,4 +43,16 @@ export const deleteProduct = async (id) => {
   } catch (error) {
     throw error;
   }
-};
+}
+
+export const addToWishList = async (userId,productId) => {
+  try {
+
+      const response = await api.put(`/users/${userId}/products/${productId}`)
+      return response.data
+  } catch (error) {
+      throw error
+  }
+}
+
+
