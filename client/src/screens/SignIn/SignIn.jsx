@@ -60,6 +60,7 @@ const SignIn = (props) => {
           <div className="signin-username">
             <label>Username</label>
             <input
+              autoFocus
               required
               type="text"
               name="username"

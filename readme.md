@@ -1,5 +1,7 @@
 ## Reventa
+
 ![team GLO](https://res.cloudinary.com/dpbzq29kr/image/upload/c_scale,h_428/v1615237662/Image_from_iOS_qib6xu.jpg)
+
 ### Schemas
 
 ```javascript
@@ -9,14 +11,15 @@ const Schema = mongoose.Schema;
 const Product = new Schema(
   {
     name: { type: String, required: true },
-    photos: [{ imgURL: { type: String, required: true } }],
+    location: { type: String, required: true },
+    photos: [{ type: String, required: false }],
     description: { type: String, required: true },
     price: { type: String, required: true },
     shipping: { type: Boolean, required: true },
     contactInfo: { type: String, required: true },
+    userId: { type: Schema.Types.ObjectId, ref: "users" },
   },
-  { timestamps: true }
-);
+  { tim
 module.exports = mongoose.model("products", Product);
 
 const User = new Schema(
@@ -24,6 +27,8 @@ const User = new Schema(
     username: { type: String, required: true },
     email: { type: String, required: true },
     password_digest: { type: String, required: true },
+    products: [{ type: Schema.Types.ObjectId, ref: "products" }],
+    wishlist: [{ type: Schema.Types.ObjectId }],
   },
   { timestamps: true }
 );

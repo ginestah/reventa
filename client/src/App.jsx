@@ -23,6 +23,7 @@ function App() {
     };
     fetchUser();
   }, []);
+
   useEffect(() => {
     setTimeout(() => {
       setNotLoaded(false);
@@ -34,7 +35,7 @@ function App() {
   return (
     <div className="App">
       {notloaded ? (
-        <div></div>
+        <div>Loading...</div>
       ) : (
         <Switch>
           <Route exact path="/">
