@@ -55,40 +55,29 @@ const Products = (props) => {
     setQueriedProducts(newQueriesProducts);
   };
 
-
-
   const handleSubmit = (e) => e.preventDefault();
 
   const productsJSX = queriedProducts.map((product, index) => (
-    <div>
-      <Product
-        _id={product._id}
-        key={index}
-        name={product.name.length > 25 && product.name.slice(0, 25)}
-        photo={
-          product.photos
-            ? product.photos[0]
-              ? product.photos[0].imgURL
-              : null
-            : null
-        }
-        price={product.price}
-      />
-    </div>
-
+    <Product
+      _id={product._id}
+      key={index}
+      name={product.name.length > 25 && product.name.slice(0, 25)}
+      photos={product.photos ? product.photos : null}
+      price={product.price}
+    />
   ));
 
   return (
     <Layout user={props.user}>
-    <Search onSubmit={handleSubmit} onChange={handleSearch} />
-    <Checkbox
-      onChange={handleChange}
-      onSubmit={handleSubmit}
-      setQueriedProducts={setQueriedProducts}
-      allProducts={allProducts}
-    />
-    <div className="products">{productsJSX}</div>
-  </Layout>
-);
+      <Search onSubmit={handleSubmit} onChange={handleSearch} />
+      <Checkbox
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        setQueriedProducts={setQueriedProducts}
+        allProducts={allProducts}
+      />
+      <div className="products">{productsJSX}</div>
+    </Layout>
+  );
 };
 export default Products;

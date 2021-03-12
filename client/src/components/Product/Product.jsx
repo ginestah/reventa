@@ -8,7 +8,7 @@ const Product = (props) => {
       <Link className="product" to={`/products/${props._id}`}>
         <img
           className="product-image"
-          src={props.photos?props.photos[0]:null}
+          src={props.photos[0]}
           alt="furniture listing"
         />
         <div>
