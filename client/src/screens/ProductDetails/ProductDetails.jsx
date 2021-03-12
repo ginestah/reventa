@@ -59,6 +59,7 @@ function ProductDetails(props) {
                 )}
                 <details closed="true">{product.description}</details>
               </div>
+
               <div className="details-buttons">
                 {props.user ? (
                   props.user._id === product.userId ? (
