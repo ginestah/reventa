@@ -26,3 +26,16 @@ button:hover {
   background-color:#90E0EF;
   color: #03045e;
 }
+
+.take-me-home a {
+  color: #CAF0F8;
+  text-decoration: none;
+}
+
+.take-me-home a:visited{
+  color: #CAF0F8;
+}
+
+.take-me-home a:hover {
+  color: #03045e;
+}

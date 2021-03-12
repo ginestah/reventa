@@ -10,5 +10,9 @@ router.get("/users", controllers.getUsers);
 router.get("/users/:id", controllers.getUser);
 router.put("/users/:userId/products", controllers.usersProducts);
 router.post("/users/:email/products", controllers.createProduct);
+router.put("/users/:id/products/:productId", controllers.addToWishList)
+router.get("/users/:id/wishlist", controllers.getWishlist);
+router.delete("/users/:id/wishlist/:productId",controllers.removeFromWishList)
+
 
 module.exports = router;

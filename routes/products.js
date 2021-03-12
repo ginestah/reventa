@@ -6,6 +6,9 @@ const router = Router();
 
 router.get("/", controllers.getProducts);
 router.get("/:id", controllers.getProduct);
+// router.get("/:id", controllers.getUser);
+
+// router.post("/", restrict, controllers.createProduct);
 // router.post("/", restrict, controllers.createProduct);
 router.put("/:id", restrict, controllers.updateProduct);
 router.delete("/:id", restrict, controllers.deleteProduct);
