@@ -10,7 +10,7 @@ function Nav({ user }) {
         R E V E N T A
       </NavLink>
       <div className="links">
-        <NavLink className="all-link" to="/products">All Listings</NavLink>
+        <NavLink className="all-link" to="/products">Listings</NavLink>
         {user ? (
           <>
             <NavLink className="add-product-link" to="/add-product">

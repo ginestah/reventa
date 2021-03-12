@@ -31,38 +31,47 @@ function ProductDetails(props) {
     <Layout user={props.user}>
       {!isDeleted ? (
         <main className="product-details">
-          <p>{product.name}</p>
-          <img
-            alt={product.name}
-            className="product-detail-image"
-            src={product.photos ? product.photos[0] : null}
-          />
-          <p>${product.price}</p>
-          {props.user ? (
-            product.shipping ? (
-              <p>Seller offers shipping please contact to arrange details</p>
-            ) : (
-              <p>
-                Seller does not offer shipping on this product, please contact
-                to arrange pickup
-              </p>
-            )
-          ) : null}
+          <h3>{product.name}</h3>
+          <div className="details2">
+            <img
+              alt={product.name}
+              className="product-detail-image"
+              src={product.photos ? product.photos[0] : null}
+            />
 
-          {props.user ? (
-            <>
-              <p>Contact Info: {product.contactInfo}</p>
-              <button className="edit-button">
-                <Link to={`/products/${product._id}/edit`}>Edit</Link>
-              </button>
-              <button className="delete-button" onClick={() => handleClick()}>
-                Delete
-              </button>
-            </>
-          ) : (
-            <p>You must login to see sellers contact info</p>
-          )}
-          <details closed>{product.description}</details>
+            <div className="details3">
+              <div className="details4">
+                <p>Price: ${product.price}</p>
+                {props.user ? (
+                  product.shipping ? (
+                    <p>
+                      Seller offers shipping, please contact to arrange details
+                    </p>
+                  ) : (
+                    <p>
+                      Seller does not offer shipping on this product, please
+                      contact to arrange pickup
+                    </p>
+                  )
+                ) : null}
+
+                {props.user ? (
+                  <p>Contact Info: {product.contactInfo}</p>
+                ) : (
+                  <p>You must login to see sellers contact info</p>
+                )}
+                <details closed>{product.description}</details>
+              </div>
+              <div classname="details-buttons">
+                <button className="edit-button">
+                  <Link to={`/products/${product._id}/edit`}>Edit</Link>
+                </button>
+                <button className="delete-button" onClick={() => handleClick()}>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
         </main>
       ) : (
         <div>
