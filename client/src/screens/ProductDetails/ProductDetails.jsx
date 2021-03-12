@@ -9,27 +9,19 @@ import "./ProductDetails.css"
 function ProductDetails(props) {
   const [product, setProduct] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [wish, setWish] = useState([])
   const { id } = useParams();
   const [isDeleted, setIsDeleted] = useState(false);
-  // const { username } = useParams();
-
-
-// console.log(props.user.wishlist)
+ 
 
   const handleClick = () => {
     deleteProduct(id);
     setIsDeleted(true);
   };
 
-  
-
-  
-  
   useEffect(() => {
     const decorate = async () => {
       const product = await getProduct(id);
-   
+
       setProduct(product);
       setIsLoaded(true);
 
@@ -52,21 +44,9 @@ function ProductDetails(props) {
   }
   const handleAddToWishList = async () => {
 
-    const response = await addToWishList(props.user._id,id)
+
+    const response = await addToWishList(props.user._id, id)
     console.log(response)
-    // setWish([...props.wishlist, product])
-    
-    // if (props.cart) {
-    //  props.cart.forEach(eachproduct => {
-    //   if (eachproduct._id !== product._id) {
-    //     props.setCart([...props.cart, product]);
-
-    //   } 
-    // }); 
-    // } else {
-    //       props.setCart([...props.cart, product]);
-
-    // }
 
   };
   return (
@@ -92,12 +72,16 @@ function ProductDetails(props) {
           ) : null}
 
           {props.user ? (
-            <p>Contact Info: {product.contactInfo}</p>
+            <div>
+              <p>Contact Info: {product.contactInfo}</p>
+
+              <input type="submit" value="Add to Wish List" onClick={handleAddToWishList} />
+
+            </div>
           ) : (
             <p>You must login to see sellers contact info</p>
           )}
           <details open>{product.description}</details>
-          <input type="submit" value="Add to Wish List" onClick={ handleAddToWishList}/>
 
           <details closed>{product.description}</details>
           <button className="edit-button">

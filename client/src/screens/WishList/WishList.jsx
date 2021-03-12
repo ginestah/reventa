@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
-import { getWishlist } from "../../services/users";
+import { getWishlist,deleteWish } from "../../services/users";
 import { Link, useParams } from "react-router-dom";
 
 
 const Shop = (props) => {
   const [cart, setCart] = useState([]);
   const { id } = useParams()
+  // const [isLoaded, setIsLoaded] = useState(false);
+
   console.log(id)
 
 // console.log(props.user._id)
