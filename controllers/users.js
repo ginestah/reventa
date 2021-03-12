@@ -17,7 +17,6 @@ const signUp = async (req, res) => {
       username,
       email,
       password_digest,
-      _id,
     });
 
     await user.save();
@@ -29,7 +28,7 @@ const signUp = async (req, res) => {
     };
 
     const token = jwt.sign(payload, TOKEN_KEY);
-    res.status(201).json({ token });
+    res.status(201).json({ token, payload });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -41,13 +40,13 @@ const signIn = async (req, res) => {
     const user = await User.findOne({ username: username });
     if (await bcrypt.compare(password, user.password_digest)) {
       const payload = {
+        _id: user._id,
         username: user.username,
         email: user.email,
-        _id: _id,
       };
 
       const token = jwt.sign(payload, TOKEN_KEY);
-      res.status(201).json({ token });
+      res.status(201).json({ token, payload });
     } else {
       res.status(401).send("Invalid Credentials");
     }
@@ -101,13 +100,35 @@ const usersProducts = async (req, res) => {
 
 const createProduct = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.params.email });
-    const payload = { ...req.body, userId: user };
-    console.log(req.body);
-    console.log(payload);
+    const user = await User.findOne({ email: req.body.email });
+    const {
+      name,
+      description,
+      // photos: [...imageAdd],
+      price,
+      shipping,
+      contactInfo,
+      location,
+    } = req.body;
+    const payload = {
+      photos: [...req.body.photos],
+      name,
+      description,
+      // photos: [...imageAdd],
+      price,
+      shipping,
+      contactInfo,
+      location,
+      userId: user,
+    };
+
+    // console.log(req.body);
+    // console.log(payload);
     const product = new Product(payload);
 
     await product.save();
+    user.products.push(product);
+    await user.save();
     res.status(201).json(product);
   } catch (error) {
     console.log(error);

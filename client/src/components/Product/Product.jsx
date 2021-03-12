@@ -12,8 +12,8 @@ const Product = (props) => {
           alt="furniture listing"
         />
         <div>
-        <div className="price">{`$${props.price}`}</div>
-        <div className="product-name">{props.name}</div>
+          <div className="price">{`$${props.price}`}</div>
+          <div className="product-name">{props.name}</div>
         </div>
       </Link>
     </>
