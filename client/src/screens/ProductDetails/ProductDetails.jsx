@@ -60,9 +60,9 @@ function ProductDetails(props) {
                 ) : (
                   <p>You must login to see sellers contact info</p>
                 )}
-                <details closed>{product.description}</details>
+                <details closed="true">{product.description}</details>
               </div>
-              <div classname="details-buttons">
+              <div className="details-buttons">
                 <button className="edit-button">
                   <Link to={`/products/${product._id}/edit`}>Edit</Link>
                 </button>

@@ -4,11 +4,11 @@ import { useState } from "react";
 
 const Checkbox = (props) => {
   const [checkOptions] = useState([
-    { id: 1, value: "rug", isChecked: false },
-    { id: 2, value: "desk", isChecked: false },
-    { id: 3, value: "table", isChecked: false },
-    { id: 4, value: "chair", isChecked: false },
-    { id: 5, value: "sofa", isChecked: false },
+    { id: 1, value: "Rug", isChecked: false },
+    { id: 2, value: "Desk", isChecked: false },
+    { id: 3, value: "Table", isChecked: false },
+    { id: 4, value: "Chair", isChecked: false },
+    { id: 5, value: "Sofa", isChecked: false },
   ]);
   const handleCheck = (e) => {
     if (e.target.checked === true) {
