@@ -1,22 +1,21 @@
 nav {
-  position: fixed; 
-  top: 0; 
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 100vw; 
+  width: 100vw;
   z-index: 1;
   background-color: white;
 }
 
 .nav {
-  border-bottom: solid 1px #00B4D8;
+  border-bottom: solid 1px #00b4d8;
   background-color: white;
-  
 }
 
 .nav .logo {
-  display: block; 
+  display: block;
   text-align: center;
-  border-bottom: solid 1px #00B4D8;
+  border-bottom: solid 1px #00b4d8;
   background-color: white;
   padding: 10px, 0;
   letter-spacing: 5px;
@@ -26,24 +25,24 @@ nav {
   font-size: max(1vw, 18px);
   text-align: left;
   text-decoration: none;
-  color: #03045E;
+  color: #03045e;
 }
 
-.nav a.logo{ 
-  font-family: 'Raleway', sans-serif;
+.nav a.logo {
+  font-family: "Raleway", sans-serif;
   font-weight: bold;
   font-size: max(3vw, 30px);
-  padding: 10px; 
+  padding: 10px;
 }
 
 nav a.active {
-  color: #03045E;
+  color: #03045e;
   /* font-weight: bold; */
   text-decoration: underline;
 }
 
 nav a:hover {
-  color: #0077B6;
+  color: #0077b6;
 }
 
 nav a.logo.active {
@@ -51,7 +50,7 @@ nav a.logo.active {
 }
 
 .nav .links {
-  display: flex; 
+  display: flex;
   justify-content: space-evenly;
   padding: 5px;
 }
