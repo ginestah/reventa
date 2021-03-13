@@ -51,16 +51,6 @@ const ProductCreate = (props) => {
     </div>
   ));
 
-  // const handleRemoveClick = (index) => {
-  //   const image = [...imageAdd];
-  //   image.splice(index, 1);
-  //   setImageAdd(image);
-  // };
-
-  // const handleAddClick = () => {
-  //   setImageAdd([...imageAdd, imageAdd[0]]);
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const created = await createProduct(product, props.user.email);
@@ -70,6 +60,9 @@ const ProductCreate = (props) => {
   if (isCreated) {
     return <Redirect to="/products" />;
     // can we redirect to the detail page of the product we just created?
+  }
+  if (!props.user) {
+    <div>Loading...</div>;
   }
 
   return (
@@ -159,28 +152,28 @@ const ProductCreate = (props) => {
             <div className="form-photos">
               <label>Photos:</label>
               <div>
-              {product.photos.length > 4 ? null : (
-                <>
-                  <input
-                    type="url"
-                    name="photos"
-                    id="images"
-                    value={imageAdd}
-                    onChange={(e) => setImageAdd(e.target.value)}
+                {product.photos.length > 4 ? null : (
+                  <>
+                    <input
+                      type="url"
+                      name="photos"
+                      id="images"
+                      value={imageAdd}
+                      onChange={(e) => setImageAdd(e.target.value)}
                     />
-                  <button
-                    className="photo-button"
-                    type="button"
-                    onClick={handleImage}
+                    <button
+                      className="photo-button"
+                      type="button"
+                      onClick={handleImage}
                     >
-                    Add Image
-                  </button>
-                </>
-              )}
+                      Add Image
+                    </button>
+                  </>
+                )}
               </div>
-              </div>
+            </div>
           </div>
-            <div className="preview-images">{imageJSX}</div>
+          <div className="preview-images">{imageJSX}</div>
 
           {/* https://www.cluemediator.com/add-or-remove-input-fields-dynamically-with-reactjs */}
           {/* <label>Product Photos:</label>

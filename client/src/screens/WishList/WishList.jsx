@@ -3,12 +3,16 @@ import Layout from "../../components/shared/Layout/Layout";
 import { getWishlist, } from "../../services/users";
 import {deleteWish} from "../../services/users"
 import { Link, useParams } from "react-router-dom";
+import {  Redirect } from "react-router-dom";
 
 
 const Shop = (props) => {
   const [cart, setCart] = useState([]);
   const { id } = useParams()
   const [isLoaded, setIsLoaded] = useState(false);
+  const[isDeleted,setIsDeleted]=useState(false)
+
+  // const history=useHistory()
 
   // console.log(id)
 
@@ -22,10 +26,13 @@ const Shop = (props) => {
         console.log(cart)
         setIsLoaded(true);
       }
+      if (isDeleted) {
+        return <Redirect to={`/wishlist/${id}`} />;
 
+}
     };
     fetchWishlist();
-  }, [id]);
+  }, [id,isDeleted]);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
@@ -36,9 +43,9 @@ const Shop = (props) => {
 // console.log(`product,${e.target.value} `)
     const response = await deleteWish(id,e.target.name)
     // console.log(response)
-
-
+setIsDeleted(!isDeleted)
   };
+
 
   const cartItems = cart.map((product) => (
     <div key={product._id}>
