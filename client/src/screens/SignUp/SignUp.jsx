@@ -61,7 +61,6 @@ const SignUp = (props) => {
   };
 
   const { email, username, password, passwordConfirmation } = form;
-  console.log(users.some((x) => x.username === username));
 
   return (
     <Layout user={props.user}>
