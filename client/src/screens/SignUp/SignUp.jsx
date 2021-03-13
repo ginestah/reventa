@@ -1,17 +1,26 @@
 import React from "react";
 import { signUp, signIn } from "../../services/users";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
+import { getUsers } from "../../services/users";
 
 const SignUp = (props) => {
   const history = useHistory();
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const users = await getUsers();
+      setUsers(users);
+    };
+    fetchUsers();
+  }, []);
   const [form, setForm] = useState({
     username: "",
     email: "",
     password: "",
-    wishlist:[],
+    wishlist: [],
     passwordConfirmation: "",
     isError: false,
     errorMsg: "",
@@ -36,7 +45,7 @@ const SignUp = (props) => {
         setForm({
           email: "",
           password: "",
-          wishlist:[],
+          wishlist: [],
           passwordConfirmation: "",
           isError: true,
           errorMsg: "Sign Up Details Invalid",
@@ -52,6 +61,7 @@ const SignUp = (props) => {
   };
 
   const { email, username, password, passwordConfirmation } = form;
+  console.log(users.some((x) => x.username === username));
 
   return (
     <Layout user={props.user}>
@@ -107,7 +117,11 @@ const SignUp = (props) => {
             <p className="error-message">Passwords Do Not Match</p>
           ) : null}
           {renderError()}
-          <button type="submit">Sign Up</button>
+          {users.some((x) => x.username === username) ? (
+            <p>That username is taken</p>
+          ) : (
+            <button type="submit">Sign Up</button>
+          )}
         </form>
       </div>
     </Layout>
