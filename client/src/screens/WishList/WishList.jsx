@@ -23,10 +23,10 @@ const Shop = (props) => {
         setIsLoaded(true);
       }
       if (isDeleted) {
-        return <Redirect to={`/wishlist/${id}`} />;
+       return <Redirect to={`/wishlist/${id}`} />;
 
 }
-    };
+     };
     fetchWishlist();
   }, [id,isDeleted]);
 
@@ -34,6 +34,8 @@ const Shop = (props) => {
     return <div>Loading...</div>;
   }
 
+
+ 
   const handleRemoveFromWishList = async (e) => {
     const response = await deleteWish(id,e.target.name)
 setIsDeleted(!isDeleted)
@@ -50,13 +52,14 @@ setIsDeleted(!isDeleted)
   ));
   return (
     <Layout user={props.user}>
+       <div>My WishList</div>
+      {
+        cart.length!==0?<div>{cartItems}</div>:<div>empty list</div>
+      }
+     
       
-      <div>My WishList</div>
+        
       
-      {props.user ?
-        <div>{cartItems}</div>
-        :
-        <div>You did not log in!</div>}
    
       
     </Layout>
