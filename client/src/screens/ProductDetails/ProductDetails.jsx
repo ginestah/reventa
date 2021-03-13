@@ -1,7 +1,9 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getProduct, deleteProduct } from "../../services/products";
 import Layout from "../../components/shared/Layout/Layout";
+import { addToWishList } from "../../services/products";
+
 import "./ProductDetails.css";
 import DetailSlider from "../../components/DetailSlider/DetailSlider";
 
@@ -10,6 +12,9 @@ function ProductDetails(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const { id } = useParams();
   const [isDeleted, setIsDeleted] = useState(false);
+  // const { username } = useParams();
+
+  // console.log(props.user.wishlist)
 
   const handleClick = () => {
     deleteProduct(id);
@@ -19,6 +24,7 @@ function ProductDetails(props) {
   useEffect(() => {
     const decorate = async () => {
       const product = await getProduct(id);
+
       setProduct(product);
       setIsLoaded(true);
     };
@@ -28,6 +34,10 @@ function ProductDetails(props) {
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
+  const handleAddToWishList = async () => {
+    const response = await addToWishList(props.user._id, id);
+    console.log(response);
+  };
 
   return (
     <Layout user={props.user}>
@@ -59,6 +69,12 @@ function ProductDetails(props) {
                 )}
                 <details closed="true">{product.description}</details>
               </div>
+              <input
+                type="submit"
+                value="Add to Wish List"
+                onClick={handleAddToWishList}
+              />
+
               <div className="details-buttons">
                 {props.user ? (
                   props.user._id === product.userId ? (

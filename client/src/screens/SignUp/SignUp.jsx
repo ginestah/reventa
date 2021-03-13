@@ -11,6 +11,7 @@ const SignUp = (props) => {
     username: "",
     email: "",
     password: "",
+    wishlist:[],
     passwordConfirmation: "",
     isError: false,
     errorMsg: "",
@@ -35,6 +36,7 @@ const SignUp = (props) => {
         setForm({
           email: "",
           password: "",
+          wishlist:[],
           passwordConfirmation: "",
           isError: true,
           errorMsg: "Sign Up Details Invalid",
@@ -59,6 +61,7 @@ const SignUp = (props) => {
           <div className="signup-username">
             <label>Username</label>
             <input
+              autoFocus
               required
               type="text"
               name="username"
