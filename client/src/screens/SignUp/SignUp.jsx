@@ -61,7 +61,16 @@ const SignUp = (props) => {
   };
 
   const { email, username, password, passwordConfirmation } = form;
-
+  const checkUsername = () => {
+    if (users.some((x) => x.username === username)) {
+      return <p>That username is taken</p>;
+    }
+  };
+  const checkEmail = () => {
+    if (users.some((x) => x.email === email)) {
+      return <p>That email is already in use</p>;
+    }
+  };
   return (
     <Layout user={props.user}>
       <div className="form-container">
@@ -116,8 +125,9 @@ const SignUp = (props) => {
             <p className="error-message">Passwords Do Not Match</p>
           ) : null}
           {renderError()}
-          {users.some((x) => x.username === username) ? (
-            <p>That username is taken</p>
+          {users.some((x) => x.username === username) ||
+          users.some((x) => x.email === email) ? (
+            <p>That username or email is taken</p>
           ) : (
             <button type="submit">Sign Up</button>
           )}
