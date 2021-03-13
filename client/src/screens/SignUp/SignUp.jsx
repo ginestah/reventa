@@ -67,9 +67,17 @@ const SignUp = (props) => {
       users.some((x) => x.email === email)
     ) {
       if (users.some((x) => x.username === username)) {
-        return <p>Username is taken</p>;
+        return <p className="taken-message">That username is already taken</p>;
       } else if (users.some((x) => x.email === email)) {
-        return <p>Email is already in use</p>;
+        return (
+          <>
+            <p className="taken-message">Email is already in use</p>
+            <br />
+            <p className="taken-message">
+              Please contact if you forgot your username
+            </p>
+          </>
+        );
       }
     } else {
       return <button type="submit">Sign Up</button>;
