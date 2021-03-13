@@ -52,6 +52,7 @@ const SignUp = (props) => {
         });
       });
   };
+  const { email, username, password, passwordConfirmation } = form;
 
   const renderError = () => {
     const toggleForm = form.isError ? "danger" : "";
@@ -60,15 +61,18 @@ const SignUp = (props) => {
     }
   };
 
-  const { email, username, password, passwordConfirmation } = form;
-  const checkUsername = () => {
-    if (users.some((x) => x.username === username)) {
-      return <p>That username is taken</p>;
-    }
-  };
-  const checkEmail = () => {
-    if (users.some((x) => x.email === email)) {
-      return <p>That email is already in use</p>;
+  const check = () => {
+    if (
+      users.some((x) => x.username === username) ||
+      users.some((x) => x.email === email)
+    ) {
+      if (users.some((x) => x.username === username)) {
+        return <p>Username is taken</p>;
+      } else if (users.some((x) => x.email === email)) {
+        return <p>Email is already in use</p>;
+      }
+    } else {
+      return <button type="submit">Sign Up</button>;
     }
   };
   return (
@@ -125,12 +129,7 @@ const SignUp = (props) => {
             <p className="error-message">Passwords Do Not Match</p>
           ) : null}
           {renderError()}
-          {users.some((x) => x.username === username) ||
-          users.some((x) => x.email === email) ? (
-            <p>That username or email is taken</p>
-          ) : (
-            <button type="submit">Sign Up</button>
-          )}
+          {check()}
         </form>
       </div>
     </Layout>
