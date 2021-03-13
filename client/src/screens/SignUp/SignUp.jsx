@@ -61,6 +61,7 @@ const SignUp = (props) => {
           <div className="signup-username">
             <label>Username</label>
             <input
+              autoFocus
               required
               type="text"
               name="username"

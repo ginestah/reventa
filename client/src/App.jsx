@@ -10,8 +10,7 @@ import { verifyUser } from "./services/users";
 import SignUp from "./screens/SignUp/SignUp";
 import SignIn from "./screens/SignIn/SignIn";
 import SignOut from "./screens/SignOut/SignOut";
-import WishList from "./screens/WishList/WishList"
-import UsersListings from "./screens/UsersListings/UsersListings";
+import WishList from "./screens/WishList/WishList";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -24,10 +23,11 @@ function App() {
     };
     fetchUser();
   }, []);
+
   useEffect(() => {
     setTimeout(() => {
       setNotLoaded(false);
-    }, 10);
+    }, 100);
   }, []);
 
   const clearUser = () => setUser(null);
@@ -50,9 +50,13 @@ function App() {
         <Route exact path="/products">
           <Products user={user} />
         </Route>
-        <Route path="/add-product">
-          {user ? <ProductCreate user={user} /> : <Redirect to="/sign-up" />}
-        </Route>
+        {notloaded ? (
+          <div></div>
+        ) : (
+          <Route path="/add-product">
+            {user ? <ProductCreate user={user} /> : <Redirect to="/sign-up" />}
+          </Route>
+        )}
         <Route exact path="/products/:id/edit">
           {user ? <ProductEdit user={user} /> : <Redirect to="/" />}
         </Route>

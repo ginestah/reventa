@@ -61,7 +61,7 @@ const Products = (props) => {
     <Product
       _id={product._id}
       key={index}
-      name={product.name.length > 25 && product.name.slice(0, 25)}
+      name={product.name}
       photos={product.photos ? product.photos : null}
       price={product.price}
     />
