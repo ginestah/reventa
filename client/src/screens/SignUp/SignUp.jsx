@@ -55,7 +55,6 @@ const SignUp = (props) => {
   const { email, username, password, passwordConfirmation } = form;
 
   const renderError = () => {
-    const toggleForm = form.isError ? "danger" : "";
     if (form.isError) {
       return <p className="error-message">{form.errorMsg}</p>;
     }
@@ -64,7 +63,7 @@ const SignUp = (props) => {
   const check = () => {
     if (
       users.some((x) => x.username === username) ||
-      users.some((x) => x.email === email)
+      users.some((x) => x.email === email || password !== passwordConfirmation)
     ) {
       if (users.some((x) => x.username === username)) {
         return <p className="taken-message">That username is already taken</p>;
@@ -77,6 +76,10 @@ const SignUp = (props) => {
               Please contact if you forgot your username
             </p>
           </>
+        );
+      } else if (password !== passwordConfirmation) {
+        return (
+          <p className="taken-message">Passwords must match to submit form</p>
         );
       }
     } else {
@@ -133,9 +136,6 @@ const SignUp = (props) => {
               onChange={handleChange}
             />
           </div>
-          {password !== passwordConfirmation ? (
-            <p className="error-message">Passwords Do Not Match</p>
-          ) : null}
           {renderError()}
           {check()}
         </form>

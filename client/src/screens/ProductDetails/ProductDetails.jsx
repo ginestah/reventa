@@ -13,10 +13,6 @@ function ProductDetails(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const { id } = useParams();
   const [isDeleted, setIsDeleted] = useState(false);
-  // const { username } = useParams();
-
-  // console.log(props.user.wishlist)
-
   const handleClick = () => {
     deleteProduct(id);
     setIsDeleted(true);
@@ -36,9 +32,8 @@ function ProductDetails(props) {
     return <div>Loading...</div>;
   }
   const handleAddToWishList = async () => {
-    const response = await addToWishList(props.user._id, id);
+    await addToWishList(props.user._id, id);
     history.push(`/wishlist/${props.user._id}`);
-    console.log(response);
   };
 
   return (

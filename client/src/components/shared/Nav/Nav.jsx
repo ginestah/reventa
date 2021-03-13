@@ -4,10 +4,6 @@ import { useMediaPredicate } from "react-media-hook";
 import Burger from "./Burger";
 
 function Nav({ user }) {
-  // if (!user) {
-  //   return <div>loading!!!</div>
-  // }
-  // console.log(user._id)
   const smallerThan500 = useMediaPredicate("(max-width:500px)");
   const smallerThan500height = useMediaPredicate("(max-height:500px)");
   return (

@@ -44,7 +44,6 @@ const SignIn = (props) => {
   };
 
   const renderError = () => {
-    const toggleForm = form.isError ? "danger" : "";
     if (form.isError) {
       return <p className="error-message">{form.errorMsg}</p>;
     }

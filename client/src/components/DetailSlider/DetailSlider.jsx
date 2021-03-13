@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import "./DetailSlider.css";
 
 const DetailSlider = (props) => {
   const [current, setCurrent] = useState(0);
-  // const slideArray = props.products.slice(0, 3);
   const length = props.photos.length;
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);

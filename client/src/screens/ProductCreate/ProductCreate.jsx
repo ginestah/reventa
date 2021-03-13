@@ -18,7 +18,6 @@ const ProductCreate = (props) => {
     location: "",
     email: props.user.email,
   });
-  // console.log(props.user.email)
   const handleChange = (event) => {
     const { name, value } = event.target;
     setProduct({
@@ -29,7 +28,7 @@ const ProductCreate = (props) => {
   const handleImage = (event) => {
     setProduct({
       ...product,
-      ["photos"]: [...product.photos, imageAdd],
+      photos: [...product.photos, imageAdd],
     });
     setImageAdd("");
   };
@@ -59,7 +58,6 @@ const ProductCreate = (props) => {
 
   if (isCreated) {
     return <Redirect to="/products" />;
-    // can we redirect to the detail page of the product we just created?
   }
   if (!props.user) {
     <div>Loading...</div>;
@@ -180,8 +178,6 @@ const ProductCreate = (props) => {
                       value={imageAdd}
                       onChange={(e) => setImageAdd(e.target.value)}
                     />
-                    {/* {console.log(urlCheck.test(imageAdd))} */}
-
                     {checkImage()}
                   </>
                 )}
