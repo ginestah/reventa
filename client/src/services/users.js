@@ -50,8 +50,6 @@ export const verifyUser = async () => {
   return false;
 };
 
-
-
 export const getWishlist = async (id) => {
   try {
     const response = await api.get(`/users/${id}/wishlist`);
@@ -61,12 +59,19 @@ export const getWishlist = async (id) => {
   }
 };
 
-
-export const deleteWish = async (userId,productId) => {
+export const deleteWish = async (userId, productId) => {
   try {
     const response = await api.delete(`/users/${userId}/wishlist/${productId}`);
     return response.data;
   } catch (error) {
     throw error;
   }
-}
+};
+export const getUsers = async () => {
+  try {
+    const response = await api.get("/users");
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

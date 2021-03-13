@@ -8,7 +8,7 @@ img {
 }
 
 button {
-  color: #CAF0F8;
+  color: #caf0f8;
   background-color: #03045e;
   padding: 5px 10px;
   font-size: 15px;
@@ -23,19 +23,22 @@ button a:visited {
 }
 
 button:hover {
-  background-color:#90E0EF;
+  background-color: #90e0ef;
   color: #03045e;
 }
 
 .take-me-home a {
-  color: #CAF0F8;
+  color: #caf0f8;
   text-decoration: none;
 }
 
-.take-me-home a:visited{
-  color: #CAF0F8;
+.take-me-home a:visited {
+  color: #caf0f8;
 }
 
 .take-me-home a:hover {
   color: #03045e;
+}
+.taken-message {
+  color: #e61e1e;
 }

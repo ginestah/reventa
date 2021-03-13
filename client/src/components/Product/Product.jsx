@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const Product = (props) => {
   const title = props.name.slice(0, 25);
-  const ending = props.name.slice(25);
   return (
     <>
       <Link className="product" to={`/products/${props._id}`}>
