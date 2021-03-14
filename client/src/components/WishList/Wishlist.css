@@ -1,0 +1,23 @@
+.wish-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 10px;
+  width: 30vw;
+  border: solid black 1px;
+  font-size: clamp(20px, 1vh, 25px);
+}
+
+.wish-item-name {
+  font-weight: bold; 
+}
+
+.wish-item-photo {
+  max-width: 20vw;
+  margin: 0 auto;
+}
+
+.wish-container input {
+  margin-bottom: 0px;
+}
