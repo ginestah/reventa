@@ -44,7 +44,6 @@ const SignIn = (props) => {
   };
 
   const renderError = () => {
-    const toggleForm = form.isError ? "danger" : "";
     if (form.isError) {
       return <p className="error-message">{form.errorMsg}</p>;
     }
@@ -60,6 +59,7 @@ const SignIn = (props) => {
           <div className="signin-username">
             <label>Username</label>
             <input
+              autoFocus
               required
               type="text"
               name="username"

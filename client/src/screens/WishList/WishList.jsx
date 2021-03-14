@@ -1,60 +1,67 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
-import { getWishlist, } from "../../services/users";
-import {deleteWish} from "../../services/users"
-import { Link, useParams } from "react-router-dom";
-
+import { getWishlist } from "../../services/users";
+import { deleteWish } from "../../services/users";
+import { useParams } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { Wishlist } from "../../components/WishList/Wishlist";
 
 const Shop = (props) => {
   const [cart, setCart] = useState([]);
-  const { id } = useParams()
+  const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
-  // console.log(id)
-
-// console.log(props.user._id)
   useEffect(() => {
     const fetchWishlist = async () => {
       const wishlist = await getWishlist(id);
-      console.log(wishlist)
+      console.log(wishlist);
       if (wishlist) {
         setCart([...wishlist]);
-        console.log(cart)
+        console.log(cart);
         setIsLoaded(true);
       }
+      if (isDeleted) {
 
-    };
+       return <Redirect to={`/wishlist/${id}`} />;
+
+}
+     };
     fetchWishlist();
-  }, [id]);
+  }, [id, isDeleted]);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
   }
 
+
+ 
   const handleRemoveFromWishList = async (e) => {
-    // console.log(e.target.value)
-// console.log(`product,${e.target.value} `)
-    const response = await deleteWish(id,e.target.name)
-    // console.log(response)
-
-
+    const response = await deleteWish(id, e.target.name);
+    setIsDeleted(!isDeleted);
   };
 
   const cartItems = cart.map((product) => (
-    <div key={product._id}>
-      {`${product.name}: $${product.price}`}
-      <input type="submit" value="remove" name={product._id} onClick={(e) => handleRemoveFromWishList(e)} />
-    </div>
+    <Wishlist
+      key={product._id}
+      name={product.name}
+      photos={product.photos[0]}
+      price={product.price}
+      onClick={(e) => handleRemoveFromWishList(e)}
+      index={product._id}
+    />
   ));
   return (
     <Layout user={props.user}>
+
+       <div>My WishList</div>
+      {
+        cart.length!==0?<div>{cartItems}</div>:<div>empty list</div>
+      }
+     
       
-      <div>My WishList</div>
+        
       
-      {props.user ?
-        <div>{cartItems}</div>
-        :
-        <div>You did not log in!</div>}
    
       
     </Layout>

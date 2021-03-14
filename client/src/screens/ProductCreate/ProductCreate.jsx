@@ -18,7 +18,6 @@ const ProductCreate = (props) => {
     location: "",
     email: props.user.email,
   });
-  // console.log(props.user.email)
   const handleChange = (event) => {
     const { name, value } = event.target;
     setProduct({
@@ -29,7 +28,7 @@ const ProductCreate = (props) => {
   const handleImage = (event) => {
     setProduct({
       ...product,
-      ["photos"]: [...product.photos, imageAdd],
+      photos: [...product.photos, imageAdd],
     });
     setImageAdd("");
   };
@@ -51,16 +50,6 @@ const ProductCreate = (props) => {
     </div>
   ));
 
-  // const handleRemoveClick = (index) => {
-  //   const image = [...imageAdd];
-  //   image.splice(index, 1);
-  //   setImageAdd(image);
-  // };
-
-  // const handleAddClick = () => {
-  //   setImageAdd([...imageAdd, imageAdd[0]]);
-  // };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const created = await createProduct(product, props.user.email);
@@ -69,9 +58,30 @@ const ProductCreate = (props) => {
 
   if (isCreated) {
     return <Redirect to="/products" />;
-    // can we redirect to the detail page of the product we just created?
   }
-
+  if (!props.user) {
+    <div>Loading...</div>;
+  }
+  //regex found at https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url,
+  //I added | photo to include unsplash photos
+  const urlCheck = new RegExp(
+    /\b(https?:\/\/\S+(?:png|jpe?g|gif|photo)\S*)\b/gim
+  );
+  const checkImage = () => {
+    if (urlCheck.test(imageAdd)) {
+      return (
+        <button className="photo-button" type="button" onClick={handleImage}>
+          Add Image
+        </button>
+      );
+    } else {
+      return (
+        <p className="taken-message">
+          Please enter a valid image URL if you would like to add a photo
+        </p>
+      );
+    }
+  };
   return (
     <Layout user={props.user}>
       <div className="add-container">
@@ -159,54 +169,22 @@ const ProductCreate = (props) => {
             <div className="form-photos">
               <label>Photos:</label>
               <div>
-              {product.photos.length > 4 ? null : (
-                <>
-                  <input
-                    type="url"
-                    name="photos"
-                    id="images"
-                    value={imageAdd}
-                    onChange={(e) => setImageAdd(e.target.value)}
+                {product.photos.length > 4 ? null : (
+                  <>
+                    <input
+                      type="url"
+                      name="photos"
+                      id="images"
+                      value={imageAdd}
+                      onChange={(e) => setImageAdd(e.target.value)}
                     />
-                  <button
-                    className="photo-button"
-                    type="button"
-                    onClick={handleImage}
-                    >
-                    Add Image
-                  </button>
-                </>
-              )}
-              </div>
-              </div>
-          </div>
-            <div className="preview-images">{imageJSX}</div>
-
-          {/* https://www.cluemediator.com/add-or-remove-input-fields-dynamically-with-reactjs */}
-          {/* <label>Product Photos:</label>
-        {imageAdd.map((x, i) => {
-          return (
-            <div>
-            <input
-            required
-            className="input-image-link"
-            name="photos"
-            placeholder="Image Link"
-            value={product.photos}
-            onChange={handleImage}
-            />
-            <div className="button-box">
-            {imageAdd.length !== 1 && (
-              <button onClick={() => handleRemoveClick(i)}>Remove</button>
-              )}
-              {imageAdd.length < 5 && imageAdd.length - 1 === i && (
-                <button onClick={handleAddClick}>Add</button>
+                    {checkImage()}
+                  </>
                 )}
-                </div>
-                </div>
-                );
-              })} */}
-
+              </div>
+            </div>
+          </div>
+          <div className="preview-images">{imageJSX}</div>
           <button type="submit" className="submit-button">
             Submit
           </button>

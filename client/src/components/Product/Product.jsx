@@ -3,6 +3,7 @@ import "./Product.css";
 import { Link } from "react-router-dom";
 
 const Product = (props) => {
+  const title = props.name.slice(0, 25);
   return (
     <>
       <Link className="product" to={`/products/${props._id}`}>
@@ -13,7 +14,7 @@ const Product = (props) => {
         />
         <div>
           <div className="price">{`$${props.price}`}</div>
-          <div className="product-name">{props.name}</div>
+          <div className="product-name">{title}</div>
         </div>
       </Link>
     </>

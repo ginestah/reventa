@@ -1,17 +1,26 @@
 import React from "react";
 import { signUp, signIn } from "../../services/users";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
+import { getUsers } from "../../services/users";
 
 const SignUp = (props) => {
   const history = useHistory();
+  const [users, setUsers] = useState([]);
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const users = await getUsers();
+      setUsers(users);
+    };
+    fetchUsers();
+  }, []);
   const [form, setForm] = useState({
     username: "",
     email: "",
     password: "",
-    wishlist:[],
+    wishlist: [],
     passwordConfirmation: "",
     isError: false,
     errorMsg: "",
@@ -36,23 +45,47 @@ const SignUp = (props) => {
         setForm({
           email: "",
           password: "",
-          wishlist:[],
+          wishlist: [],
           passwordConfirmation: "",
           isError: true,
           errorMsg: "Sign Up Details Invalid",
         });
       });
   };
+  const { email, username, password, passwordConfirmation } = form;
 
   const renderError = () => {
-    const toggleForm = form.isError ? "danger" : "";
     if (form.isError) {
       return <p className="error-message">{form.errorMsg}</p>;
     }
   };
 
-  const { email, username, password, passwordConfirmation } = form;
-
+  const check = () => {
+    if (
+      users.some((x) => x.username === username) ||
+      users.some((x) => x.email === email || password !== passwordConfirmation)
+    ) {
+      if (users.some((x) => x.username === username)) {
+        return <p className="taken-message">That username is already taken</p>;
+      } else if (users.some((x) => x.email === email)) {
+        return (
+          <>
+            <p className="taken-message">Email is already in use</p>
+            <br />
+            <p className="taken-message">
+              Please contact if you forgot your username
+            </p>
+          </>
+        );
+      } else if (password !== passwordConfirmation) {
+        return (
+          <p className="taken-message">Passwords must match to submit form</p>
+        );
+      }
+    } else {
+      return <button type="submit">Sign Up</button>;
+    }
+  };
   return (
     <Layout user={props.user}>
       <div className="form-container">
@@ -61,6 +94,7 @@ const SignUp = (props) => {
           <div className="signup-username">
             <label>Username</label>
             <input
+              autoFocus
               required
               type="text"
               name="username"
@@ -102,11 +136,8 @@ const SignUp = (props) => {
               onChange={handleChange}
             />
           </div>
-          {password !== passwordConfirmation ? (
-            <p className="error-message">Passwords Do Not Match</p>
-          ) : null}
           {renderError()}
-          <button type="submit">Sign Up</button>
+          {check()}
         </form>
       </div>
     </Layout>

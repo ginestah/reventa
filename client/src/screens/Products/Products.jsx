@@ -21,10 +21,8 @@ const Products = (props) => {
   }, []);
   const handleChange = (e) => {
     const value = e.target.type === "checkbox" && e.target.checked;
-    console.log(value);
     if (value) {
       setOptions([...options, e.target.value]);
-      console.log(options);
       const newQueriesProducts = allProducts.filter((product) =>
         product.name.toLowerCase().includes(e.target.value.toLowerCase())
       );
@@ -37,17 +35,8 @@ const Products = (props) => {
 
       setQueriedProducts(allProducts);
     }
-
-    // setSelectedProduct([...selectedProduct,newQueriesProducts])
   };
 
-  //   const checkSubmit = (e) => {
-  //     let checkedArray = [];
-  //     if (e.target.checked === true) {
-  //       checkedArray.push()
-  //     }
-
-  // }
   const handleSearch = (e) => {
     const newQueriesProducts = allProducts.filter((product) =>
       product.name.toLowerCase().includes(e.target.value.toLowerCase())
@@ -61,7 +50,7 @@ const Products = (props) => {
     <Product
       _id={product._id}
       key={index}
-      name={product.name.length > 25 && product.name.slice(0, 25)}
+      name={product.name}
       photos={product.photos ? product.photos : null}
       price={product.price}
     />

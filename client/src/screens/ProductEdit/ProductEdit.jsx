@@ -64,9 +64,27 @@ const ProductEdit = (props) => {
   const handleImage = (event) => {
     setProduct({
       ...product,
-      ["photos"]: [...product.photos, imageAdd],
+      photos: [...product.photos, imageAdd],
     });
     setImageAdd("");
+  };
+  const urlCheck = new RegExp(
+    /\b(https?:\/\/\S+(?:png|jpe?g|gif|photo)\S*)\b/gim
+  );
+  const checkImage = () => {
+    if (urlCheck.test(imageAdd)) {
+      return (
+        <button className="photo-button" type="button" onClick={handleImage}>
+          Add Image
+        </button>
+      );
+    } else {
+      return (
+        <p className="taken-message">
+          Please enter a valid image URL if you would like to add a photo
+        </p>
+      );
+    }
   };
 
   return (
@@ -94,30 +112,6 @@ const ProductEdit = (props) => {
             onChange={handleChange}
           />
           <label htmlFor="location">Location:</label>
-
-          {/* {imgList.map((x, i) => {
-            return (
-              <div>
-                <input
-                  className="input-photo"
-                  placeholder="Photo"
-                  value={product.photos.imgURL}
-                  name="imgURL"
-                  required
-                  onChange={handleChange}
-                />
-              
-                <div className="button-box">
-                  {imgList.length !== 1 && (
-                    <button onClick={() => handleRemoveClick(i)}>Remove</button>
-                  )}
-                  {imgList.length < 5 && imgList.length - 1 === i && (
-                    <button onClick={handleAddClick}>Add</button>
-                  )}
-                </div>
-              </div>
-            );
-          })} */}
           <input
             className="input-price"
             placeholder="Price"
@@ -136,13 +130,7 @@ const ProductEdit = (props) => {
                 value={imageAdd}
                 onChange={(e) => setImageAdd(e.target.value)}
               />
-              <button
-                className="photo-button"
-                type="button"
-                onClick={handleImage}
-              >
-                Add Image
-              </button>
+              {checkImage()}
             </>
           )}
 
