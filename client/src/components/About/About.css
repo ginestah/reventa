@@ -1,0 +1,15 @@
+.about {
+  border-top: solid 1px #00B4D8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 150px;
+}
+
+.about p {
+  max-width: 50vw;
+  text-align: left;
+  font-size: 2vh;
+  margin-top: 10px;
+}
+

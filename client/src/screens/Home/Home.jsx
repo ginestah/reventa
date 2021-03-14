@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getProducts } from "../../services/products";
 import Slider from "./Slider";
+import About from "../../components/About/About"
 
 function Home(props) {
   const [products, setProducts] = useState([]);
@@ -115,6 +116,8 @@ function Home(props) {
             </a>
           </div>
         </div>
+
+          <About />
       </div>
     </Layout>
   );
