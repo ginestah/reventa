@@ -1,13 +1,15 @@
 .App {
   text-align: center;
   height: 100%;
+  width: 100%
 }
 
 img {
   max-width: 50vw;
 }
 
-button {
+button,
+.button {
   color: #caf0f8;
   background-color: #03045e;
   padding: 5px 10px;
@@ -17,12 +19,14 @@ button {
   cursor: pointer;
 }
 
-button a:visited {
+button a:visited, 
+.button a:visited {
   text-decoration: none;
   color: #03045e;
 }
 
-button:hover {
+button:hover,
+.button:hover {
   background-color: #90e0ef;
   color: #03045e;
 }
@@ -41,4 +45,6 @@ button:hover {
 }
 .taken-message {
   color: #e61e1e;
+  width: 350px;
+  text-align:center;
 }

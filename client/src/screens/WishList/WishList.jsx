@@ -5,6 +5,7 @@ import { deleteWish } from "../../services/users";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { Wishlist } from "../../components/WishList/Wishlist";
+import "./WishList.css"
 
 const Shop = (props) => {
   const [cart, setCart] = useState([]);
@@ -22,11 +23,9 @@ const Shop = (props) => {
         setIsLoaded(true);
       }
       if (isDeleted) {
-
-       return <Redirect to={`/wishlist/${id}`} />;
-
-}
-     };
+        return <Redirect to={`/wishlist/${id}`} />;
+      }
+    };
     fetchWishlist();
   }, [id, isDeleted]);
 
@@ -34,8 +33,6 @@ const Shop = (props) => {
     return <div>Loading...</div>;
   }
 
-
- 
   const handleRemoveFromWishList = async (e) => {
     const response = await deleteWish(id, e.target.name);
     setIsDeleted(!isDeleted);
@@ -53,17 +50,8 @@ const Shop = (props) => {
   ));
   return (
     <Layout user={props.user}>
-
-       <div>My WishList</div>
-      {
-        cart.length!==0?<div>{cartItems}</div>:<div>empty list</div>
-      }
-     
-      
-        
-      
-   
-      
+      <h3>My Wish List</h3>
+      {cart.length !== 0 ? <div className="wish-list">{cartItems}</div> : <div>empty list</div>}
     </Layout>
   );
 };
