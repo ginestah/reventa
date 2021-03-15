@@ -10,7 +10,7 @@ import { verifyUser } from "./services/users";
 import SignUp from "./screens/SignUp/SignUp";
 import SignIn from "./screens/SignIn/SignIn";
 import SignOut from "./screens/SignOut/SignOut";
-import WishList from "./screens/WishList/WishList";
+import WishLists from "./screens/WishList/WishLists";
 import Loading from "./screens/Loading/Loading";
 
 function App() {
@@ -69,7 +69,7 @@ function App() {
           <ProductDetails user={user} />
         </Route>
         <Route exact path="/wishlist/:id">
-          <WishList user={user} />
+          <WishLists user={user} />
         </Route>
       </Switch>
     </div>

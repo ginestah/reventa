@@ -1,8 +1,8 @@
 import React from "react";
-import './Wishlist.css'
+import './WishList.css'
 import { Link } from "react-router-dom"
 
-export const Wishlist = ({ name, price, index, photos, onClick }) => {
+export const WishList = ({ name, price, index, photos, onClick }) => {
   return (
 
     <div className="wish-container">
