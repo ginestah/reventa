@@ -1,10 +1,12 @@
 import React from "react";
 import './Wishlist.css'
+import {Link} from "react-router-dom"
 
 export const Wishlist = ({ name, price, index, photos, onClick }) => {
   return (
     <div className="wish-container">
-      <img className="wish-item-photo" src={photos} alt={name} />
+<Link to={`/products/${index}`}><img className="wish-item-photo" src={photos} alt={name} /></Link>
+      
       <div>
       <div className="wish-item-name">{name}</div>
       <div className="wish-item-price">${price}</div>
