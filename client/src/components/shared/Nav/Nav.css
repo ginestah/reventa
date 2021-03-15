@@ -61,5 +61,6 @@ nav a.logo.active {
 @media screen and (max-width: 500px) {
   .nav a.logo {
     text-align: left;
+    padding-left: 20px;
   }
 }

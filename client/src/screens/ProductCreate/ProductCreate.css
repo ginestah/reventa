@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   height: 70vh;
-  margin-left:10px; 
-  margin-right: 10px;
+  width: 100%;
+  margin-left:20px; 
+  margin-right: 20px;
 }
 
 .create-form {
@@ -65,17 +66,39 @@ div.photo-container {
   margin-top: 50px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
   .create-form div {
     width:60vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  .add-container {
     align-items: center;
-    justify-items: center;
+    margin-bottom: 15px;
+  }
+
+  .create-form div input {
+    max-width: 250px;
+  }
+  
+  .create-form div select {
+    max-width: 258px;
+  }
+
+  .create-form div textarea {
+    max-width: 250px;
+    min-width: 250px;
+  }
+
+  .preview-images img {
+    max-width: 60vw;
+  }
+
+  .form-photos div {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .taken-message {
+    width: 250px;
   }
 }
