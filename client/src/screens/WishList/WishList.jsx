@@ -49,9 +49,12 @@ const Shop = (props) => {
     <Layout user={props.user}>
 
       <h3>My Wish List</h3>
-      {
+      <div className="wish-container">
+          {
         cart.length !== 0 ? <div>{cartItems}</div> : <h3>My Wish List is Empty</h3> 
       }
+      </div>
+    
     </Layout>
   );
 };
