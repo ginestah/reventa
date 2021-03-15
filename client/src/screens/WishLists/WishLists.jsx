@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getWishlist, deleteWish } from "../../services/users";
 import { useParams, Redirect } from "react-router-dom";
-import { WishList } from "../../components/WishList/WishList";
-import "./WishLists.css"
+import WishList from "../../components/WishList/WishList";
+import "./WishLists.css";
 
 const WishLists = (props) => {
   const [cart, setCart] = useState([]);
@@ -48,9 +48,11 @@ const WishLists = (props) => {
   return (
     <Layout user={props.user}>
       <h3>My Wish List</h3>
-      {
-        cart.length !== 0 ? <div className="wish-list">{cartItems}</div> : <h3>My Wish List is Empty</h3> 
-      }
+      {cart.length !== 0 ? (
+        <div className="wish-list">{cartItems}</div>
+      ) : (
+        <h3>My Wish List is Empty</h3>
+      )}
     </Layout>
   );
 };
