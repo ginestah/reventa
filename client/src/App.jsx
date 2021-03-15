@@ -10,7 +10,7 @@ import { verifyUser } from "./services/users";
 import SignUp from "./screens/SignUp/SignUp";
 import SignIn from "./screens/SignIn/SignIn";
 import SignOut from "./screens/SignOut/SignOut";
-import WishLists from "./screens/WishList/WishLists";
+import WishLists from "./screens/WishLists/WishLists";
 import Loading from "./screens/Loading/Loading";
 
 function App() {
