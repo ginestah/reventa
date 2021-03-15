@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getWishlist, deleteWish } from "../../services/users";
 import { useParams, Redirect } from "react-router-dom";
-import { WishList } from "../../components/WishList/WishList";
+import WishList from "../../components/WishList/WishList";
 import "./WishLists.css";
 
 const WishLists = (props) => {
@@ -42,7 +42,6 @@ const WishLists = (props) => {
       price={product.price}
       onClick={(e) => handleRemoveFromWishList(e)}
       index={product._id}
-      id={product._id}
     />
   ));
 
