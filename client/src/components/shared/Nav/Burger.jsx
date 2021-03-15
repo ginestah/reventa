@@ -134,6 +134,11 @@ function Burger(props) {
 
       <Navigation clicked={click}>
         <List>
+          <li>
+            <ItemLink onClick={handleClick} to="/products">
+              Listings
+            </ItemLink>
+          </li>
           {props.user ? (
             <>
               <li>
@@ -151,7 +156,7 @@ function Burger(props) {
                   onClick={handleClick}
                   to={`/wishlist/${props.user._id}`}
                 >
-                  Wish Lists
+                  Wish List
                 </ItemLink>
               </li>
             </>

@@ -1,0 +1,35 @@
+.wish-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin: 10px;
+  width: 47vw;
+  border: solid black 1px;
+  font-size: 2vh;
+}
+
+.wish-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.wish-item-name {
+  font-weight: bold; 
+}
+
+.wish-item-photo {
+  max-width: 40vw;
+}
+
+.wish-list input {
+  margin-top: 10px;
+}
+
+@media (max-width: 500px) {
+  .wish-container {
+    width: 90vw;
+  }
+}

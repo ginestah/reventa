@@ -29,7 +29,7 @@ function Nav({ user }) {
                   Sign Out
                 </NavLink>
                 <NavLink className="wishlist-link" to={`/wishlist/${user._id}`}>
-                  Wish Lists
+                  Wish List
                 </NavLink>
               </>
             ) : (

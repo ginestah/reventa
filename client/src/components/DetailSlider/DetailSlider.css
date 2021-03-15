@@ -6,7 +6,7 @@
 }
 
 .image {
-  max-height: 30vw;
+  max-width: 40vw;
   border-radius: 10px;
 }
 
@@ -60,4 +60,11 @@ p {
 .slide a:hover {
   color: #00b4d8;
   font-weight: bold;
+}
+
+
+@media screen and (max-width:500px){
+  .image {
+    max-width: 60vw;
+  }
 }

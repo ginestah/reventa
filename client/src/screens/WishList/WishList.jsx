@@ -5,6 +5,7 @@ import { deleteWish } from "../../services/users";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { Wishlist } from "../../components/WishList/Wishlist";
+import "./WishList.css"
 
 const Shop = (props) => {
   const [cart, setCart] = useState([]);

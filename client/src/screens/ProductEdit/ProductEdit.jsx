@@ -89,86 +89,106 @@ const ProductEdit = (props) => {
 
   return (
     <Layout user={props.user}>
-      <div className="product-edit">
+      <div className="edit-container">
         <form className="edit-form" onSubmit={handleSubmit}>
-          <label htmlFor="name">Name of Product</label>
-          <input
-            className="input-name"
-            placeholder="Name"
-            value={product.name}
-            name="name"
-            required
-            autoFocus
-            onChange={handleChange}
-          />
-          <label htmlFor="price">Price of Product</label>
-
-          <input
-            className="input-price"
-            placeholder="Price"
-            value={product.price}
-            name="price"
-            required
-            onChange={handleChange}
-          />
-          <label htmlFor="location">Location:</label>
-          <input
-            className="input-price"
-            placeholder="Price"
-            value={product.location}
-            name="location"
-            required
-            onChange={handleChange}
-          />
-          <label htmlFor="imgURL">Photos of Product</label>
-          {product.photos.length - 1 > 4 ? null : (
-            <>
+          <div className="details-container">
+            <div>
+              <label htmlFor="name">Name of Product</label>
               <input
-                type="url"
-                name="photos"
-                id="images"
-                value={imageAdd}
-                onChange={(e) => setImageAdd(e.target.value)}
+                className="input-name"
+                placeholder="Name"
+                value={product.name}
+                name="name"
+                required
+                autoFocus
+                onChange={handleChange}
               />
-              {checkImage()}
-            </>
-          )}
+            </div>
 
-          <label htmlFor="contactInfo">Your Contact Info:</label>
+            <div>
+              <label htmlFor="price">Price:</label>
+              <input
+                className="input-price"
+                placeholder="Price"
+                value={product.price}
+                name="price"
+                required
+                onChange={handleChange}
+              />
+            </div>
 
-          <input
-            className="input-contact-info"
-            placeholder="contact-info"
-            value={product.contactInfo}
-            name="contactInfo"
-            required
-            onChange={handleChange}
-          />
+            <div>
+              <label htmlFor="location">Location:</label>
+              <input
+                className="input-price"
+                placeholder="Price"
+                value={product.location}
+                name="location"
+                required
+                onChange={handleChange}
+              />
+            </div>
 
-          <label htmlFor="shipping"> offer of Shipping</label>
+            <div>
+              <label htmlFor="shipping">Shipping</label>
+              <select name="shipping" id="shipping">
+                <option value="selected">Please select one</option>
+                <option value="true">
+                  Available, not included in listing price
+                </option>
+                <option value="false">Pick-up only</option>
+              </select>
+            </div>
 
-          <select name="shipping" id="shipping">
-            <option value="Yes">Yes</option>
-            <option value="Pickup">Pick-up</option>
-          </select>
+            <div>
+              <label htmlFor="contactInfo">Your Contact Info:</label>
+              <input
+                className="input-contact-info"
+                placeholder="Phone number or email address"
+                value={product.contactInfo}
+                name="contactInfo"
+                required
+                onChange={handleChange}
+              />
+            </div>
 
-          <label htmlFor="description">Description of Product</label>
-          <textarea
-            className="textarea-description"
-            rows={10}
-            cols={78}
-            placeholder="Description"
-            value={product.description}
-            name="description"
-            required
-            onChange={handleChange}
-          />
+            <div>
+              <label htmlFor="description">Product Description:</label>
+              <textarea
+                className="textarea-description"
+                rows={10}
+                cols={78}
+                placeholder="Description"
+                value={product.description}
+                name="description"
+                required
+                onChange={handleChange}
+              />
+            </div>
 
+            <div className="form-photos">
+              <label htmlFor="imgURL">Photos:</label>
+              <div>
+                {product.photos.length > 4 ? null : (
+                  <>
+                    <input
+                      type="url"
+                      name="photos"
+                      id="images"
+                      value={imageAdd}
+                      onChange={(e) => setImageAdd(e.target.value)}
+                    />
+                    {checkImage()}
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="preview-images">{imageJSX}</div>
           <button type="submit" className="save-button">
             Save
           </button>
         </form>
-        <div className="preview-images">{imageJSX}</div>
       </div>
     </Layout>
   );
