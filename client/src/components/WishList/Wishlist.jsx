@@ -11,7 +11,7 @@ export const WishList = ({ name, price, index, photos, onClick }) => {
 
       <div className="wish-item-name" >{name}</div>
       <div className="wish-item-price">${price}</div>
-      <input className="button" type="submit" value="Remove" name={index} onClick={onClick} />
+      <button className="button" type="submit" value={name} name={index} onClick={onClick}>Remove</button>
 
     </div >
   );
