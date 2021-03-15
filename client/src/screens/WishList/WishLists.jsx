@@ -47,9 +47,9 @@ const WishLists = (props) => {
 
   return (
     <Layout user={props.user}>
-      <h3>My Wish Lists</h3>
+      <h3>My Wish List</h3>
       {
-        cart.length !== 0 ? <div className="wish-lists">{cartItems}</div> : <h3>My Wish List is Empty</h3> 
+        cart.length !== 0 ? <div className="wish-list">{cartItems}</div> : <h3>My Wish List is Empty</h3> 
       }
     </Layout>
   );
