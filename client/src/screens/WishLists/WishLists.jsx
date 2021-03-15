@@ -30,7 +30,7 @@ const WishLists = (props) => {
   }
 
   const handleRemoveFromWishList = async (e) => {
-    await deleteWish(id, e.target.name);
+    await deleteWish(id, e.target.value);
     setIsDeleted(!isDeleted);
   };
 
@@ -41,7 +41,7 @@ const WishLists = (props) => {
       photos={product.photos[0]}
       price={product.price}
       onClick={(e) => handleRemoveFromWishList(e)}
-      index={product._id}
+      id={product._id}
     />
   ));
 
