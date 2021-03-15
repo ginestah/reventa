@@ -25,6 +25,7 @@ const ProductCreate = (props) => {
       [name]: value,
     });
   };
+
   const handleImage = (event) => {
     setProduct({
       ...product,
@@ -90,6 +91,7 @@ const ProductCreate = (props) => {
             <div>
               <label>Product Name:</label>
               <input
+                maxLength="25"
                 className="input-name"
                 placeholder="Name"
                 value={product.name}
@@ -103,6 +105,7 @@ const ProductCreate = (props) => {
             <div>
               <label>Price:</label>
               <input
+                type="number"
                 className="input-price"
                 placeholder="Price"
                 value={product.price}

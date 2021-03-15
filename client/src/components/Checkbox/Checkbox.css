@@ -9,6 +9,10 @@ li {
   margin: 10px;
 }
 
+.clear {
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 500px) {
   .check-options {
     flex-wrap: wrap;

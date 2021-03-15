@@ -39,7 +39,7 @@ const Checkbox = (props) => {
           <Checked key={index} handleCheck={handleCheck} {...option} />
         ))}
       </ul>
-      <button onClick={() => handleClick()}>Clear Filters</button>
+      <button className="clear" onClick={() => handleClick()}>Clear Filters</button>
     </>
   );
 };

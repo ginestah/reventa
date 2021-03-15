@@ -114,7 +114,6 @@ const createProduct = async (req, res) => {
     const {
       name,
       description,
-      // photos: [...imageAdd],
       price,
       shipping,
       contactInfo,
@@ -124,7 +123,6 @@ const createProduct = async (req, res) => {
       photos: [...req.body.photos],
       name,
       description,
-      // photos: [...imageAdd],
       price,
       shipping,
       contactInfo,
@@ -132,8 +130,7 @@ const createProduct = async (req, res) => {
       userId: user,
     };
 
-    // console.log(req.body);
-    // console.log(payload);
+ 
     const product = new Product(payload);
 
     await product.save();
