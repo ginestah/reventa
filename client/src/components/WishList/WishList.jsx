@@ -2,7 +2,7 @@ import React from "react";
 import "./WishList.css";
 import { Link } from "react-router-dom";
 
-export const WishList = ({ name, price, id, photos, onClick }) => {
+const WishList = ({ name, price, id, photos, onClick }) => {
   return (
     <div className="wish-container">
       <Link to={`/products/${id}`}>

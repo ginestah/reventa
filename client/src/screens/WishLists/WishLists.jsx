@@ -40,7 +40,7 @@ const WishLists = (props) => {
       name={product.name}
       photos={product.photos[0]}
       price={product.price}
-      onClick={(e) => handleRemoveFromWishList(e)}
+      onClick={handleRemoveFromWishList}
       id={product._id}
     />
   ));
