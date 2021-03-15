@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
-import { getWishlist, deleteWish} from "../../services/users";
-import { useParams,Redirect } from "react-router-dom";
+import { getWishlist, deleteWish } from "../../services/users";
+import { useParams, Redirect } from "react-router-dom";
 import { Wishlist } from "../../components/WishList/Wishlist";
 import "./WishList.css"
 
@@ -48,9 +48,9 @@ const Shop = (props) => {
   return (
     <Layout user={props.user}>
 
-      <div>My WishList</div>
+      <h3>My Wish List</h3>
       {
-        cart.length !== 0 ? <div>{cartItems}</div> : <div>Your WishList is Empty</div>
+        cart.length !== 0 ? <div>{cartItems}</div> : <h3>My Wish List is Empty</h3> 
       }
     </Layout>
   );
