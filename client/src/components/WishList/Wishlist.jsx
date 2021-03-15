@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 
 export const WishList = ({ name, price, index, photos, onClick }) => {
   return (
-
     <div className="wish-container">
       <Link to={`/products/${index}`}>
         <img className="wish-item-photo" src={photos} alt={name} />
@@ -15,7 +14,5 @@ export const WishList = ({ name, price, index, photos, onClick }) => {
       <input className="button" type="submit" value="Remove" name={index} onClick={onClick} />
 
     </div >
-
-
   );
 };
