@@ -62,12 +62,14 @@ const SignUp = (props) => {
 
   const check = () => {
     if (
-      users.some((x) => x.username === username) ||
-      users.some((x) => x.email === email || password !== passwordConfirmation)
+      users.some((user) => user.username === username) ||
+      users.some(
+        (user) => user.email === email || password !== passwordConfirmation
+      )
     ) {
-      if (users.some((x) => x.username === username)) {
+      if (users.some((user) => user.username === username)) {
         return <p className="taken-message">That username is already taken</p>;
-      } else if (users.some((x) => x.email === email)) {
+      } else if (users.some((user) => user.email === email)) {
         return (
           <>
             <p className="taken-message">Email is already in use</p>
