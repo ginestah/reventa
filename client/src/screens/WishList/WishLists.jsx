@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import { getWishlist, deleteWish } from "../../services/users";
 import { useParams, Redirect } from "react-router-dom";
-import { Wishlist } from "../../components/WishList/Wishlist";
-import "./WishList.css"
+import { WishList } from "../../components/WishList/WishList";
+import "./WishLists.css"
 
-const Shop = (props) => {
+const WishLists = (props) => {
   const [cart, setCart] = useState([]);
   const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,7 +35,7 @@ const Shop = (props) => {
   };
 
   const cartItems = cart.map((product) => (
-    <Wishlist
+    <WishList
       key={product._id}
       name={product.name}
       photos={product.photos[0]}
@@ -47,12 +47,11 @@ const Shop = (props) => {
 
   return (
     <Layout user={props.user}>
-
       <h3>My Wish List</h3>
       {
-        cart.length !== 0 ? <div>{cartItems}</div> : <h3>My Wish List is Empty</h3> 
+        cart.length !== 0 ? <div className="wish-list">{cartItems}</div> : <h3>My Wish List is Empty</h3> 
       }
     </Layout>
   );
 };
-export default Shop;
+export default WishLists;
