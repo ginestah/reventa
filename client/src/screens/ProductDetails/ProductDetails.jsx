@@ -21,7 +21,6 @@ function ProductDetails(props) {
   useEffect(() => {
     const decorate = async () => {
       const product = await getProduct(id);
-
       setProduct(product);
       setIsLoaded(true);
     };
