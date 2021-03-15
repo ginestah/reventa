@@ -33,7 +33,7 @@ function ProductDetails(props) {
   }
   const handleAddToWishList = async () => {
     await addToWishList(props.user._id, id);
-    history.push(`/wishlist/${props.user._id}`);
+    history.push(`/products`);
   };
 
   return (

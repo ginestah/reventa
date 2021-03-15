@@ -95,6 +95,7 @@ const ProductEdit = (props) => {
             <div>
               <label htmlFor="name">Name of Product</label>
               <input
+                maxLength="25"
                 className="input-name"
                 placeholder="Name"
                 value={product.name}
@@ -108,6 +109,7 @@ const ProductEdit = (props) => {
             <div>
               <label htmlFor="price">Price:</label>
               <input
+                type="number"
                 className="input-price"
                 placeholder="Price"
                 value={product.price}
