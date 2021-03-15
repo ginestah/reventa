@@ -45,4 +45,6 @@ button:hover,
 }
 .taken-message {
   color: #e61e1e;
+  width: 350px;
+  text-align:center;
 }

@@ -22,7 +22,6 @@
   margin-bottom: 15px;
 }
 
-
 .create-form div input {
   width: 350px;
 }
@@ -36,12 +35,9 @@
   min-width: 350px;
 }
 
-.form-photos input {
-  max-width: 255px;
-}
-
 .form-photos div {
-  display: inline;
+  flex-direction: column; 
+  align-items: flex-end;
   text-align: right;
 }
 
