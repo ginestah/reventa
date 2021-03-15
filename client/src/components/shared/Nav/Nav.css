@@ -2,7 +2,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   z-index: 1;
   background-color: white;
 }
@@ -17,7 +17,7 @@ nav {
   text-align: center;
   border-bottom: solid 1px #00b4d8;
   background-color: white;
-  padding: 10px, 0;
+  /* padding: 10px, 0; */
   letter-spacing: 5px;
 }
 
@@ -37,7 +37,6 @@ nav {
 
 nav a.active {
   color: #03045e;
-  /* font-weight: bold; */
   text-decoration: underline;
 }
 
@@ -57,4 +56,10 @@ nav a.logo.active {
 
 .links a {
   font-size: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .nav a.logo {
+    text-align: left;
+  }
 }

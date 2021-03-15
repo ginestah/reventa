@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   height: 70vh;
+  margin-left:10px; 
+  margin-right: 10px;
 }
 
 .create-form {
@@ -65,10 +67,15 @@ div.photo-container {
 
 @media screen and (max-width: 700px) {
   .create-form div {
+    width:60vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 15px;
     text-align: left;
+  }
+  .add-container {
+    align-items: center;
+    justify-items: center;
   }
 }
