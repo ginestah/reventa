@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 40vh;
   min-width: 40vw;
+  margin: 0 auto;
   border: black 1px solid;
   font-size: 15px;
   font-weight: normal;
@@ -32,6 +33,7 @@ label {
 
 @media screen and (max-width: 500px) {
   .form-container form div {
+    min-width: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
