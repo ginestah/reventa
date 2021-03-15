@@ -6,6 +6,11 @@
   margin-bottom: 150px;
 }
 
+.about h3 {
+  padding: 40px 0;
+  margin: 0;
+}
+
 .about p {
   max-width: 50vw;
   text-align: left;
