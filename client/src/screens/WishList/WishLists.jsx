@@ -5,7 +5,7 @@ import { useParams, Redirect } from "react-router-dom";
 import { WishList } from "../../components/WishList/WishList";
 import "./WishLists.css"
 
-const Shop = (props) => {
+const WishLists = (props) => {
   const [cart, setCart] = useState([]);
   const { id } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -47,11 +47,11 @@ const Shop = (props) => {
 
   return (
     <Layout user={props.user}>
-      <h3>My Wish List</h3>
+      <h3>My Wish Lists</h3>
       {
         cart.length !== 0 ? <div className="wish-lists">{cartItems}</div> : <h3>My Wish List is Empty</h3> 
       }
     </Layout>
   );
 };
-export default Shop;
+export default WishLists;
