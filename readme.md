@@ -3,6 +3,7 @@
 ![team GLO](https://res.cloudinary.com/dpbzq29kr/image/upload/c_scale,h_428/v1615237662/Image_from_iOS_qib6xu.jpg)
 
 [deployed api with full auth/CRUD](https://reventa-server.herokuapp.com/api)
+[deployed site](https://reventa.netlify.app/)
 
 ### Schemas
 
@@ -21,7 +22,8 @@ const Product = new Schema(
     contactInfo: { type: String, required: true },
     userId: { type: Schema.Types.ObjectId, ref: "users" },
   },
-  { tim
+  { timestamps: true }
+);
 module.exports = mongoose.model("products", Product);
 
 const User = new Schema(
@@ -30,7 +32,7 @@ const User = new Schema(
     email: { type: String, required: true },
     password_digest: { type: String, required: true },
     products: [{ type: Schema.Types.ObjectId, ref: "products" }],
-    wishlist: [{ type: Schema.Types.ObjectId }],
+    wishlist: [{ type: Schema.Types.ObjectId,ref:"products"}],
   },
   { timestamps: true }
 );
