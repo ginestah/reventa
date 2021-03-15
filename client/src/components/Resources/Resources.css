@@ -31,3 +31,23 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 500px) {
+  .tile-container {
+    flex-flow: column nowrap; 
+    justify-content:center;
+  }
+  .resource-tile {
+    display: flex;
+    flex-direction: column;
+    max-width: 70vw;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  .resource-tile a {
+    align-items: center;
+  }
+
+  .resource-tile img {
+    max-width: 80vw;
+  }
+}

@@ -18,3 +18,12 @@
   margin-top: 10px;
 }
 
+@media screen and (max-width:500px){
+  .about img {
+    max-width: 80vw;
+  }
+  
+  .about p {
+    max-width: 90vw;
+  }
+}
