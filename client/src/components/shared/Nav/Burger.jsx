@@ -26,17 +26,17 @@ const NavBackground = styled.div`
   position: fixed;
   top: 2rem;
   right: 2rem;
-  background-image: radial-gradient(
-    ${COLORS.primaryDark},
-    ${COLORS.primaryLight}
-  );
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
   z-index: 600;
-  transform: ${(props) => (props.clicked ? "scale(80)" : "scale(0)")};
-  transition: transform 0.8s;
-`;
+  `;
+  // background-image: radial-gradient(
+  //   ${COLORS.primaryDark},
+  //   ${COLORS.primaryLight}
+  // );
+  // transform: ${(props) => (props.clicked ? "scale(80)" : "scale(0)")};
+  // transition: transform 0.8s;
 
 const Icon = styled.span`
   position: relative;
@@ -122,7 +122,7 @@ const ItemLink = styled(NavLink)`
     &:hover,
     &:active {
       background-position: 100%;
-      color: ${COLORS.primaryDark};
+      color: ${COLORS.primaryLight};
       transform: translateX(1rem);
     }
     `;
