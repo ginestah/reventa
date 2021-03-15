@@ -23,10 +23,10 @@ const Shop = (props) => {
       }
       if (isDeleted) {
 
-       return <Redirect to={`/wishlist/${id}`} />;
+        return <Redirect to={`/wishlist/${id}`} />;
 
-}
-     };
+      }
+    };
     fetchWishlist();
   }, [id, isDeleted]);
 
@@ -35,7 +35,7 @@ const Shop = (props) => {
   }
 
 
- 
+
   const handleRemoveFromWishList = async (e) => {
     const response = await deleteWish(id, e.target.name);
     setIsDeleted(!isDeleted);
@@ -54,16 +54,16 @@ const Shop = (props) => {
   return (
     <Layout user={props.user}>
 
-       <div>My WishList</div>
+      <div>My WishList</div>
       {
-        cart.length!==0?<div>{cartItems}</div>:<div>empty list</div>
+        cart.length !== 0 ? <div>{cartItems}</div> : <div>empty list</div>
       }
-     
-      
-        
-      
-   
-      
+
+
+
+
+
+
     </Layout>
   );
 };
