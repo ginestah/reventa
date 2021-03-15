@@ -7,7 +7,7 @@
 .create-form {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   margin-bottom: 50px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .form-photos div {
-  flex-direction: column; 
+  flex-direction: column;
   align-items: flex-end;
   text-align: right;
 }
@@ -51,7 +51,7 @@ div.preview-images {
 div.photo-container {
   flex-direction: column;
   align-items: center;
-  width: 25vw;
+  width: 35vw;
   padding: 10px;
 }
 .preview-images img {
@@ -61,4 +61,14 @@ div.photo-container {
 .create-form .submit-button {
   margin-bottom: 100px;
   margin-top: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .create-form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    text-align: left;
+  }
 }

@@ -11,6 +11,11 @@
   margin-bottom: 50px;
 }
 
+.details-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .edit-form div {
   display: flex;
   justify-content: space-between;
@@ -30,6 +35,12 @@
   min-width: 350px;
 }
 
+.form-photos div {
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
 div.preview-images {
   min-width: 70vw;
   height: auto;
@@ -37,7 +48,63 @@ div.preview-images {
   justify-content: center;
 }
 
+div.photo-container {
+  flex-direction: column;
+  align-items: center;
+  width: 35vw;
+  padding: 10px;
+}
+
+.preview-images img {
+  max-width: 20vw;
+}
+
 .edit-form .save-button {
   margin-bottom: 100px;
   margin-top: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .edit-form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  div.preview-images {
+    min-width: 70vw;
+    height: auto;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .edit-form div {
+    display: flex;
+    justify-content:center;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  div.preview-images {
+    min-width: 70vw;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .preview-images img {
+    max-width: 60vw;
+  }
+
+  .form-photos div {
+    align-items: flex-start;
+    margin-left: 0;
+    width: 350px;
+  }
 }
