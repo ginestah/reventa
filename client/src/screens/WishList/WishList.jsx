@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/shared/Layout/Layout";
-import { getWishlist } from "../../services/users";
-import { deleteWish } from "../../services/users";
-import { useParams } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { getWishlist, deleteWish} from "../../services/users";
+import { useParams,Redirect } from "react-router-dom";
 import { Wishlist } from "../../components/WishList/Wishlist";
 import "./WishList.css"
 
@@ -16,16 +14,12 @@ const Shop = (props) => {
   useEffect(() => {
     const fetchWishlist = async () => {
       const wishlist = await getWishlist(id);
-      console.log(wishlist);
       if (wishlist) {
         setCart([...wishlist]);
-        console.log(cart);
         setIsLoaded(true);
       }
       if (isDeleted) {
-
         return <Redirect to={`/wishlist/${id}`} />;
-
       }
     };
     fetchWishlist();
@@ -35,10 +29,8 @@ const Shop = (props) => {
     return <div>Loading...</div>;
   }
 
-
-
   const handleRemoveFromWishList = async (e) => {
-    const response = await deleteWish(id, e.target.name);
+    await deleteWish(id, e.target.name);
     setIsDeleted(!isDeleted);
   };
 
@@ -52,19 +44,14 @@ const Shop = (props) => {
       index={product._id}
     />
   ));
+
   return (
     <Layout user={props.user}>
 
       <div>My WishList</div>
       {
-        cart.length !== 0 ? <div>{cartItems}</div> : <div>empty list</div>
+        cart.length !== 0 ? <div>{cartItems}</div> : <div>Your WishList is Empty</div>
       }
-
-
-
-
-
-
     </Layout>
   );
 };
