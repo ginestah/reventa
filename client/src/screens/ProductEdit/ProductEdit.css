@@ -1,0 +1,110 @@
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.edit-form div input {
+  width: 350px;
+}
+
+.edit-form div select {
+  width: 358px;
+}
+
+.edit-form div textarea {
+  max-width: 350px;
+  min-width: 350px;
+}
+
+.form-photos div {
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+div.preview-images {
+  min-width: 70vw;
+  height: auto;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+div.photo-container {
+  flex-direction: column;
+  align-items: center;
+  width: 35vw;
+  padding: 10px;
+}
+
+.preview-images img {
+  max-width: 20vw;
+}
+
+.edit-form .save-button {
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .edit-form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  div.preview-images {
+    min-width: 70vw;
+    height: auto;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .edit-form div {
+    display: flex;
+    justify-content:center;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  div.preview-images {
+    min-width: 70vw;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .preview-images img {
+    max-width: 60vw;
+  }
+
+  .form-photos div {
+    align-items: flex-start;
+    margin-left: 0;
+    width: 350px;
+  }
+}

@@ -68,6 +68,7 @@ function ProductDetails(props) {
               </div>
               {props.user._id === product.userId ? null : (
                 <input
+                  className="button"
                   type="submit"
                   value="Add to Wish List"
                   onClick={handleAddToWishList}

@@ -12,3 +12,9 @@
   border: 1px solid #ddd;
   margin: 40px 40px 10px 40px;
 }
+
+@media screen and (max-width: 500px) {
+  .search-input {
+    margin: 0px;
+  }
+}

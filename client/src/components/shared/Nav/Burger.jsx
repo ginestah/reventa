@@ -156,7 +156,7 @@ function Burger(props) {
                   onClick={handleClick}
                   to={`/wishlist/${props.user._id}`}
                 >
-                  Wish Lists
+                  Wish List
                 </ItemLink>
               </li>
             </>

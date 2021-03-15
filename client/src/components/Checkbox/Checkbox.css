@@ -1,11 +1,16 @@
 .check-options {
-  list-style-type: none; 
+  list-style-type: none;
   display: flex;
   justify-content: space-evenly;
   padding-inline-start: 0px;
 }
 
 li {
-  display: flex;
+  margin: 10px;
+}
 
+@media screen and (max-width: 500px) {
+  .check-options {
+    flex-wrap: wrap;
+  }
 }

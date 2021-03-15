@@ -137,12 +137,12 @@ const ProductCreate = (props) => {
                 <option value="true">
                   Available, not included in listing price
                 </option>
-                <option value="false">Pick up only</option>
+                <option value="false">Pick-up only</option>
               </select>
             </div>
 
             <div>
-              <label>Contact Info:</label>
+              <label>Your Contact Info:</label>
               <input
                 required
                 placeholder="Phone number or email address"
@@ -158,6 +158,7 @@ const ProductCreate = (props) => {
               <textarea
                 className="textarea-description"
                 rows={10}
+                cols={78}
                 placeholder="Description"
                 value={product.description}
                 name="description"

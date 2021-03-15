@@ -10,6 +10,7 @@ footer {
   align-items: center; 
   justify-content: space-around;
   color: #03045E;
+  font-size: 2vh;
 }
 
 footer a {
@@ -28,7 +29,20 @@ footer a:hover{
 }
 
 .icon {
-  /* font-size: max(1vh, 10px); */
   font-size: 10px;
 }
 
+@media screen and (max-width: 800px) {
+  footer {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width:500px) {
+  footer {
+    font-size: 1.1vh;
+  }
+  .icon {
+    font-size: 8px;
+  }
+}

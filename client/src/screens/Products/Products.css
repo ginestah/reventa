@@ -3,7 +3,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 40px;
 }
 
 label {
@@ -18,7 +17,6 @@ label {
 @media (max-width: 500px) {
     .products {
         width: 100%;
-        justify-content: space-around;
     }
   
 }
