@@ -3,33 +3,41 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
   margin: 10px;
-  width: 47vw;
-  border: solid black 1px;
-  font-size: 2vh;
+  box-shadow: 0px 0px 3px 1px #CECECE;
+  transition: 250ms all;
+  padding: 20px;
+  margin-bottom: 60px;
+  text-decoration: none;
+  color: black;
 }
 
-.wish-container div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.wish-container:hover {
+  transform: scale(1.02);
+  opacity: .9;
 }
 
 .wish-item-name {
-  font-weight: bold; 
+  width: 300px;
+  font-size: 20px;
+  padding: 10px;
 }
 
 .wish-item-photo {
-  max-width: 40vw;
-}
-
-.wish-list input {
-  margin-top: 10px;
+  width: 300px;
 }
 
 @media (max-width: 500px) {
   .wish-container {
     width: 90vw;
+
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .wish-item-photo {
+    width: 80%;
+    margin: 15px;
+    padding: 10px;
   }
 }
