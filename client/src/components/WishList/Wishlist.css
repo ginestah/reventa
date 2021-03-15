@@ -2,11 +2,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   padding: 5px;
   margin: 10px;
-  width: 30vw;
+  width: 47vw;
   border: solid black 1px;
-  font-size: clamp(20px, 1vh, 25px);
+  font-size: 2vh;
+}
+
+.wish-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .wish-item-name {
@@ -14,10 +21,15 @@
 }
 
 .wish-item-photo {
-  max-width: 20vw;
-  margin: 0 auto;
+  max-width: 40vw;
 }
 
-.wish-container input {
-  margin-bottom: 0px;
+.wish-list input {
+  margin-top: 10px;
+}
+
+@media (max-width: 500px) {
+  .wish-container {
+    width: 90vw;
+  }
 }
