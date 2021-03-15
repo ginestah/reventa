@@ -5,7 +5,7 @@ import "./Slider.css";
 
 const Slider = (props) => {
   const [current, setCurrent] = useState(0);
-  const slideArray = props.products.slice(0, 3);
+  const slideArray = props.products.slice(0, 5);
   const length = slideArray.length;
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);

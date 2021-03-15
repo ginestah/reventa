@@ -8,54 +8,51 @@ const COLORS = {
 };
 //followed this tutorial for the hamburger https://www.youtube.com/watch?v=XQCuew98W4k&feature=emb_title
 const MenuLabel = styled.label`
-  background-color: ${COLORS.primaryLight};
-  position: absolute;
-  top: 0.2rem;
-  right: 0.2rem;
-  border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
+  background-color: ${COLORS.primaryDark};
+  position: fixed;
+  top: 0.4rem;
+  right: .4rem;
+  border-radius: 0%;
+  height: 2.5rem;
+  width: 2.5rem;
   cursor: pointer;
   z-index: 1000;
-  box-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px #03045e;
   text-align: center;
-`;
-
+  `;
+  
+  // box-shadow: 1px 1px 2px black, 0 0 25px white, 0 0 5px #03045e;
+  
 const NavBackground = styled.div`
   position: fixed;
   top: 2rem;
   right: 2rem;
-  background-image: radial-gradient(
-    ${COLORS.primaryDark},
-    ${COLORS.primaryLight}
-  );
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
   z-index: 600;
-  transform: ${(props) => (props.clicked ? "scale(80)" : "scale(0)")};
-  transition: transform 0.8s;
-`;
+  `;
+  // background-image: radial-gradient(
+  //   ${COLORS.primaryDark},
+  //   ${COLORS.primaryLight}
+  // );
+  // transform: ${(props) => (props.clicked ? "scale(80)" : "scale(0)")};
+  // transition: transform 0.8s;
 
 const Icon = styled.span`
   position: relative;
+  top: -.4rem;
   background-color: ${(props) => (props.clicked ? "transparent" : "#03045E")};
 
-  box-shadow: ${(props) =>
-    props.clicked
-      ? "none"
-      : "1px 1px 2px black, 0 0 25px #cadbc0, 0 0 5px #f3b3a6"};
-  width: 2rem;
-  height: 2px;
+  width: 1.75rem;
+  height: 1.75px;
   display: inline-block;
   margin-top: 1.5rem;
   transition: all 0.3s;
   &::before,
   &::after {
     content: "";
-    box-shadow: 1px 1px 2px black, 0 0 25px #cadbc0, 0 0 5px white;
     background-color: #03045e;
-    width: 2rem;
+    width: 1.75rem;
     height: 2px;
     display: inline-block;
     position: absolute;
@@ -76,7 +73,14 @@ const Icon = styled.span`
   ${MenuLabel}:hover &::after {
     top: ${(props) => (props.clicked ? "0" : "1rem")};
   }
-`;
+  `;
+
+  // box-shadow: ${(props) =>
+  //   props.clicked
+  //     ? "none"
+  //     : "1px 1px 2px black, 0 0 25px #cadbc0, 0 0 5px #f3b3a6"};
+  // box-shadow: 1px 1px 2px black, 0 0 25px #cadbc0, 0 0 5px white;
+
 
 const Navigation = styled.nav`
   height: 100vh;
@@ -92,16 +96,17 @@ const Navigation = styled.nav`
 const List = styled.ul`
   position: absolute;
   list-style: none;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
+  padding-inline-start: 0px;
 `;
+
 const ItemLink = styled(NavLink)`
   display: inline-block;
   font-size: 3rem;
-  text-shadow: 1px 1px 2px black, 0 0 25px #cadbc0, 0 0 5px #f3b3a6;
   font-weight: 300;
   text-decoration: none;
   color: ${COLORS.primaryLight};
@@ -111,19 +116,20 @@ const ItemLink = styled(NavLink)`
     transparent 0%,
     transparent 50%,
     #fff 50%
-  );
-  background-size: 240%;
-  transition: all 0.4s;
-  &:hover,
-  &:active {
-    background-position: 100%;
-    color: ${COLORS.primaryDark};
-    transform: translateX(1rem);
-  }
-`;
-
-function Burger(props) {
-  const [click, setClick] = useState(false);
+    );
+    background-size: 240%;
+    transition: all 0.4s;
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: ${COLORS.primaryLight};
+      transform: translateX(1rem);
+    }
+    `;
+    // text-shadow: 1px 1px 2px black, 0 0 25px #cadbc0, 0 0 5px #f3b3a6;
+    
+    function Burger(props) {
+      const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   return (
     <>
