@@ -19,6 +19,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      width: 110vw;
   }
   .layout-children {
       padding: 0px;
