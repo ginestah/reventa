@@ -27,6 +27,10 @@
   width: 300px;
 }
 
+.wish-item-price {
+  padding-bottom: 10px;
+}
+
 @media (max-width: 500px) {
   .wish-container {
     width: 90vw;

@@ -8,7 +8,7 @@
   border-radius: 10px;
 }
 
-.right-arrow {
+/* .right-arrow {
   position: absolute;
   top: 45%;
   right: -40px;
@@ -29,7 +29,7 @@
   user-select: none;
   color: #00B4D8;
 
-}
+} */
 
 .slide {
   opacity: 0;
