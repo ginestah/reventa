@@ -1,7 +1,7 @@
 ## Reventa
 
 Reventa is a community furniture resale app created using React on the frontend, and Express/Mongoose on the backend. Using bcrypt for authentication the app has assocation between users and their listings, as well as users and their wishlist. Users are able to add postings, edit/delete their own postings but not others. If visiting as a guest you can view postings but in order to see contact info for a seller or make a listing you must create an account or log into an existing account. Salt Rounds and Token_key for authorization are shown for demonstrative purposes only as it is not a production app.
-![login demo](https://giphy.com/gifs/uwEJdb29cVxsVrKwXR/html5)
+![login demo](https://media.giphy.com/media/uwEJdb29cVxsVrKwXR/giphy.gif)
 
 [deployed api with full auth/CRUD](https://reventa-server.herokuapp.com/api)
 ## JSON API response snippet
