@@ -65,14 +65,16 @@ function ProductDetails(props) {
                 )}
                 <details closed="true">{product.description}</details>
               </div>
-              {props.user._id === product.userId ? null : (
-                <input
-                  className="button"
-                  type="submit"
-                  value="Add to Wish List"
-                  onClick={handleAddToWishList}
-                />
-              )}
+              {props.user ? (
+                props.user._id === product.userId ? null : (
+                  <input
+                    className="button"
+                    type="submit"
+                    value="Add to Wish List"
+                    onClick={handleAddToWishList}
+                  />
+                )
+              ) : null}
 
               <div className="details-buttons">
                 {props.user ? (
