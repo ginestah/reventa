@@ -66,7 +66,7 @@ module.exports = mongoose.model("users", User);
 ```
 
 
-
+![AdobeXD Design](https://res.cloudinary.com/dpbzq29kr/image/upload/v1615907752/6AFB4E26-9D30-4418-9F56-452C2E2A6F61_1_105_c_sv8p7w.jpg)
 ![Component Heirarchy](https://res.cloudinary.com/dpbzq29kr/image/upload/v1615234934/Screen_Shot_2021-03-08_at_3.20.05_PM_dgf3pw.png)
 
 
