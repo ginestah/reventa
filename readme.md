@@ -1,9 +1,14 @@
 ## Reventa
-Team drawing
-![team GLO](https://res.cloudinary.com/dpbzq29kr/image/upload/c_scale,h_428/v1615237662/Image_from_iOS_qib6xu.jpg)
+[Reventa](https://reventa.netlify.app/)
+ is a community furniture resale app created using React on the frontend, and Express/Mongoose on the backend. Using bcrypt for authentication the app has assocation between users and their listings, as well as users and their wishlist. Users are able to add postings, edit/delete their own postings but not others. If visiting as a guest you can view postings but in order to see contact info for a seller or make a listing you must create an account or log into an existing account. Salt Rounds and Token_key for authorization are shown for demonstrative purposes only as it is not a production app.
 
+## Login Demo
+![login demo](https://media.giphy.com/media/uwEJdb29cVxsVrKwXR/giphy.gif)
+
+## Deployed API
 [deployed api with full auth/CRUD](https://reventa-server.herokuapp.com/api)
-### JSON API response snippet
+## JSON API response snippet
+
 ```json
  {
         "photos": [
@@ -60,23 +65,11 @@ const User = new Schema(
 module.exports = mongoose.model("users", User);
 ```
 
-### Whimsical Diagrams
+
 
 ![Component Heirarchy](https://res.cloudinary.com/dpbzq29kr/image/upload/v1615234934/Screen_Shot_2021-03-08_at_3.20.05_PM_dgf3pw.png)
 
-### Team Expectations
 
-[expectations](https://docs.google.com/document/d/1N40wucCU4Yystfjp813wbzgSCg4I6vNr7_FVhVyI2ic/edit?usp=sharing)
-
-### Overview
-
-Reventa is a community site similar to craigslist where users can post their used furniture for resale. Everyone can view items, but in order to view contact information to contact a seller you must login to an existing account. In order to create a listing you also must be logged into an existing account.
-
-The homepage will have the most recent listings as well as helpful links to relevant articles around home decor. From the all listings page users will be able to sort by pre-filled checkboxes or use the search box to narrow down results.
-
-### MVP:
-
-[Github Project Page](https://github.com/ginestah/reventa/projects/1)
 
 ### Post MVPs:
 
