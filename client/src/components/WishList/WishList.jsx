@@ -8,10 +8,19 @@ const WishList = ({ name, price, id, photos, onClick }) => {
       <Link to={`/products/${id}`}>
         <img className="wish-item-photo" src={photos} alt={name} />
       </Link>
-      <div className="wish-item-name" >{name}</div>
-      <div className="wish-item-price">${price}</div>
-      <button className="button" type="submit" value={id} onClick={(e)=>onClick(e)}>Remove</button>
-    </div >
+      <div className="wish-details">
+        <div className="wish-item-name">{name}</div>
+        <div className="wish-item-price">${price}</div>
+        <button
+          className="button"
+          type="submit"
+          value={id}
+          onClick={(e) => onClick(e)}
+        >
+          Remove
+        </button>
+      </div>
+    </div>
   );
-}
+};
 export default WishList;
