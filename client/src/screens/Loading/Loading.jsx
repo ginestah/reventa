@@ -1,4 +1,6 @@
 import Layout from "../../components/shared/Layout/Layout";
+import "./Loading.css"
+
 function Loading(props) {
   return (
     <Layout>
