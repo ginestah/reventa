@@ -39,7 +39,7 @@
   .resource-tile {
     display: flex;
     flex-direction: column;
-    max-width: 70vw;
+    max-width: 80vw;
     padding: 10px;
     margin: 10px auto;
   }
